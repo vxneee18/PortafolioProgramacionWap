@@ -1,1 +1,90 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Seguridad Informática</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. ENCABEZADO  -->
+    <header class="header">
+        <div class="header-content">
+            <div class="user-info">
+                <h1>Karla Vamessa Gonzalez Espinoza (Vane)</h1>
+                <h2>CNO IV – Seguridad Informática</h2>
+                <p>Universidad Politécnica de San Luis Potosí | Ingeniería en TI</p>
+            </div>
+            <nav class="navbar">
+                <a href="#">Inicio</a>
+                <a href="#">Actividades</a>
+                <a href="#">Cursos</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- 2. PRESENTACIÓN DEL PORTAFOLIO -->
+        <section class="card intro-card">
+            <h2>Presentación del Portafolio</h2>
+            <p>Este sitio web funciona como el <strong>contenedor oficial</strong> de mis evidencias académicas. Su propósito principal es documentar técnica y analíticamente mi progreso en la asignatura.</p>
+            <p>El enfoque de este espacio está centrado en la seguridad informática, metodologías de pruebas de penetración y el análisis exhaustivo de vulnerabilidades.</p>
+            <p>Mantener este portafolio es fundamental, ya que representa la evidencia tangible de mi proceso de aprendizaje, estructurando el conocimiento de forma profesional.</p>
+        </section>
+
+        <div class="grid-2-cols">
+            
+            <!-- 3. PERFIL DEL ESTUDIANTE -->
+            <section class="card">
+                <h3>Perfil Estudiantil</h3>
+                <p>Estudiante de Ingeniería en Tecnologías de la Información, orientada a la resolución lógica de problemas y el desarrollo de sistemas robustos.</p>
+                <h4>Intereses principales:</h4>
+                <ul>
+                    <li>Ciberseguridad y protección de datos.</li>
+                    <li>Investigación de vulnerabilidades de red.</li>
+                    <li>Desarrollo de sistemas embebidos e IoT.</li>
+                </ul>
+            </section>
+
+            <!-- 4. INFORMACIÓN TÉCNICA BÁSICA -->
+            <section class="card">
+                <h3>Arquitectura del Sitio</h3>
+                <ul>
+                    <li><strong>Lenguajes utilizados:</strong> HTML5 y CSS3.</li>
+                    <li><strong>Plataforma de publicación:</strong> GitHub Pages.</li>
+                    <li><strong>Control de versiones:</strong> Git y GitHub.</li>
+                </ul>
+            </section>
+
+        </div>
+
+        <!-- 5. FORMULARIO DE CONTACTO -->
+        <section id="contacto" class="card form-card">
+            <h3 style="text-align: center;">Contacto de Seguridad</h3>
+            <form action="https://formspree.io/f/TU_ID_AQUI" method="POST">
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Mensaje</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- 6 y 7. PIE DE PÁGINA Y CERTIFICADO SSL -->
+    <footer class="footer">
+        <p>&copy; 2026 Vanessa. Portafolio de Seguridad Informática.</p>
+        <p class="ssl-notice"> Conexión segura cifrada por HTTPS (GitHub Pages)</p>
+    </footer>
+
+</body>
+</html>
