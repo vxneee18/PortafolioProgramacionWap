@@ -5,508 +5,430 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio | Vanessa</title>
     
-    <!-- CSS Interno para asegurar que cargue el diseño -->
+    <!-- Fuentes de Google para lograr el estilo de la imagen -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Space+Grotesk:wght@400;700&family=Titan+One&display=swap" rel="stylesheet">
+
     <style>
-        /* PALETA DE COLORES "GOOD VIBES" */
+        /* PALETA DE COLORES EXACTA DE TU IMAGEN */
         :root {
-            --cream-gelato: #F8E6A0;
-            --amalfi-tile: #2E5AA7;
-            --sea-breeze: #86C5FF;
-            --citrus-zest: #FFA62B;
-            --text-dark: #1A3668; 
-            --white: #FFFFFF;
+            --bg-cream: #FFF5EC;
+            --text-brown: #4A2511;
+            --pink-hot: #F04C74;
+            --pink-light: #FFC2D8;
+            --blue-baby: #BBE0FF;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background-color: var(--cream-gelato);
-            color: var(--text-dark);
-            line-height: 1.7;
+            background-color: var(--bg-cream);
+            color: var(--text-brown);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* --- ENCABEZADO --- */
+        /* Texto rosa gigante de fondo (decorativo) */
+        .bg-text-decor {
+            position: absolute;
+            top: -5%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Titan One', cursive;
+            font-size: 35vw;
+            color: var(--pink-light);
+            z-index: -1;
+            white-space: nowrap;
+            line-height: 0.8;
+            opacity: 0.7;
+        }
+        
+        .bg-text-bottom {
+            top: auto;
+            bottom: -5%;
+        }
+
+        /* --- ENCABEZADO TIPO PÍLDORA (Como en la imagen superior) --- */
         .header {
-            background-color: var(--amalfi-tile);
-            color: var(--white);
-            padding: 20px 0;
-            box-shadow: 0 4px 15px rgba(46, 90, 167, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 20px 40px;
+            position: relative;
+            z-index: 10;
         }
 
-        .header-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .header-pill {
+            border: 2px solid var(--text-brown);
+            border-radius: 50px;
+            padding: 10px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            background-color: var(--bg-cream);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .header-pill nav {
+            display: flex;
             gap: 20px;
         }
 
-        .logo-area h1 {
-            font-size: 2rem;
-            color: var(--white);
-            margin-bottom: 2px;
-        }
-
-        .alias {
-            color: var(--citrus-zest);
-            font-style: italic;
-        }
-
-        .subtitle {
-            font-size: 0.9rem;
-            color: var(--sea-breeze);
-            font-weight: 600;
-        }
-
-        .university {
-            font-size: 0.8rem;
-            opacity: 0.9;
-        }
-
-        .course-badge {
-            display: inline-block;
-            background-color: var(--citrus-zest);
-            color: var(--text-dark);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            margin-top: 8px;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: var(--white);
+        .header-pill a {
+            color: var(--text-brown);
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
+            position: relative;
         }
 
-        .nav-menu a:hover {
-            color: var(--citrus-zest);
+        .header-pill a:hover {
+            color: var(--pink-hot);
         }
 
-        .btn-nav {
-            background-color: var(--citrus-zest);
-            color: var(--text-dark) !important;
-            padding: 8px 18px;
-            border-radius: 25px;
-            transition: transform 0.2s, background-color 0.2s;
+        /* --- SECCIÓN HERO (ESTILO REVISTA) --- */
+        .hero {
+            position: relative;
+            padding: 60px 40px 100px;
+            text-align: center;
+            z-index: 2;
         }
 
-        .btn-nav:hover {
-            transform: scale(1.05);
-            background-color: #ffb854;
+        /* El óvalo rosa de "inspo" */
+        .pink-oval {
+            background-color: var(--pink-hot);
+            color: var(--bg-cream);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.5rem;
+            padding: 10px 40px;
+            border-radius: 100px;
+            display: inline-block;
+            transform: rotate(-5deg);
+            margin-bottom: -30px;
+            position: relative;
+            z-index: 3;
+            letter-spacing: 2px;
         }
 
-        /* --- CONTENEDOR PRINCIPAL --- */
-        .main-content {
-            max-width: 1100px;
+        /* Texto masivo café */
+        .massive-title {
+            font-family: 'Titan One', cursive;
+            font-size: 15vw;
+            line-height: 0.85;
+            color: var(--text-brown);
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        /* Texto con fondo azul (como "paletas de cores no tom de azul") */
+        .blue-highlight-container {
+            margin-top: 30px;
+            text-align: left;
+            padding-left: 10%;
+        }
+
+        .blue-highlight {
+            background-color: var(--blue-baby);
+            color: var(--text-brown);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            line-height: 1.4;
+            padding: 2px 10px;
+            box-shadow: 10px 0 0 var(--blue-baby), -10px 0 0 var(--blue-baby);
+            display: inline;
+        }
+
+        /* Texto repetitivo chiquito */
+        .repeating-text {
+            position: absolute;
+            font-size: 0.75rem;
+            line-height: 1;
+            text-align: left;
+            width: 120px;
+        }
+        .rt-1 { top: 20%; left: 10%; }
+        .rt-2 { bottom: 10%; left: 15%; }
+
+        /* Líneas punteadas onduladas decorativas */
+        .dashed-line {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 2px dashed var(--text-brown);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .dl-1 { top: 40%; left: -50px; }
+        .dl-2 { bottom: 20%; right: -50px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+
+        /* --- CONTENEDOR DE SECCIONES --- */
+        .content-wrapper {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 50px 20px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* Cajas de contenido con estilo impreso/retro */
+        .editorial-box {
+            background-color: var(--bg-cream);
+            border: 3px solid var(--text-brown);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 10px 10px 0px var(--text-brown);
         }
 
         .section-title {
-            color: var(--amalfi-tile);
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        /* --- SECCIÓN HERO (INICIO) --- */
-        .hero-section {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            margin-bottom: 70px;
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(46, 90, 167, 0.08);
-        }
-
-        .hero-text {
-            flex: 2;
-        }
-
-        .hero-text h2 {
-            color: var(--amalfi-tile);
-            font-size: 2.5rem;
+            font-family: 'Titan One', cursive;
+            font-size: 3rem;
+            color: var(--text-brown);
             margin-bottom: 20px;
-            line-height: 1.2;
+            letter-spacing: 1px;
         }
 
-        .hero-text p {
+        .editorial-box p, .editorial-box ul {
+            font-size: 1.1rem;
+            line-height: 1.6;
             margin-bottom: 15px;
-            font-size: 1.1rem;
         }
 
-        .hero-stats {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        .editorial-box strong {
+            background-color: var(--blue-baby);
+            padding: 0 5px;
         }
 
-        .stat-box {
-            background-color: var(--sea-breeze);
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 6px solid var(--amalfi-tile);
-        }
-
-        .stat-box h3 {
-            color: var(--text-dark);
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .stat-box p {
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* --- TARJETAS DE PROYECTOS --- */
-        .projects-section {
-            margin-bottom: 70px;
-        }
-
-        .cards-grid {
+        /* Grid para proyectos */
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
 
         .project-card {
-            background-color: var(--white);
-            padding: 30px 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(46, 90, 167, 0.06);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid var(--text-brown);
+            border-radius: 15px;
+            padding: 25px;
+            background-color: #fff;
             position: relative;
-            overflow: hidden;
         }
 
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(46, 90, 167, 0.15);
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background-color: var(--citrus-zest);
-        }
-
-        .tag {
+        .project-tag {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            background-color: var(--pink-hot);
+            color: var(--bg-cream);
+            padding: 2px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
             display: inline-block;
-            background-color: var(--cream-gelato);
-            color: var(--amalfi-tile);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: bold;
             margin-bottom: 15px;
         }
 
         .project-card h3 {
-            color: var(--amalfi-tile);
+            font-size: 1.4rem;
             margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-
-        .project-card p {
-            font-size: 0.95rem;
-            color: #444;
-        }
-
-        /* --- SECCIÓN TÉCNICA Y PORTAFOLIO --- */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 70px;
-        }
-
-        .tech-box {
-            background-color: var(--amalfi-tile);
-            color: var(--white);
-            padding: 40px;
-            border-radius: 25px;
-        }
-
-        .tech-box h3 {
-            color: var(--citrus-zest);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .tech-list {
-            list-style: none;
-        }
-
-        .tech-list li {
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(134, 197, 255, 0.3);
-        }
-
-        .tech-list strong {
-            color: var(--sea-breeze);
+            font-family: 'Titan One', cursive;
         }
 
         /* --- FORMULARIO DE CONTACTO --- */
-        .contact-section {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-        }
-
-        .contact-container {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 25px;
-            width: 100%;
-            max-width: 600px;
-            box-shadow: 0 10px 30px rgba(46, 90, 167, 0.08);
-            text-align: center;
-        }
-
-        .contact-container h2 {
-            color: var(--amalfi-tile);
-            margin-bottom: 10px;
-        }
-
-        .contact-container p {
-            margin-bottom: 25px;
-            color: #666;
-        }
-
-        .contact-form {
-            text-align: left;
-        }
-
-        .input-group {
+        .form-group {
             margin-bottom: 20px;
         }
-
-        .input-group label {
+        
+        .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--amalfi-tile);
+            font-weight: 700;
+            margin-bottom: 5px;
         }
 
-        .input-group input, .input-group textarea {
+        .form-group input, .form-group textarea {
             width: 100%;
             padding: 15px;
-            border: 2px solid var(--cream-gelato);
-            border-radius: 12px;
-            background-color: #fcfbfa;
+            border: 2px solid var(--text-brown);
+            border-radius: 10px;
+            background-color: transparent;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1rem;
-            color: var(--text-dark);
-            transition: border-color 0.3s;
+            color: var(--text-brown);
         }
 
-        .input-group input:focus, .input-group textarea:focus {
+        .form-group input:focus, .form-group textarea:focus {
             outline: none;
-            border-color: var(--sea-breeze);
+            background-color: var(--blue-baby);
         }
 
         .btn-submit {
-            width: 100%;
-            background-color: var(--citrus-zest);
-            color: var(--text-dark);
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            background-color: var(--pink-hot);
+            color: var(--bg-cream);
+            font-family: 'Titan One', cursive;
+            font-size: 1.5rem;
+            padding: 15px 40px;
+            border: 2px solid var(--text-brown);
+            border-radius: 50px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 4px 4px 0px var(--text-brown);
+            transition: transform 0.1s;
+            width: 100%;
         }
 
-        .btn-submit:hover {
-            background-color: #ffb854;
-            transform: translateY(-2px);
+        .btn-submit:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px var(--text-brown);
         }
 
-        /* --- PIE DE PÁGINA --- */
+        /* --- FOOTER --- */
         .footer {
             text-align: center;
-            padding: 30px 20px;
-            background-color: var(--amalfi-tile);
-            color: var(--white);
+            padding: 40px;
+            border-top: 2px solid var(--text-brown);
+            margin-top: 60px;
+            font-weight: 700;
         }
 
-        .ssl-badge {
-            display: inline-block;
-            margin-top: 10px;
-            background-color: var(--sea-breeze);
-            color: var(--text-dark);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-        }
-
-        /* --- RESPONSIVO --- */
-        @media (max-width: 850px) {
-            .hero-section, .tech-grid {
-                flex-direction: column;
-                grid-template-columns: 1fr;
-            }
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-pill { flex-direction: column; gap: 15px; }
+            .header-pill nav { flex-wrap: wrap; justify-content: center; }
+            .massive-title { font-size: 22vw; }
+            .blue-highlight { font-size: 1.3rem; }
+            .repeating-text { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. ENCABEZADO -->
+    <!-- TEXTO GIGANTE DE FONDO -->
+    <div class="bg-text-decor">VANE</div>
+
+    <!-- 1. ENCABEZADO TIPO PÍLDORA -->
     <header class="header">
-        <div class="header-container">
-            <div class="logo-area">
-                <h1>Karla Vanessa Gonzalez Espinoza <span class="alias">(Vane)</span></h1>
-                <p class="subtitle">Ingeniería en Tecnologías de la Información | 7mo Semestre</p>
-                <p class="university">Universidad Politécnica de San Luis Potosí</p>
-                <p class="course-badge">CNO IV – Seguridad Informática</p>
-            </div>
-            <nav class="nav-menu">
-                <a href="#inicio">Inicio</a>
-                <a href="#portafolio">Actividades</a>
-                <a href="#proyectos">Cursos</a>
-                <a href="#contacto" class="btn-nav">Contacto</a>
+        <div class="header-pill">
+            <span>UPSLP / CNO IV</span>
+            <nav>
+                <a href="#perfil">Perfil</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#arquitectura">Arquitectura</a>
+                <a href="#contacto">Contacto</a>
             </nav>
+            <span>7mo Semestre</span>
         </div>
     </header>
 
-    <main class="main-content">
+    <!-- SECCIÓN HERO (El diseño del póster) -->
+    <section class="hero">
         
-        <!-- 3. PERFIL DEL ESTUDIANTE (Buenas vibes) -->
-        <section id="inicio" class="hero-section">
-            <div class="hero-text">
-                <h2>Perfil</h2>
-                <p>Soy Vanessa una estudiante de Ingeniería en Tecnologías de la Información en la Universidad Politécnica de San Luis Potosí interesada en los conocimientos adquiridos para las redes, además me gusta sobre componentes para un sistema embebido o diseño sobre bases de datos en la nube.</p>
-                <p>Me encanta conocer la lógica detrás de las cosas paso por paso para comprender el origen de las técnologias. Actualmente mi enfoque está en fortalecer mis conocimientos en <strong>ciberseguridad, análisis de vulnerabilidades y pruebas de penetración</strong>.</p>
-            </div>
-            <div class="hero-stats">
-                <div class="stat-box">
-                    <h3>Frontend & Web</h3>
-                    <p>PHP, MySQL, Bootstrap, HTML/CSS</p>
-                </div>
-                <div class="stat-box">
-                    <h3>Hardware & IoT</h3>
-                    <p>PIC16F84A/877A, ESP32, Arduino</p>
-                </div>
-            </div>
+        <!-- Elementos decorativos -->
+        <div class="repeating-text rt-1">
+            ingeniería en ti<br>ingeniería en ti<br>ingeniería en ti<br>ingeniería en ti
+        </div>
+        <div class="dashed-line dl-1"></div>
+        <div class="dashed-line dl-2"></div>
+
+        <!-- Títulos principales -->
+        <div class="pink-oval">portafolio</div>
+        <h1 class="massive-title">CIBER<br>SEGURIDAD</h1>
+        
+        <div class="blue-highlight-container">
+            <span class="blue-highlight">
+                Karla Vanessa Gonzalez<br>
+                Espinoza (Vane)
+            </span>
+        </div>
+
+        <div class="repeating-text rt-2" style="color: var(--pink-hot);">
+            seguridad informática<br>seguridad informática<br>seguridad informática<br>seguridad informática
+        </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL EN CAJAS EDITORIALES -->
+    <main class="content-wrapper">
+        
+        <!-- PERFIL Y PROPÓSITO -->
+        <section id="perfil" class="editorial-box">
+            <h2 class="section-title">01. Sobre mí</h2>
+            <p>Soy <strong>Vanessa</strong>, estudiante de Ingeniería en Tecnologías de la Información en la Universidad Politécnica de San Luis Potosí. Estoy muy interesada en los conocimientos adquiridos para las redes, además me gusta aprender sobre componentes para sistemas embebidos o diseño sobre bases de datos en la nube.</p>
+            <p>Me encanta conocer la lógica detrás de las cosas paso por paso para comprender el origen de las tecnologías. Actualmente mi enfoque está en fortalecer mis conocimientos en <strong>ciberseguridad, análisis de vulnerabilidades y pruebas de penetración</strong>.</p>
+            <p>Este sitio funciona como el contenedor oficial de mis evidencias. Su objetivo es documentar técnica y analíticamente mi progreso en la asignatura, dejando la base estructural para los siguientes parciales.</p>
         </section>
 
-        <!-- SECCIÓN NUEVA: Proyectos y Experiencia -->
-        <section id="proyectos" class="projects-section">
-            <h2 class="section-title">Experiencia y Proyectos Destacados</h2>
-            <div class="cards-grid">
+        <!-- PROYECTOS -->
+        <section id="proyectos" class="editorial-box" style="background-color: var(--blue-baby);">
+            <h2 class="section-title">02. Experiencia</h2>
+            <div class="projects-grid">
                 
                 <div class="project-card">
-                    <span class="tag">Ciberseguridad</span>
-                    <h3>Análisis Ransomware DoppelPaymer</h3>
-                    <p>Investigación técnica y financiera sobre el impacto del ataque de ransomware de 2019 a PEMEX, utilizando marcos de valoración económica basados en el histórico de criptomonedas.</p>
+                    <span class="project-tag">Ciberseguridad</span>
+                    <h3>Ransomware DoppelPaymer</h3>
+                    <p>Investigación técnica y financiera sobre el impacto del ataque a PEMEX en 2019, utilizando marcos de valoración económica basados en criptomonedas.</p>
                 </div>
 
                 <div class="project-card">
-                    <span class="tag">Desarrollo Web</span>
+                    <span class="project-tag">Desarrollo Web</span>
                     <h3>Sistema LoyaltyPro</h3>
-                    <p>Aplicación web Full-Stack desarrollada en PHP y Bootstrap orientada a la gestión de clientes, cálculo de puntos de recompensa y administración de niveles de cuentas con base de datos relacional.</p>
+                    <p>Aplicación web Full-Stack en PHP y Bootstrap para gestión de clientes y cálculo de puntos de recompensa con base de datos relacional.</p>
                 </div>
 
                 <div class="project-card">
-                    <span class="tag">Ingeniería de Software</span>
+                    <span class="project-tag">Sistemas Embebidos</span>
+                    <h3>Hardware & IoT</h3>
+                    <p>Uso de microcontroladores PIC16F84A/877A, ESP32 y Arduino para prototipado de vehículos autónomos, rastreo solar y sensores ultrasónicos.</p>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-tag">IA & Software</span>
                     <h3>RouteBot AI</h3>
-                    <p>Propuesta arquitectónica y orquestación de un chatbot logístico para Telegram, integrando Open Claw AI y la API de Google Maps para el ruteo inteligente.</p>
-                </div>
-
-                <div class="project-card">
-                    <span class="tag">Sistemas Embebidos</span>
-                    <h3>Robótica y Sensores</h3>
-                    <p>Prototipado de vehículos autónomos y sistemas de rastreo solar utilizando microcontroladores, drivers puente H, sensores ultrasónicos y conversión analógica-digital.</p>
+                    <p>Propuesta arquitectónica de un chatbot logístico para Telegram, integrando Open Claw AI y la API de Google Maps.</p>
                 </div>
 
             </div>
         </section>
 
-        <!-- 2 y 4. PRESENTACIÓN DEL PORTAFOLIO Y ARQUITECTURA -->
-        <section id="portafolio" class="technical-section">
-            <h2 class="section-title">Sobre este Portafolio</h2>
-            <div class="tech-grid">
-                <div class="tech-box">
-                    <h3>Propósito Académico</h3>
-                    <p>Este sitio web funciona como el <strong>contenedor oficial</strong> de mis evidencias. Su objetivo es documentar técnica y analíticamente mi progreso en la asignatura de Seguridad Informática, dejando la base estructural para los siguientes parciales.</p>
-                </div>
-                <div class="tech-box">
-                    <h3>Arquitectura Técnica</h3>
-                    <ul class="tech-list">
-                        <li><strong>Tecnologías:</strong> HTML5 y CSS3 (Desarrollo web nativo).</li>
-                        <li><strong>Plataforma:</strong> Publicado a través de GitHub Pages.</li>
-                        <li><strong>Control de versiones:</strong> Repositorio gestionado con Git.</li>
-                    </ul>
-                </div>
-            </div>
+        <!-- ARQUITECTURA -->
+        <section id="arquitectura" class="editorial-box">
+            <h2 class="section-title">03. Arquitectura</h2>
+            <ul style="list-style-type: square; padding-left: 20px;">
+                <li><strong>Tecnologías:</strong> HTML5 y CSS3 (Desarrollo web nativo y estilos internos).</li>
+                <li><strong>Plataforma:</strong> Publicado a través de GitHub Pages.</li>
+                <li><strong>Control de versiones:</strong> Repositorio gestionado con Git.</li>
+                <li><strong>Certificado SSL:</strong> Cifrado de extremo a extremo activo por defecto.</li>
+            </ul>
         </section>
 
-        <!-- 5. FORMULARIO DE CONTACTO -->
-        <section id="contacto" class="contact-section">
-            <div class="contact-container">
-                <h2>¿Tienes alguna duda o feedback?</h2>
-                <p>Déjame un mensaje y el sistema automatizado te confirmará de recibido.</p>
-                
-                <form action="https://formspree.io/f/xgawbbkz" method="POST" class="contact-form">
-                    <div class="input-group">
-                        <label for="email">Correo Electrónico:</label>
-                        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="message">Mensaje:</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Escribe aquí..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Enviar Mensaje</button>
-                </form>
-            </div>
+        <!-- CONTACTO -->
+        <section id="contacto" class="editorial-box">
+            <h2 class="section-title">04. Contacto</h2>
+            <p style="margin-bottom: 25px;">¿Tienes alguna duda o feedback? Déjame un mensaje y el sistema automatizado te confirmará de recibido.</p>
+            
+            <form action="https://formspree.io/f/xgawbbkz" method="POST">
+                <div class="form-group">
+                    <label for="email">CORREO ELECTRÓNICO:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">MENSAJE:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">ENVIAR MENSAJE</button>
+            </form>
         </section>
 
     </main>
 
-    <!-- 6 y 7. PIE DE PÁGINA Y CERTIFICADO SSL -->
+    <!-- FOOTER -->
     <footer class="footer">
-        <p>&copy; 2026 Vanessa. Portafolio Técnico de Ciberseguridad.</p>
-        <p class="ssl-badge">🔒 Conexión segura por HTTPS</p>
+        <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza.</p>
+        <p>🔒 Conexión segura cifrada por HTTPS</p>
     </footer>
+
+    <!-- TEXTO GIGANTE DE FONDO (Abajo) -->
+    <div class="bg-text-decor bg-text-bottom">VANE</div>
 
 </body>
 </html>
