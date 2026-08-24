@@ -1,1 +1,201 @@
+/* Variables para colores de temática Ciberseguridad */
+:root {
+    --bg-main: #121212;
+    --bg-card: #1e1e24;
+    --text-main: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --accent: #00ffcc;
+    --accent-hover: #00ccaa;
+}
 
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* 1. Estilos del Encabezado */
+.header {
+    background-color: #18181d;
+    border-bottom: 2px solid var(--accent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.header-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.user-info h1 {
+    font-size: 1.6rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.user-info h2 {
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: normal;
+}
+
+.user-info p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.navbar a {
+    color: var(--text-main);
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--accent);
+}
+
+/* Tarjetas Generales */
+.card {
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.intro-card {
+    border-left: 4px solid var(--accent);
+}
+
+.card h2, .card h3, .card h4 {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.card p, .card ul {
+    margin-bottom: 15px;
+}
+
+.card ul {
+    padding-left: 20px;
+}
+
+.card li {
+    margin-bottom: 8px;
+}
+
+/* Grid para organizar el perfil a dos columnas */
+.grid-2-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Diseño Responsivo para celulares */
+@media (max-width: 768px) {
+    .grid-2-cols {
+        grid-template-columns: 1fr;
+    }
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .navbar {
+        margin-top: 15px;
+    }
+    .navbar a {
+        margin: 0 10px;
+    }
+}
+
+/* Estilos del Formulario */
+.form-card {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-muted);
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #2a2a35;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: white;
+    font-size: 1rem;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--accent);
+    color: var(--bg-main);
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Pie de página */
+.footer {
+    background-color: #18181d;
+    text-align: center;
+    padding: 25px 20px;
+    border-top: 1px solid #333;
+}
+
+.ssl-notice {
+    font-size: 0.9rem;
+    color: #4ade80;
+    margin-top: 8px;
+}
