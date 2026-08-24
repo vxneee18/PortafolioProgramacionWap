@@ -4,7 +4,389 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio | Vanessa</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- CSS Interno para asegurar que cargue el diseño -->
+    <style>
+        /* PALETA DE COLORES "GOOD VIBES" */
+        :root {
+            --cream-gelato: #F8E6A0;
+            --amalfi-tile: #2E5AA7;
+            --sea-breeze: #86C5FF;
+            --citrus-zest: #FFA62B;
+            --text-dark: #1A3668; 
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--cream-gelato);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* --- ENCABEZADO --- */
+        .header {
+            background-color: var(--amalfi-tile);
+            color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 4px 15px rgba(46, 90, 167, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-area h1 {
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 2px;
+        }
+
+        .alias {
+            color: var(--citrus-zest);
+            font-style: italic;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--sea-breeze);
+            font-weight: 600;
+        }
+
+        .university {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .course-badge {
+            display: inline-block;
+            background-color: var(--citrus-zest);
+            color: var(--text-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--citrus-zest);
+        }
+
+        .btn-nav {
+            background-color: var(--citrus-zest);
+            color: var(--text-dark) !important;
+            padding: 8px 18px;
+            border-radius: 25px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-nav:hover {
+            transform: scale(1.05);
+            background-color: #ffb854;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .section-title {
+            color: var(--amalfi-tile);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* --- SECCIÓN HERO (INICIO) --- */
+        .hero-section {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 70px;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(46, 90, 167, 0.08);
+        }
+
+        .hero-text {
+            flex: 2;
+        }
+
+        .hero-text h2 {
+            color: var(--amalfi-tile);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .hero-stats {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stat-box {
+            background-color: var(--sea-breeze);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 6px solid var(--amalfi-tile);
+        }
+
+        .stat-box h3 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-box p {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- TARJETAS DE PROYECTOS --- */
+        .projects-section {
+            margin-bottom: 70px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            padding: 30px 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(46, 90, 167, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(46, 90, 167, 0.15);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: var(--citrus-zest);
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--cream-gelato);
+            color: var(--amalfi-tile);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            color: var(--amalfi-tile);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        /* --- SECCIÓN TÉCNICA Y PORTAFOLIO --- */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 70px;
+        }
+
+        .tech-box {
+            background-color: var(--amalfi-tile);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 25px;
+        }
+
+        .tech-box h3 {
+            color: var(--citrus-zest);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .tech-list {
+            list-style: none;
+        }
+
+        .tech-list li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(134, 197, 255, 0.3);
+        }
+
+        .tech-list strong {
+            color: var(--sea-breeze);
+        }
+
+        /* --- FORMULARIO DE CONTACTO --- */
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-container {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(46, 90, 167, 0.08);
+            text-align: center;
+        }
+
+        .contact-container h2 {
+            color: var(--amalfi-tile);
+            margin-bottom: 10px;
+        }
+
+        .contact-container p {
+            margin-bottom: 25px;
+            color: #666;
+        }
+
+        .contact-form {
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--amalfi-tile);
+        }
+
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--cream-gelato);
+            border-radius: 12px;
+            background-color: #fcfbfa;
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: var(--sea-breeze);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--citrus-zest);
+            color: var(--text-dark);
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #ffb854;
+            transform: translateY(-2px);
+        }
+
+        /* --- PIE DE PÁGINA --- */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--amalfi-tile);
+            color: var(--white);
+        }
+
+        .ssl-badge {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: var(--sea-breeze);
+            color: var(--text-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* --- RESPONSIVO --- */
+        @media (max-width: 850px) {
+            .hero-section, .tech-grid {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
