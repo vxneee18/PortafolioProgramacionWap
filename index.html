@@ -5,406 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio | Vanessa</title>
     
-    <!-- Fuentes de Google para lograr el estilo de la imagen -->
+    <link rel="stylesheet" href="style.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Space+Grotesk:wght@400;700&family=Titan+One&display=swap" rel="stylesheet">
-
-    <style>
-        /* PALETA DE COLORES EXACTA DE TU IMAGEN */
-        :root {
-            --bg-cream: #FFF5EC;
-            --text-brown: #4A2511;
-            --pink-hot: #F04C74;
-            --pink-light: #FFC2D8;
-            --blue-baby: #BBE0FF;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg-cream);
-            color: var(--text-brown);
-            font-family: 'Space Grotesk', sans-serif;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Texto rosa gigante de fondo (decorativo) */
-        .bg-text-decor {
-            position: absolute;
-            top: -5%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Titan One', cursive;
-            font-size: 35vw;
-            color: var(--pink-light);
-            z-index: -1;
-            white-space: nowrap;
-            line-height: 0.8;
-            opacity: 0.7;
-        }
-        
-        .bg-text-bottom {
-            top: auto;
-            bottom: -5%;
-        }
-
-        /* --- ENCABEZADO TIPO PÍLDORA (Como en la imagen superior) --- */
-        .header {
-            padding: 20px 40px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .header-pill {
-            border: 2px solid var(--text-brown);
-            border-radius: 50px;
-            padding: 10px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--bg-cream);
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .header-pill nav {
-            display: flex;
-            gap: 20px;
-        }
-
-        .header-pill a {
-            color: var(--text-brown);
-            text-decoration: none;
-            position: relative;
-        }
-
-        .header-pill a:hover {
-            color: var(--pink-hot);
-        }
-
-        /* --- SECCIÓN HERO (ESTILO REVISTA) --- */
-        .hero {
-            position: relative;
-            padding: 60px 40px 100px;
-            text-align: center;
-            z-index: 2;
-        }
-
-        /* El óvalo rosa de "inspo" */
-        .pink-oval {
-            background-color: var(--pink-hot);
-            color: var(--bg-cream);
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 2.5rem;
-            padding: 10px 40px;
-            border-radius: 100px;
-            display: inline-block;
-            transform: rotate(-5deg);
-            margin-bottom: -30px;
-            position: relative;
-            z-index: 3;
-            letter-spacing: 2px;
-        }
-
-        /* Texto masivo café */
-        .massive-title {
-            font-family: 'Titan One', cursive;
-            font-size: 15vw;
-            line-height: 0.85;
-            color: var(--text-brown);
-            margin-bottom: 20px;
-            letter-spacing: -2px;
-        }
-
-        /* Texto con fondo azul (como "paletas de cores no tom de azul") */
-        .blue-highlight-container {
-            margin-top: 30px;
-            text-align: left;
-            padding-left: 10%;
-        }
-
-        .blue-highlight {
-            background-color: var(--blue-baby);
-            color: var(--text-brown);
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 2rem;
-            line-height: 1.4;
-            padding: 2px 10px;
-            box-shadow: 10px 0 0 var(--blue-baby), -10px 0 0 var(--blue-baby);
-            display: inline;
-        }
-
-        /* Texto repetitivo chiquito */
-        .repeating-text {
-            position: absolute;
-            font-size: 0.75rem;
-            line-height: 1;
-            text-align: left;
-            width: 120px;
-        }
-        .rt-1 { top: 20%; left: 10%; }
-        .rt-2 { bottom: 10%; left: 15%; }
-
-        /* Líneas punteadas onduladas decorativas */
-        .dashed-line {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            border: 2px dashed var(--text-brown);
-            border-radius: 50%;
-            z-index: 1;
-        }
-        .dl-1 { top: 40%; left: -50px; }
-        .dl-2 { bottom: 20%; right: -50px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-
-        /* --- CONTENEDOR DE SECCIONES --- */
-        .content-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-            z-index: 5;
-        }
-
-        /* Cajas de contenido con estilo impreso/retro */
-        .editorial-box {
-            background-color: var(--bg-cream);
-            border: 3px solid var(--text-brown);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 50px;
-            box-shadow: 10px 10px 0px var(--text-brown);
-        }
-
-        .section-title {
-            font-family: 'Titan One', cursive;
-            font-size: 3rem;
-            color: var(--text-brown);
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-
-        .editorial-box p, .editorial-box ul {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .editorial-box strong {
-            background-color: var(--blue-baby);
-            padding: 0 5px;
-        }
-
-        /* Grid para proyectos */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .project-card {
-            border: 2px solid var(--text-brown);
-            border-radius: 15px;
-            padding: 25px;
-            background-color: #fff;
-            position: relative;
-        }
-
-        .project-tag {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            background-color: var(--pink-hot);
-            color: var(--bg-cream);
-            padding: 2px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .project-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            font-family: 'Titan One', cursive;
-        }
-
-        /* --- FORMULARIO DE CONTACTO --- */
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid var(--text-brown);
-            border-radius: 10px;
-            background-color: transparent;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
-            color: var(--text-brown);
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            background-color: var(--blue-baby);
-        }
-
-        .btn-submit {
-            background-color: var(--pink-hot);
-            color: var(--bg-cream);
-            font-family: 'Titan One', cursive;
-            font-size: 1.5rem;
-            padding: 15px 40px;
-            border: 2px solid var(--text-brown);
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 4px 4px 0px var(--text-brown);
-            transition: transform 0.1s;
-            width: 100%;
-        }
-
-        .btn-submit:active {
-            transform: translate(4px, 4px);
-            box-shadow: 0px 0px 0px var(--text-brown);
-        }
-
-        /* --- FOOTER --- */
-        .footer {
-            text-align: center;
-            padding: 40px;
-            border-top: 2px solid var(--text-brown);
-            margin-top: 60px;
-            font-weight: 700;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-pill { flex-direction: column; gap: 15px; }
-            .header-pill nav { flex-wrap: wrap; justify-content: center; }
-            .massive-title { font-size: 22vw; }
-            .blue-highlight { font-size: 1.3rem; }
-            .repeating-text { display: none; }
-        }
-    </style>
 </head>
 <body>
 
-    <!-- TEXTO GIGANTE DE FONDO -->
-    <div class="bg-text-decor">VANE</div>
+    <div class="bg-animated"></div>
 
-    <!-- 1. ENCABEZADO TIPO PÍLDORA -->
-    <header class="header">
-        <div class="header-pill">
-            <span>UPSLP / CNO IV</span>
-            <nav>
-                <a href="#perfil">Perfil</a>
-                <a href="#proyectos">Proyectos</a>
-                <a href="#arquitectura">Arquitectura</a>
-                <a href="#contacto">Contacto</a>
-            </nav>
-            <span>7mo Semestre</span>
+    <div class="bg-animated"></div>
+    
+    <div class="cyber-rain">
+        <span class="rain-item" style="--delay: 1s; --x: 10%; --s: 1.2rem;">>></span>
+        <span class="rain-item" style="--delay: 3s; --x: 25%; --s: 1.5rem;">0x00</span>
+        <span class="rain-item" style="--delay: 0s; --x: 40%; --s: 1rem;">[SEC]</span>
+        <span class="rain-item" style="--delay: 5s; --x: 55%; --s: 2rem;">⚠</span>
+        <span class="rain-item" style="--delay: 2.5s; --x: 70%; --s: 1.3rem;">⚙</span>
+        <span class="rain-item" style="--delay: 4.5s; --x: 85%; --s: 1.6rem;">&lt; /&gt;</span>
+        <span class="rain-item" style="--delay: 6s; --x: 95%; --s: 1.1rem;">[ROOT]</span>
+        <span class="rain-item" style="--delay: 1.5s; --x: 15%; --s: 1.4rem;">404</span>
+        <span class="rain-item" style="--delay: 3.5s; --x: 75%; --s: 1.8rem;">#</span>
+    </div>
+
+    <div class="top-bar">
+        <span>CNO IV: SEGURIDAD INFORMÁTICA</span>
+        <span>UNIVERSIDAD POLITÉCNICA DE SAN LUIS POTOSÍ</span>
+        <span>7mo Semestre</span>
+    </div>
+    
+    <header class="main-header">
+        <div class="brand">
+            <span class="logo">Vane</span>
+            <span class="divider">|</span>
+            <span class="full-name">Karla Vanessa Gonzalez Espinoza</span>
         </div>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Inicio</a>
+            <a href="actividades.html">Actividades</a>
+            <a href="index.html">Cursos</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
     </header>
 
-    <!-- SECCIÓN HERO (El diseño del póster) -->
     <section class="hero">
         
-        <!-- Elementos decorativos -->
-        <div class="repeating-text rt-1">
-            ingeniería en ti<br>ingeniería en ti<br>ingeniería en ti<br>ingeniería en ti
-        </div>
         <div class="dashed-line dl-1"></div>
         <div class="dashed-line dl-2"></div>
 
-        <!-- Títulos principales -->
-        <div class="pink-oval">portafolio</div>
         <h1 class="massive-title">CIBER<br>SEGURIDAD</h1>
         
-        <div class="blue-highlight-container">
-            <span class="blue-highlight">
-                Karla Vanessa Gonzalez<br>
-                Espinoza (Vane)
-            </span>
-        </div>
-
-        <div class="repeating-text rt-2" style="color: var(--pink-hot);">
-            seguridad informática<br>seguridad informática<br>seguridad informática<br>seguridad informática
-        </div>
     </section>
 
-    <!-- CONTENIDO PRINCIPAL EN CAJAS EDITORIALES -->
     <main class="content-wrapper">
         
-        <!-- PERFIL Y PROPÓSITO -->
-        <section id="perfil" class="editorial-box">
-            <h2 class="section-title">01. Sobre mí</h2>
-            <p>Soy <strong>Vanessa</strong>, estudiante de Ingeniería en Tecnologías de la Información en la Universidad Politécnica de San Luis Potosí. Estoy muy interesada en los conocimientos adquiridos para las redes, además me gusta aprender sobre componentes para sistemas embebidos o diseño sobre bases de datos en la nube.</p>
-            <p>Me encanta conocer la lógica detrás de las cosas paso por paso para comprender el origen de las tecnologías. Actualmente mi enfoque está en fortalecer mis conocimientos en <strong>ciberseguridad, análisis de vulnerabilidades y pruebas de penetración</strong>.</p>
-            <p>Este sitio funciona como el contenedor oficial de mis evidencias. Su objetivo es documentar técnica y analíticamente mi progreso en la asignatura, dejando la base estructural para los siguientes parciales.</p>
+        <section id="presentacion" class="editorial-box">
+            <h2 class="section-title">01. Presentación</h2>
+            <p>El propósito de este portafolio digital es servir como el repositorio oficial de mis evidencias académicas para la materia. El curso tiene un enfoque práctico y estructurado, centrado fundamentalmente en la <strong>seguridad informática, las metodologías para realizar pruebas de penetración y el análisis exhaustivo de vulnerabilidades</strong> en diversos entornos.</p>
+            <p>Mantener y documentar este portafolio es muy importante, ya que constituye la evidencia de mi proceso de aprendizaje continuo. Me permite registrar mi evolución técnica, estructurar mis conocimientos y demostrar la aplicación práctica de los conceptos teóricos revisados en clase.</p>
         </section>
 
-        <!-- PROYECTOS -->
-        <section id="proyectos" class="editorial-box" style="background-color: var(--blue-baby);">
-            <h2 class="section-title">02. Experiencia</h2>
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <span class="project-tag">Ciberseguridad</span>
-                    <h3>Ransomware DoppelPaymer</h3>
-                    <p>Investigación técnica y financiera sobre el impacto del ataque a PEMEX en 2019, utilizando marcos de valoración económica basados en criptomonedas.</p>
-                </div>
-
-                <div class="project-card">
-                    <span class="project-tag">Desarrollo Web</span>
-                    <h3>Sistema LoyaltyPro</h3>
-                    <p>Aplicación web Full-Stack en PHP y Bootstrap para gestión de clientes y cálculo de puntos de recompensa con base de datos relacional.</p>
-                </div>
-
-                <div class="project-card">
-                    <span class="project-tag">Sistemas Embebidos</span>
-                    <h3>Hardware & IoT</h3>
-                    <p>Uso de microcontroladores PIC16F84A/877A, ESP32 y Arduino para prototipado de vehículos autónomos, rastreo solar y sensores ultrasónicos.</p>
-                </div>
-
-                <div class="project-card">
-                    <span class="project-tag">IA & Software</span>
-                    <h3>RouteBot AI</h3>
-                    <p>Propuesta arquitectónica de un chatbot logístico para Telegram, integrando Open Claw AI y la API de Google Maps.</p>
-                </div>
-
-            </div>
+        <section id="perfil" class="editorial-box" >
+            <h2 class="section-title">02. Mi Perfil</h2>
+            <p>Soy una estudiante de la carrera de Ingeniería en Tecnologías de la Información en la Universidad Politécnica de San Luis Potosí. A lo largo de mi formación académica, he aprendido desde la programación de sistemas embebidos y arquitecturas de hardware, hasta el desarrollo y gestión de bases de datos relacionales.</p>
+            <p>Mis intereses principales se concentran en la <strong>ciberseguridad, la protección de datos y la investigación tecnológica</strong>. Tengo un interés particular en el análisis y origen de los componentes, buscando comprender a profundidad los diseños y mecanismos de defensa.</p>
         </section>
 
-        <!-- ARQUITECTURA -->
         <section id="arquitectura" class="editorial-box">
-            <h2 class="section-title">03. Arquitectura</h2>
+            <h2 class="section-title">03. Arquitectura Técnica</h2>
+            <p style="margin-bottom: 15px;">Para la construcción y despliegue de este portafolio se implementó la siguiente estructura:</p>
             <ul style="list-style-type: square; padding-left: 20px;">
-                <li><strong>Tecnologías:</strong> HTML5 y CSS3 (Desarrollo web nativo y estilos internos).</li>
-                <li><strong>Plataforma:</strong> Publicado a través de GitHub Pages.</li>
-                <li><strong>Control de versiones:</strong> Repositorio gestionado con Git.</li>
-                <li><strong>Certificado SSL:</strong> Cifrado de extremo a extremo activo por defecto.</li>
+                <li><strong>Lenguajes y tecnologías:</strong> Desarrollo web estático empleando HTML5 y CSS3.</li>
+                <li><strong>Plataforma de publicación:</strong> GitHub Pages.</li>
+                <li><strong>Control de versiones:</strong> Gestión de Git mediante un repositorio.</li>
             </ul>
         </section>
 
-        <!-- CONTACTO -->
-        <section id="contacto" class="editorial-box">
+        <section id="contacto" class="editorial-box" >
             <h2 class="section-title">04. Contacto</h2>
-            <p style="margin-bottom: 25px;">¿Tienes alguna duda o feedback? Déjame un mensaje y el sistema automatizado te confirmará de recibido.</p>
+            <p style="margin-bottom: 25px;">¿Tienes alguna duda o sugerencia? Déjame un mensaje.</p>
             
             <form action="https://formspree.io/f/xgawbbkz" method="POST">
                 <div class="form-group">
@@ -421,14 +101,10 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza.</p>
         <p>🔒 Conexión segura cifrada por HTTPS</p>
     </footer>
-
-    <!-- TEXTO GIGANTE DE FONDO (Abajo) -->
-    <div class="bg-text-decor bg-text-bottom">VANE</div>
 
 </body>
 </html>
