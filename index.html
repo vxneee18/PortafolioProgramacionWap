@@ -1,89 +1,129 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio | Seguridad Informática</title>
+    <title>Portafolio | Vanessa</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. ENCABEZADO  -->
+    <!-- 1. ENCABEZADO -->
     <header class="header">
-        <div class="header-content">
-            <div class="user-info">
-                <h1>Karla Vamessa Gonzalez Espinoza (Vane)</h1>
-                <h2>CNO IV – Seguridad Informática</h2>
-                <p>Universidad Politécnica de San Luis Potosí | Ingeniería en TI</p>
+        <div class="header-container">
+            <div class="logo-area">
+                <h1>Karla Vanessa Gonzalez Espinoza <span class="alias">(Vane)</span></h1>
+                <p class="subtitle">Ingeniería en Tecnologías de la Información | 7mo Semestre</p>
+                <p class="university">Universidad Politécnica de San Luis Potosí</p>
+                <p class="course-badge">CNO IV – Seguridad Informática</p>
             </div>
-            <nav class="navbar">
-                <a href="#">Inicio</a>
-                <a href="#">Actividades</a>
-                <a href="#">Cursos</a>
-                <a href="#contacto">Contacto</a>
+            <nav class="nav-menu">
+                <a href="#inicio">Inicio</a>
+                <a href="#portafolio">Actividades</a>
+                <a href="#proyectos">Cursos</a>
+                <a href="#contacto" class="btn-nav">Contacto</a>
             </nav>
         </div>
     </header>
 
-    <main class="container">
+    <main class="main-content">
         
-        <!-- 2. PRESENTACIÓN DEL PORTAFOLIO -->
-        <section class="card intro-card">
-            <h2>Presentación del Portafolio</h2>
-            <p>Este sitio web funciona como el <strong>contenedor oficial</strong> de mis evidencias académicas. Su propósito principal es documentar técnica y analíticamente mi progreso en la asignatura.</p>
-            <p>El enfoque de este espacio está centrado en la seguridad informática, metodologías de pruebas de penetración y el análisis exhaustivo de vulnerabilidades.</p>
-            <p>Mantener este portafolio es fundamental, ya que representa la evidencia tangible de mi proceso de aprendizaje, estructurando el conocimiento de forma profesional.</p>
+        <!-- 3. PERFIL DEL ESTUDIANTE (Buenas vibes) -->
+        <section id="inicio" class="hero-section">
+            <div class="hero-text">
+                <h2>Perfil</h2>
+                <p>Soy Vanessa una estudiante de Ingeniería en Tecnologías de la Información en la Universidad Politécnica de San Luis Potosí interesada en los conocimientos adquiridos para las redes, además me gusta sobre componentes para un sistema embebido o diseño sobre bases de datos en la nube.</p>
+                <p>Me encanta conocer la lógica detrás de las cosas paso por paso para comprender el origen de las técnologias. Actualmente mi enfoque está en fortalecer mis conocimientos en <strong>ciberseguridad, análisis de vulnerabilidades y pruebas de penetración</strong>.</p>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <h3>Frontend & Web</h3>
+                    <p>PHP, MySQL, Bootstrap, HTML/CSS</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Hardware & IoT</h3>
+                    <p>PIC16F84A/877A, ESP32, Arduino</p>
+                </div>
+            </div>
         </section>
 
-        <div class="grid-2-cols">
-            
-            <!-- 3. PERFIL DEL ESTUDIANTE -->
-            <section class="card">
-                <h3>Perfil Estudiantil</h3>
-                <p>Estudiante de Ingeniería en Tecnologías de la Información, orientada a la resolución lógica de problemas y el desarrollo de sistemas robustos.</p>
-                <h4>Intereses principales:</h4>
-                <ul>
-                    <li>Ciberseguridad y protección de datos.</li>
-                    <li>Investigación de vulnerabilidades de red.</li>
-                    <li>Desarrollo de sistemas embebidos e IoT.</li>
-                </ul>
-            </section>
+        <!-- SECCIÓN NUEVA: Proyectos y Experiencia -->
+        <section id="proyectos" class="projects-section">
+            <h2 class="section-title">Experiencia y Proyectos Destacados</h2>
+            <div class="cards-grid">
+                
+                <div class="project-card">
+                    <span class="tag">Ciberseguridad</span>
+                    <h3>Análisis Ransomware DoppelPaymer</h3>
+                    <p>Investigación técnica y financiera sobre el impacto del ataque de ransomware de 2019 a PEMEX, utilizando marcos de valoración económica basados en el histórico de criptomonedas.</p>
+                </div>
 
-            <!-- 4. INFORMACIÓN TÉCNICA BÁSICA -->
-            <section class="card">
-                <h3>Arquitectura del Sitio</h3>
-                <ul>
-                    <li><strong>Lenguajes utilizados:</strong> HTML5 y CSS3.</li>
-                    <li><strong>Plataforma de publicación:</strong> GitHub Pages.</li>
-                    <li><strong>Control de versiones:</strong> Git y GitHub.</li>
-                </ul>
-            </section>
+                <div class="project-card">
+                    <span class="tag">Desarrollo Web</span>
+                    <h3>Sistema LoyaltyPro</h3>
+                    <p>Aplicación web Full-Stack desarrollada en PHP y Bootstrap orientada a la gestión de clientes, cálculo de puntos de recompensa y administración de niveles de cuentas con base de datos relacional.</p>
+                </div>
 
-        </div>
+                <div class="project-card">
+                    <span class="tag">Ingeniería de Software</span>
+                    <h3>RouteBot AI</h3>
+                    <p>Propuesta arquitectónica y orquestación de un chatbot logístico para Telegram, integrando Open Claw AI y la API de Google Maps para el ruteo inteligente.</p>
+                </div>
+
+                <div class="project-card">
+                    <span class="tag">Sistemas Embebidos</span>
+                    <h3>Robótica y Sensores</h3>
+                    <p>Prototipado de vehículos autónomos y sistemas de rastreo solar utilizando microcontroladores, drivers puente H, sensores ultrasónicos y conversión analógica-digital.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2 y 4. PRESENTACIÓN DEL PORTAFOLIO Y ARQUITECTURA -->
+        <section id="portafolio" class="technical-section">
+            <h2 class="section-title">Sobre este Portafolio</h2>
+            <div class="tech-grid">
+                <div class="tech-box">
+                    <h3>Propósito Académico</h3>
+                    <p>Este sitio web funciona como el <strong>contenedor oficial</strong> de mis evidencias. Su objetivo es documentar técnica y analíticamente mi progreso en la asignatura de Seguridad Informática, dejando la base estructural para los siguientes parciales.</p>
+                </div>
+                <div class="tech-box">
+                    <h3>Arquitectura Técnica</h3>
+                    <ul class="tech-list">
+                        <li><strong>Tecnologías:</strong> HTML5 y CSS3 (Desarrollo web nativo).</li>
+                        <li><strong>Plataforma:</strong> Publicado a través de GitHub Pages.</li>
+                        <li><strong>Control de versiones:</strong> Repositorio gestionado con Git.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <!-- 5. FORMULARIO DE CONTACTO -->
-        <section id="contacto" class="card form-card">
-            <h3 style="text-align: center;">Contacto de Seguridad</h3>
-            <form action="https://formspree.io/f/xgawbbkz" method="POST">
-                <div class="form-group">
-                    <label for="email">Correo Electrónico:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensaje:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="btn-submit">Enviar Mensaje</button>
-            </form>
+        <section id="contacto" class="contact-section">
+            <div class="contact-container">
+                <h2>¿Tienes alguna duda o feedback?</h2>
+                <p>Déjame un mensaje y el sistema automatizado te confirmará de recibido.</p>
+                
+                <form action="https://formspree.io/f/xgawbbkz" method="POST" class="contact-form">
+                    <div class="input-group">
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="message">Mensaje:</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Escribe aquí..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                </form>
+            </div>
         </section>
 
     </main>
 
     <!-- 6 y 7. PIE DE PÁGINA Y CERTIFICADO SSL -->
     <footer class="footer">
-        <p>&copy; 2026 Vanessa. Portafolio de Seguridad Informática.</p>
-        <p class="ssl-notice"> Conexión segura cifrada por HTTPS (GitHub Pages)</p>
+        <p>&copy; 2026 Vanessa. Portafolio Técnico de Ciberseguridad.</p>
+        <p class="ssl-badge">🔒 Conexión segura por HTTPS</p>
     </footer>
 
 </body>
