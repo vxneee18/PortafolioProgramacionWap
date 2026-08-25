@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades | Vanessa</title>
+    
+    <!-- Enlazamos tu CSS existente -->
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Space+Grotesk:wght@400;700&family=Titan+One&display=swap" rel="stylesheet">
+</head>
+<body>
 
+    <!-- FONDO ANIMADO Y LLUVIA CYBER -->
+    <div class="bg-animated"></div>
+    <div class="cyber-rain">
+        <span class="rain-item" style="--delay: 1s; --x: 10%; --s: 1.2rem;">/>_</span>
+        <span class="rain-item" style="--delay: 3s; --x: 25%; --s: 1.5rem;">0x00</span>
+        <span class="rain-item" style="--delay: 0s; --x: 40%; --s: 1rem;">[SEC]</span>
+        <span class="rain-item" style="--delay: 5s; --x: 55%; --s: 2rem;">⚠</span>
+        <span class="rain-item" style="--delay: 2.5s; --x: 70%; --s: 1.3rem;">⚙</span>
+        <span class="rain-item" style="--delay: 4.5s; --x: 85%; --s: 1.6rem;">&lt; /&gt;</span>
+        <span class="rain-item" style="--delay: 6s; --x: 95%; --s: 1.1rem;">[ROOT]</span>
+        <span class="rain-item" style="--delay: 1.5s; --x: 15%; --s: 1.4rem;">404</span>
+        <span class="rain-item" style="--delay: 3.5s; --x: 75%; --s: 1.8rem;">#</span>
+    </div>
+
+    <!-- ENCABEZADO A DOS NIVELES -->
+    <div class="top-bar">
+        <span>CNO IV: SEGURIDAD INFORMÁTICA</span>
+        <span>UNIVERSIDAD POLITÉCNICA DE SAN LUIS POTOSÍ</span>
+        <span>AGOSTO-DICIEMBRE 2026</span>
+    </div>
+    
+    <header class="main-header">
+        <div class="brand">
+            <span class="logo">Vane</span>
+            <span class="divider">|</span>
+            <span class="full-name">Karla Vanessa Gonzalez</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="actividades.html" class="active">Actividades</a>
+            <a href="cursos.html">Cursos <span class="badge">SOON</span></a>
+            <!-- El enlace a contacto regresa al index donde está tu formulario -->
+            <a href="index.html#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        
+        <h1 class="massive-title" style="font-size: 4rem; text-align: center; margin-bottom: 40px;">EVIDENCIAS</h1>
+        
+        <!-- SUBMENÚ DE PARCIALES -->
+        <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 50px; flex-wrap: wrap;">
+            <a href="#parcial1" class="btn-submit" style="width: auto; padding: 10px 30px; text-decoration: none;">PARCIAL 1</a>
+            <a href="#parcial2" class="btn-submit" style="width: auto; padding: 10px 30px; text-decoration: none; opacity: 0.5;">PARCIAL 2</a>
+            <a href="#parcial3" class="btn-submit" style="width: auto; padding: 10px 30px; text-decoration: none; opacity: 0.5;">PARCIAL 3</a>
+        </div>
+
+        <!-- =========================================
+             SECCIÓN PARCIAL 1 
+        ========================================= -->
+        <section id="parcial1">
+            <h2 class="section-title">Primer Parcial</h2>
+            
+            <!-- TARJETA DE ACTIVIDAD 03 -->
+            <div class="editorial-box">
+                <span class="project-tag">Laboratorio Controlado</span>
+                <h3 style="font-size: 1.8rem; margin-bottom: 10px;">ACTIVIDAD 03: No presiones Esc... todavía</h3>
+                
+                <p><strong>Objetivo general:</strong> Implementar y documentar un programa basado en <em>event hooks</em> y <em>callbacks</em> que permita registrar eventos de teclado, asociarlos temporalmente y transmitir telemetría hacia un receptor de laboratorio.</p>
+                
+                <br>
+                <h4 style="color: var(--accent); margin-bottom: 10px; font-weight: 700;">Requerimientos Implementados:</h4>
+                <ul style="list-style-type: square; padding-left: 20px; margin-bottom: 40px;">
+                    <li><strong>Persistencia del registro:</strong> El programa almacena los eventos generados durante la ejecución en un archivo local.</li>
+                    <li><strong>Asociación temporal:</strong> Cada evento interceptado incluye una marca estructurada de fecha, hora y orden (YYYY-MM-DD HH:MM:SS.ms).</li>
+                    <li><strong>Envío de información:</strong> Transmisión de la telemetría recolectada en tiempo real hacia una máquina local con Kali Linux.</li>
+                </ul>
+
+                <!-- BOTÓN DE DESCARGA VINCULADO AL PDF -->
+                <div style="text-align: center;">
+                    <a href="Reporte_Actividad03_Vanessa.pdf" download class="btn-submit" style="display: inline-block; width: auto; text-decoration: none;">
+                        ⬇ DESCARGAR REPORTE PDF
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Aquí abajo puedes agregar las cajas para la Actividad 01 y 02 copiando la estructura de arriba -->
+
+        </section>
+
+    </main>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza.</p>
+        <p>🔒 Conexión segura cifrada por HTTPS</p>
+    </footer>
+
+</body>
+</html>
