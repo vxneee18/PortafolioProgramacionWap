@@ -3,130 +3,287 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Práctica 01: Seguridad Ofensiva en Snakeoil</title>
-  <!-- Enlace a los estilos globales de tu portafolio -->
+  <title>Práctica 01 | Ciberseguridad - Karla Vanessa Gonzalez Espinoza</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent-purple: #7c4dff;
-      --accent-soft: #b388ff;
-      --text-dark: #2d3142;
-      --text-muted: #5c677d;
-      --card-bg: #f3f0f7;
-      --card-shadow: 8px 8px 16px #d1cdd8, -8px -8px 16px #ffffff;
-      --inner-shadow: inset 4px 4px 8px #d1cdd8, inset -4px -4px 8px #ffffff;
+      --bg-gradient: linear-gradient(180deg, #31214d 0%, #443166 40%, #513d75 100%);
+      --topbar-bg: #21153b;
+      --card-folder: #8271a6;
+      --card-inner: #f4f0fa;
+      --tag-dark: #372852;
+      --accent-purple: #5c3b94;
+      --text-white: #ffffff;
+      --text-dark: #271f38;
+      --text-muted: #5e5473;
+      --code-box: #1e1533;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      color: var(--text-dark);
+      background: var(--bg-gradient);
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-white);
       line-height: 1.6;
-      padding: 30px 15px;
     }
 
-    .report-container {
-      max-width: 900px;
+    /* BARRA INSTITUCIONAL SUPERIOR */
+    .top-meta-bar {
+      background-color: var(--topbar-bg);
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 30px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #beb0db;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* BARRA DE NAVEGACIÓN */
+    .main-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    .nav-back {
-      margin-bottom: 25px;
+    .brand-group {
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
     }
 
-    .nav-back a {
+    .brand-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--text-white);
       text-decoration: none;
-      color: var(--accent-purple);
-      font-weight: bold;
-      padding: 8px 16px;
-      border-radius: 20px;
-      background: var(--card-bg);
-      box-shadow: var(--card-shadow);
+    }
+
+    .brand-sub {
+      font-size: 0.85rem;
+      color: #d1c4e9;
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      padding-left: 15px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: #e0d6f5;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-bottom: 4px;
       transition: all 0.2s ease;
-      display: inline-block;
     }
 
-    .nav-back a:hover {
-      box-shadow: var(--inner-shadow);
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-white);
+      border-bottom: 2px solid var(--text-white);
     }
 
-    .neumorphic-card {
-      background: var(--card-bg);
-      border-radius: 18px;
-      padding: 30px;
-      margin-bottom: 35px;
-      box-shadow: var(--card-shadow);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      page-break-inside: avoid;
+    /* ENCABEZADO ESTILO BANNER */
+    .hero-container {
+      max-width: 1100px;
+      margin: 30px auto 10px auto;
+      padding: 0 25px;
     }
 
-    h1 {
-      color: var(--accent-purple);
-      margin-top: 0;
-      font-size: 1.8rem;
-    }
-
-    h2 {
-      color: var(--accent-purple);
-      border-bottom: 2px solid #e0d7ed;
-      padding-bottom: 8px;
-      margin-top: 0;
-      font-size: 1.35rem;
-    }
-
-    h3 {
-      color: var(--text-dark);
-      font-size: 1.05rem;
-      margin-top: 20px;
-    }
-
-    .meta-box {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+    .hero-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 4rem;
+      line-height: 1.05;
+      color: var(--text-white);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
       margin-bottom: 10px;
     }
 
+    .hero-title span {
+      display: block;
+    }
+
+    /* CONTENEDOR TIPO CARPETA */
+    .folder-container {
+      max-width: 1100px;
+      margin: 30px auto 60px auto;
+      padding: 0 25px;
+    }
+
+    .folder-tab-card {
+      background-color: var(--card-folder);
+      border-radius: 35px 35px 25px 25px;
+      padding: 35px 40px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .tab-badge {
+      display: inline-block;
+      background-color: var(--tag-dark);
+      padding: 10px 24px;
+      border-radius: 25px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.35rem;
+      color: var(--text-white);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .folder-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .btn-action {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border-radius: 30px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-return {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: var(--text-white);
+    }
+
+    .btn-download-pdf {
+      background-color: var(--text-white);
+      color: var(--accent-purple);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* HOJA INTERNA CLARA */
+    .content-sheet {
+      background-color: var(--card-inner);
+      color: var(--text-dark);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.08);
+    }
+
+    .section-block {
+      margin-bottom: 40px;
+    }
+
+    .section-block h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.5rem;
+      color: var(--accent-purple);
+      margin-bottom: 12px;
+      border-bottom: 2px solid #ddd2eb;
+      padding-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .section-block h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 18px 0 8px 0;
+    }
+
+    .section-block p, .section-block li {
+      font-size: 0.93rem;
+      color: #3b334a;
+      margin-bottom: 8px;
+    }
+
+    .section-block ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
     .theory-box {
-      background: rgba(124, 77, 255, 0.07);
-      border-left: 4px solid var(--accent-purple);
+      background-color: #e9e2f5;
+      border-left: 5px solid var(--accent-purple);
       padding: 14px 18px;
       border-radius: 0 12px 12px 0;
-      margin: 18px 0;
-      font-size: 0.93rem;
+      margin: 15px 0;
+      font-size: 0.9rem;
+      color: #312347;
     }
 
     pre {
-      background: #1e1b2e;
-      color: #e2d9f3;
+      background-color: var(--code-box);
+      color: #cfbdf0;
       padding: 14px;
       border-radius: 10px;
       overflow-x: auto;
-      font-family: 'Consolas', monospace;
-      font-size: 0.88rem;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.86rem;
+      margin: 12px 0;
     }
 
     code {
       font-family: 'Consolas', monospace;
-      background: rgba(124, 77, 255, 0.12);
+      background-color: #ded4ee;
       color: var(--accent-purple);
       padding: 2px 6px;
       border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.88em;
     }
 
     pre code {
       background: transparent;
       color: inherit;
       padding: 0;
+      font-weight: normal;
     }
 
-    .img-box {
-      background: var(--card-bg);
+    /* MARCO DE MULTIMEDIA */
+    .media-card {
+      background: #ffffff;
+      border: 1px solid #dcd2ea;
       padding: 12px;
       border-radius: 12px;
-      box-shadow: var(--inner-shadow);
-      margin: 20px 0;
+      margin: 18px 0;
       text-align: center;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
     }
 
-    .img-box img {
+    .media-card img {
       max-width: 100%;
       height: auto;
       border-radius: 8px;
@@ -134,199 +291,231 @@
       margin: 0 auto;
     }
 
+    .media-card video {
+      width: 100%;
+      max-height: 480px;
+      border-radius: 8px;
+      background-color: #000;
+      display: block;
+    }
+
     .caption {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       margin-top: 8px;
       font-style: italic;
     }
 
-    /* Contenedor responsivo para el video */
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: var(--inner-shadow);
-      background: #000;
-      margin: 15px 0;
-    }
-
-    .video-wrapper iframe, .video-wrapper video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 15px 0;
+      margin: 16px 0;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
 
     th, td {
-      padding: 10px 12px;
-      border-bottom: 1px solid #e0d7ed;
+      padding: 10px 14px;
+      border-bottom: 1px solid #e7dfef;
       text-align: left;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
 
     th {
+      background-color: #eee7f7;
       color: var(--accent-purple);
+      font-weight: 700;
     }
 
     @media print {
-      body { background: #ffffff; padding: 0; }
-      .nav-back { display: none; }
-      .neumorphic-card { box-shadow: none; border: 1px solid #ddd; background: #fff; margin-bottom: 20px; }
+      body { background: #ffffff; color: #000; }
+      .top-meta-bar, .main-nav, .folder-actions { display: none; }
+      .folder-tab-card { background: transparent; padding: 0; box-shadow: none; }
+      .content-sheet { background: transparent; padding: 0; box-shadow: none; }
+      .hero-title { color: #000; text-shadow: none; font-size: 2.2rem; }
       pre { background: #f5f5f5; color: #000; border: 1px solid #ccc; }
-      .img-box { box-shadow: none; border: 1px solid #eee; }
+      .media-card { border: 1px solid #ddd; }
     }
   </style>
 </head>
 <body>
 
-<div class="report-container">
-
-  <div class="nav-back">
-    <a href="index.html">← Volver al Portafolio</a>
+  <!-- BARRA METADATOS INSTITUCIONAL -->
+  <div class="top-meta-bar">
+    <span>CNO IV: SEGURIDAD INFORMÁTICA</span>
+    <span>UNIVERSIDAD POLITÉCNICA DE SAN LUIS POTOSÍ</span>
+    <span>7MO SEMESTRE</span>
   </div>
 
-  <header class="neumorphic-card">
-    <h1>Informe Técnico: Pruebas de Seguridad en Snakeoil</h1>
-    <div class="meta-box">
-      <strong>Auditoría & Redes</strong> | Entorno Virtualizado Aislado (Debian 10) | Septiembre 2026
+  <!-- NAVEGACIÓN -->
+  <nav class="main-nav">
+    <div class="brand-group">
+      <a href="index.html" class="brand-logo">Vane</a>
+      <span class="brand-sub">Karla Vanessa Gonzalez Espinoza</span>
     </div>
-    <p>Documentación técnica exhaustiva del reconocimiento de red, análisis de puertos y vectores en interfaces REST API bajo entorno controlado.</p>
+    <ul class="nav-links">
+      <li><a href="index.html">INICIO</a></li>
+      <li><a href="actividades.html" class="active">ACTIVIDADES</a></li>
+      <li><a href="index.html#cursos">CURSOS</a></li>
+      <li><a href="index.html#contacto">CONTACTO</a></li>
+    </ul>
+  </nav>
+
+  <!-- BANNER HERO -->
+  <header class="hero-container">
+    <h1 class="hero-title">
+      <span>CIBER</span>
+      <span>SEGURIDAD</span>
+    </h1>
   </header>
 
-  <!-- SECCIÓN VIDEO -->
-  <section class="neumorphic-card">
-    <h2>Evidencia Multimedia (Demostración)</h2>
-    <p>Registro audiovisual del proceso de enumeración y pruebas de comunicación en el entorno virtualizado:</p>
-    
-    <div class="video-wrapper">
-      <!-- Reemplaza el src con el enlace de tu video de YouTube (ej. https://www.youtube.com/embed/TU_ID) -->
-      <!-- O si subiste un video .mp4 a GitHub usa: <video controls src="demostracion.mp4"></video> -->
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_AQUI" title="Video Demostración" allowfullscreen></iframe>
-    </div>
-    <div class="caption">Grabación de pantalla con las pruebas ejecutadas en consola.</div>
-  </section>
+  <!-- CARPETA DE CONTENIDO -->
+  <main class="folder-container">
+    <article class="folder-tab-card">
 
-  <!-- SECCIÓN 1 -->
-  <section class="neumorphic-card">
-    <h2>1. Configuración de Entorno y Descubrimiento</h2>
-    <div class="theory-box">
-      <strong>Fundamento Teórico:</strong> La arquitectura de red host-only o Red NAT permite segmentar el tráfico entre máquinas virtuales, simulando un enlace de área local físico. En este segmento, las direcciones IP se resuelven a nivel de capa de enlace (L2) usando el protocolo ARP (Address Resolution Protocol), enviando tramas broadcast para correlacionar direcciones IP lógicas con direcciones físicas MAC.
-    </div>
+      <!-- PESTAÑA / PILL DE TÍTULO -->
+      <div class="tab-badge">PR01. AUDITORÍA TÉCNICA SNAKEOIL</div>
 
-    <h3>Aislamiento en Red NAT</h3>
-    <p>Se vinculó la máquina atacante (Kali Linux) y la víctima (Snakeoil) bajo el mismo switch virtual NAT para evitar interacción no autorizada en la red local física.</p>
-    <div class="img-box">
-      <img src="b817b9c1-fb62-45b9-90b0-78bbb22ea863.jpg" alt="Ajustes de Red NAT">
-      <div class="caption">Figura 1.1: Adaptador de red en VirtualBox vinculado al segmento común.</div>
-    </div>
+      <!-- BOTONES DE ACCIÓN -->
+      <div class="folder-actions">
+        <a href="actividades.html" class="btn-action btn-return">← Volver a Actividades</a>
+        <a href="Reporte_Auditoria_Snakeoil.pdf" download="Reporte_Auditoria_Snakeoil.pdf" class="btn-action btn-download-pdf">
+          📥 Descargar Reporte Completo (PDF)
+        </a>
+      </div>
 
-    <h3>Detección del Objetivo</h3>
-    <p>Se identificó la IP de la máquina de prueba consultando las tramas ARP en la interfaz virtual:</p>
-    <pre><code>sudo arp-scan -l</code></pre>
-    <div class="img-box">
-      <img src="25243a82-f5c3-42e9-a071-7d59f612a565.jpg" alt="Salida arp-scan">
-      <div class="caption">Figura 1.2: Host objetivo localizado en 10.0.2.4 (MAC: 08:00:27:f3:92:bb).</div>
-    </div>
-  </section>
+      <!-- HOJA CLARA CON CONTENIDO -->
+      <div class="content-sheet">
 
-  <!-- SECCIÓN 2 -->
-  <section class="neumorphic-card">
-    <h2>2. Escaneo y Detección de Servicios</h2>
-    <div class="theory-box">
-      <strong>Fundamento Teórico:</strong> La técnica TCP SYN Scan (<code>-sS</code>) envía paquetes SYN a los puertos objetivo sin culminar el saludo de tres vías (3-Way Handshake). Respuestas SYN/ACK indican puertos abiertos, reduciendo la saturación de conexiones completas y permitiendo deducir las versiones de los servicios concurrentes.
-    </div>
+        <!-- SECCIÓN VIDEO -->
+        <section class="section-block">
+          <h2>Registro Multimedia</h2>
+          <p>Demostración práctica del flujo de trabajo ejecutado en la terminal de Kali Linux contra el servidor vulnerable:</p>
+          <div class="media-card">
+            <video controls preload="metadata">
+              <source src="video_demo.mp4" type="video/mp4">
+              Tu navegador no soporta reproducción directa de video MP4.
+            </video>
+            <div class="caption">Evidencia 0.1: Procedimiento y ejecución de herramientas en consola.</div>
+          </div>
+        </section>
 
-    <pre><code>sudo nmap -p- -sV -sC -T4 10.0.2.4 -oN escaneo_snakeoil.txt</code></pre>
+        <!-- SECCIÓN 1 -->
+        <section class="section-block">
+          <h2>01. Configuración de Entorno y Descubrimiento</h2>
+          <div class="theory-box">
+            <strong>Fundamento Teórico:</strong> La arquitectura de red virtual segmentada (Red NAT) confina el tráfico broadcast y unicast a los nodos autorizados. En capa de enlace de datos (L2), la resolución de direcciones lógicas a direcciones de control de acceso al medio (MAC) se realiza a través de tramas ARP (Address Resolution Protocol), permitiendo identificar hosts activos sin interactuar directamente con la capa de transporte del objetivo.
+          </div>
 
-    <table>
-      <thead>
-        <tr><th>Puerto</th><th>Estado</th><th>Servicio</th><th>Detalle</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>22/TCP</td><td>Abierto</td><td>SSH</td><td>OpenSSH 7.9p1 Debian 10</td></tr>
-        <tr><td>80/TCP</td><td>Abierto</td><td>HTTP</td><td>nginx 1.14.2 (Sitio principal)</td></tr>
-        <tr><td>8080/TCP</td><td>Abierto</td><td>HTTP</td><td>nginx 1.14.2 (API Good Tech Inc)</td></tr>
-      </tbody>
-    </table>
+          <h3>Segmentación de Red en VirtualBox</h3>
+          <p>Ambos entornos se enlazaron al switch virtual común <code>NatNetwork</code> bajo el segmento direccionable <code>10.0.2.0/24</code>.</p>
+          <div class="media-card">
+            <img src="red_virtualbox.png" alt="Ajuste de Adaptador VirtualBox">
+            <div class="caption">Figura 1.1: Adaptador de red conectado a la red interna compartida.</div>
+          </div>
 
-    <div class="img-box">
-      <img src="15c8dc51-8b7f-45d5-bd8c-43d4427d936c.jpg" alt="Salida Nmap">
-      <div class="caption">Figura 2.1: Banner grabbing y servicios expuestos identificados en el objetivo.</div>
-    </div>
-  </section>
+          <h3>Identificación de Nodo Objetivo</h3>
+          <p>Se realizó una consulta ARP masiva para ubicar la máquina asignada:</p>
+          <pre><code>sudo arp-scan -l</code></pre>
+          <div class="media-card">
+            <img src="arpscan_ip.png" alt="Resultado arp-scan">
+            <div class="caption">Figura 1.2: Host objetivo localizado en 10.0.2.4 (MAC: 08:00:27:f3:92:bb).</div>
+          </div>
+        </section>
 
-  <!-- SECCIÓN 3 -->
-  <section class="neumorphic-card">
-    <h2>3. Fuzzing de Endpoints Web</h2>
-    <div class="theory-box">
-      <strong>Fundamento Teórico:</strong> El fuzzing de directorios web envía peticiones HTTP iterativas usando listas de palabras comunes para detectar rutas no indexadas. La evaluación de los códigos de respuesta del servidor (RFC 7231) permite categorizar el comportamiento: <code>200 OK</code> indica lectura directa, <code>405 Method Not Allowed</code> señala restricciones en los verbos HTTP, y <code>500 Internal Server Error</code> denota fallas en la lógica del backend.
-    </div>
+        <!-- SECCIÓN 2 -->
+        <section class="section-block">
+          <h2>02. Escaneo y Reconocimiento de Servicios</h2>
+          <div class="theory-box">
+            <strong>Fundamento Teórico:</strong> El barrido TCP SYN Stealth (<code>-sS</code>) interroga los sockets enviando paquetes con la bandera SYN sin cerrar el saludo de tres vías (3-Way Handshake). Si el receptor responde con SYN/ACK se concluye un estado abierto; si retorna RST/ACK se deduce cerrado. La extracción de banners examina las firmas textuales emitidas por los servicios expuestos.
+          </div>
 
-    <pre><code>gobuster dir -u http://10.0.2.4:8080 -w /usr/share/wordlists/dirb/common.txt -t 30</code></pre>
-    <div class="img-box">
-      <img src="2002.jpg" alt="Salida Gobuster">
-      <div class="caption">Figura 3.1: Detección de endpoints clave (/registration, /login, /users, /secret).</div>
-    </div>
-  </section>
+          <pre><code>sudo nmap -p- -sV -sC -T4 10.0.2.4 -oN escaneo_snakeoil.txt</code></pre>
 
-  <!-- SECCIÓN 4 -->
-  <section class="neumorphic-card">
-    <h2>4. Interacción con API REST y Tokens JWT</h2>
-    <div class="theory-box">
-      <strong>Fundamento Teórico:</strong> Las APIs REST manejan estados sin sesión recurriendo a tokens JWT (JSON Web Tokens). Estos tokens contienen cabecera, payload con reclamos de identidad y una firma criptográfica para autenticar transacciones subsiguientes.
-    </div>
+          <table>
+            <thead>
+              <tr><th>Puerto</th><th>Estado</th><th>Servicio</th><th>Detalle / Versión</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>22/TCP</td><td>Abierto</td><td>SSH</td><td>OpenSSH 7.9p1 Debian 10</td></tr>
+              <tr><td>80/TCP</td><td>Abierto</td><td>HTTP</td><td>nginx 1.14.2 (Sitio principal)</td></tr>
+              <tr><td>8080/TCP</td><td>Abierto</td><td>HTTP</td><td>nginx 1.14.2 (API Good Tech Inc)</td></tr>
+            </tbody>
+          </table>
 
-    <h3>Registro de Usuario</h3>
-    <pre><code>curl -i -X POST http://10.0.2.4:8080/registration \
+          <div class="media-card">
+            <img src="nmap_servicios.png" alt="Resultados Nmap">
+            <div class="caption">Figura 2.1: Banners y servicios activos detectados en la máquina remota.</div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 3 -->
+        <section class="section-block">
+          <h2>03. Fuzzing Web y Mapeo de Rutas</h2>
+          <div class="theory-box">
+            <strong>Fundamento Teórico:</strong> El descubrimiento de contenido analiza códigos de estado HTTP (RFC 7231). Respuestas <code>200 OK</code> evidencian recursos expuestos; <code>405 Method Not Allowed</code> indica que la ruta existe pero exige métodos específicos (p. ej. POST en lugar de GET); y <code>500 Internal Server Error</code> revela fallos en el tratamiento de excepciones internas o control de acceso.
+          </div>
+
+          <pre><code>gobuster dir -u http://10.0.2.4:8080 -w /usr/share/wordlists/dirb/common.txt -t 30</code></pre>
+          <div class="media-card">
+            <img src="gobuster_rutas.png" alt="Resultados Gobuster">
+            <div class="caption">Figura 3.1: Detección de endpoints clave (/registration, /login, /users, /secret).</div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 4 -->
+        <section class="section-block">
+          <h2>04. Interacción con API REST y Tokens JWT</h2>
+          <div class="theory-box">
+            <strong>Fundamento Teórico:</strong> Las interfaces RESTful utilizan JSON para intercambiar datos estructurados en el cuerpo de peticiones POST y manejan esquemas de autorización desacoplados mediante JSON Web Tokens (JWT). Un JWT contiene cabecera, payload con identificadores (claims) y una firma criptográfica con la que el servidor valida la legitimidad de la sesión sin consultar bases de datos en cada petición.
+          </div>
+
+          <h3>Alta de Identidad</h3>
+          <pre><code>curl -i -X POST http://10.0.2.4:8080/registration \
      -H "Content-Type: application/json" \
      -d '{"username":"vane", "password":"Password123"}'</code></pre>
-    <div class="img-box">
-      <img src="14d12f77-37e1-4feb-8c7c-a00d632c8c24.jpg" alt="Registro Exitoso">
-      <div class="caption">Figura 4.1: Recepción de token JWT tras procesar la creación de usuario.</div>
-    </div>
+          <div class="media-card">
+            <img src="registro_token.png" alt="Registro en API">
+            <div class="caption">Figura 4.1: Generación y recepción del token JWT firmado por el backend.</div>
+          </div>
 
-    <h3>Exposición de Datos en /users</h3>
-    <p>El endpoint <code>/users</code> carecía de controles de acceso a objetos (BOLA), retornando la lista interna de usuarios y sus hashes de autenticación:</p>
-    <pre><code>curl -i http://10.0.2.4:8080/users</code></pre>
-    <div class="img-box">
-      <img src="2005.jpg" alt="Usuarios y Hashes">
-      <div class="caption">Figura 4.2: Volcado de cuentas donde se detecta al usuario 'patrick' y su hash PBKDF2-SHA256.</div>
-    </div>
-  </section>
+          <h3>Exposición de Cuentas (/users)</h3>
+          <p>El endpoint <code>/users</code> carecía de validación de privilegios de objeto (Broken Object Level Authorization - BOLA), entregando los nombres de usuario y los hashes almacenados:</p>
+          <pre><code>curl -i http://10.0.2.4:8080/users</code></pre>
+          <div class="media-card">
+            <img src="users_hashes.png" alt="Listado de usuarios">
+            <div class="caption">Figura 4.2: Fuga de datos con el usuario 'patrick' y su resumen criptográfico.</div>
+          </div>
+        </section>
 
-  <!-- SECCIÓN 5 -->
-  <section class="neumorphic-card">
-    <h2>5. Análisis Criptográfico y Conclusiones</h2>
-    <div class="theory-box">
-      <strong>Fundamento Teórico:</strong> PBKDF2 aplica HMAC-SHA256 con un número elevado de rondas (29,000 iteraciones en este caso) incrementando deliberadamente el cómputo por cada intento de comparación, mitigando ataques de diccionario triviales en hardware genérico.
-    </div>
+        <!-- SECCIÓN 5 -->
+        <section class="section-block">
+          <h2>05. Análisis Criptográfico y Conclusiones</h2>
+          <div class="theory-box">
+            <strong>Fundamento Teórico:</strong> PBKDF2 (Password-Based Key Derivation Function 2) ralentiza intencionalmente el cómputo encadenando HMAC-SHA256 con un valor sal (salt) a través de un número elevado de ciclos (29,000 iteraciones). Este retardo frena los ataques masivos por diccionario en CPUs estándar, exigiendo diccionarios altamente contextualizados o computación paralela en GPUs.
+          </div>
 
-    <pre><code>john --format=pbkdf2-hmac-sha256 --wordlist=/usr/share/wordlists/rockyou.txt hash.txt</code></pre>
-    <div class="img-box">
-      <img src="2010.jpg" alt="Rendimiento John The Ripper">
-      <div class="caption">Figura 5.1: Cómputo limitado a ~573 c/s debido a las 29,000 iteraciones del algoritmo.</div>
-    </div>
+          <pre><code>echo 'patrick:$pbkdf2-sha256$29000$e0/J.V.rVSol5HxPqdW6Nw$FZJVgjNJIw99RIiojrT/gn9xRr9SI/RYn.CGF84rO40' > hash.txt
+john --format=pbkdf2-hmac-sha256 --wordlist=/usr/share/wordlists/rockyou.txt hash.txt</code></pre>
 
-    <h3>Conclusiones Técnicas</h3>
-    <ul>
-      <li><strong>Fuga de Información Crítica:</strong> Endpoints con lectura pública no restringida que exponen identificadores de usuario y funciones resumen criptográficas.</li>
-      <li><strong>Coste Criptográfico Elevado:</strong> La implementación de 29,000 iteraciones en PBKDF2 previene la resolución rápida sin aceleración por hardware o diccionarios altamente dirigidos.</li>
-      <li><strong>Reglas de Métodos HTTP:</strong> El backend fuerza el uso de verbos específicos (POST vs GET) para validar solicitudes con estado de autorización.</li>
-    </ul>
-  </section>
+          <div class="media-card">
+            <img src="john_rendimiento.png" alt="Cómputo en John the Ripper">
+            <div class="caption">Figura 5.1: Registro de tasa (~573 intentos/s) demostrando el retardo por factor de iteración.</div>
+          </div>
 
-</div>
+          <h3>Hallazgos Técnicos de la Auditoría</h3>
+          <ul>
+            <li><strong>Fuga Crítica de Credenciales:</strong> El endpoint <code>/users</code> expone públicamente la base de datos de usuarios y hashes sin exigir token de acceso previo.</li>
+            <li><strong>Robustez en Factor de Trabajo:</strong> El uso de 29,000 rondas en PBKDF2 previene la resolución expedita mediante diccionarios genéricos en equipos de propósito general.</li>
+            <li><strong>Políticas Estrictas de Métodos HTTP:</strong> El backend fuerza el uso de verbos exactos (POST / GET) en rutas como <code>/secret</code>, provocando excepciones no controladas cuando se recibe un método no contemplado.</li>
+          </ul>
+        </section>
+
+      </div>
+    </article>
+  </main>
 
 </body>
 </html>
