@@ -1,1 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentación Técnica: Pruebas de Seguridad en Snakeoil</title>
+  <style>
+    :root {
+      --bg-color: #0d1117;
+      --card-bg: #161b22;
+      --border-color: #30363d;
+      --primary-color: #58a6ff;
+      --accent-color: #238636;
+      --text-main: #c9d1d9;
+      --text-muted: #8b949e;
+      --code-bg: #0b0e14;
+    }
 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      margin: 0;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+
+    .meta {
+      color: var(--text-muted);
+      font-size: 0.95em;
+    }
+
+    .section-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 30px;
+      page-break-inside: avoid;
+    }
+
+    h2 {
+      color: #f0f6fc;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+      margin-top: 0;
+      font-size: 1.35em;
+    }
+
+    h3 {
+      color: var(--primary-color);
+      font-size: 1.1em;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    p, li {
+      color: var(--text-main);
+      font-size: 0.95em;
+    }
+
+    pre {
+      background-color: var(--code-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 12px 16px;
+      overflow-x: auto;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 0.88em;
+      color: #79c0ff;
+    }
+
+    code {
+      font-family: "Consolas", "Courier New", monospace;
+      background-color: rgba(110, 118, 129, 0.4);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    .callout {
+      border-left: 4px solid var(--primary-color);
+      background-color: rgba(56, 139, 253, 0.1);
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      margin: 15px 0;
+    }
+
+    .image-placeholder {
+      border: 2px dashed var(--border-color);
+      border-radius: 6px;
+      padding: 20px;
+      text-align: center;
+      background-color: rgba(22, 27, 34, 0.6);
+      margin: 15px 0;
+    }
+
+    .image-placeholder img {
+      max-width: 100%;
+      border-radius: 4px;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+
+    .caption {
+      font-size: 0.85em;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 0.9em;
+    }
+
+    th {
+      background-color: rgba(110, 118, 129, 0.1);
+      color: #f0f6fc;
+    }
+
+    @media print {
+      body {
+        background-color: #ffffff;
+        color: #000000;
+        padding: 0;
+      }
+      .section-card {
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        box-shadow: none;
+      }
+      pre {
+        background-color: #f5f5f5;
+        border: 1px solid #dddddd;
+        color: #000000;
+      }
+      .callout {
+        background-color: #f9f9f9;
+        border-left: 4px solid #333333;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>Informe Técnico de Laboratorio: Máquina Snakeoil</h1>
+    <div class="meta">
+      <strong>Área:</strong> Evaluación de Sistemas y Redes &bull; 
+      <strong>Entorno:</strong> Red NAT Aislada (VirtualBox) &bull; 
+      <strong>Fecha:</strong> Septiembre 2026
+    </div>
+  </header>
+
+  <!-- SECCIÓN 1 -->
+  <section class="section-card">
+    <h2>1. Configuración de Entorno y Descubrimiento de Red</h2>
+    
+    <div class="callout">
+      <strong>Fundamento Teórico:</strong> La arquitectura de red host-only o Red NAT permite segmentar el tráfico entre máquinas virtuales, simulando un enlace de área local físico. En este segmento, las direcciones IP se resuelven a nivel de capa de enlace (L2) usando el protocolo ARP (Address Resolution Protocol), enviando tramas broadcast para correlacionar direcciones IP lógicas con direcciones físicas MAC.
+    </div>
+
+    <h3>Aislamiento en VirtualBox</h3>
+    <p>Se implementó un adaptador con topología de <code>Red NAT</code> (nombre: <em>NatNetwork</em>) compartido entre Kali Linux y Snakeoil para permitir enrutamiento controlado y aislamiento de equipos externos.</p>
+
+    <div class="image-placeholder">
+      <img src="b817b9c1-fb62-45b9-90b0-78bbb22ea863.jpg" alt="Configuración de Red NAT en VirtualBox">
+      <div class="caption">Figura 1.1: Panel de red de la máquina virtual configurando la interfaz hacia el switch virtual NAT.</div>
+    </div>
+
+    <h3>Descubrimiento de Hosts Activos</h3>
+    <p>Para determinar la asignación dinámica de la máquina de prueba sin interacción en el host objetivo, se ejecutó un barrido mediante <code>arp-scan</code> consultando la tabla ARP del segmento <code>10.0.2.0/24</code>:</p>
+
+    <pre><code># Verificación de la IP del atacante
+ip -4 a
+
+# Sondeo de tramas ARP en la interfaz local
+sudo arp-scan -l</code></pre>
+
+    <div class="image-placeholder">
+      <img src="25243a82-f5c3-42e9-a071-7d59f612a565.jpg" alt="Salida de arp-scan">
+      <div class="caption">Figura 1.2: Detección del nodo objetivo con dirección IP 10.0.2.4 y dirección MAC 08:00:27:f3:92:bb.</div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2 -->
+  <section class="section-card">
+    <h2>2. Escaneo de Servicios y Puertos</h2>
+    
+    <div class="callout">
+      <strong>Fundamento Teórico:</strong> La técnica TCP SYN Scan (<code>-sS</code> ejecutada bajo <code>sudo</code>) envía paquetes SYN a los puertos de destino sin completar el saludo de tres vías (3-Way Handshake). Si el host responde con SYN/ACK, el puerto se clasifica como abierto; si responde con RST/ACK, se clasifica como cerrado. La detección de versiones interroga las cadenas de texto expuestas por los demonios activos en sus respectivas conexiones.
+    </div>
+
+    <p>Comando aplicado para escaneo exhaustivo sobre los 65,535 puertos:</p>
+    <pre><code>sudo nmap -p- -sV -sC -T4 10.0.2.4 -oN escaneo_snakeoil.txt</code></pre>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Puerto</th>
+          <th>Estado</th>
+          <th>Servicio</th>
+          <th>Versión / Banner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>22/TCP</td>
+          <td>Abierto</td>
+          <td>SSH</td>
+          <td>OpenSSH 7.9p1 Debian 10+deb10u2</td>
+        </tr>
+        <tr>
+          <td>80/TCP</td>
+          <td>Abierto</td>
+          <td>HTTP</td>
+          <td>nginx 1.14.2 ("Welcome to SNAKEOIL!")</td>
+        </tr>
+        <tr>
+          <td>8080/TCP</td>
+          <td>Abierto</td>
+          <td>HTTP</td>
+          <td>nginx 1.14.2 ("Welcome to Good Tech Inc.'s Snake Oil Project")</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="image-placeholder">
+      <img src="15c8dc51-8b7f-45d5-bd8c-43d4427d936c.jpg" alt="Resultados Nmap">
+      <div class="caption">Figura 2.1: Registro de servicios abiertos identificando dos instancias web Nginx y acceso administrativo SSH.</div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3 -->
+  <section class="section-card">
+    <h2>3. Enumeración Web y Análisis de Endpoints</h2>
+
+    <div class="callout">
+      <strong>Fundamento Teórico:</strong> El fuzzing de directorios web envía peticiones HTTP iterativas usando listas de palabras comunes para detectar rutas no indexadas. La evaluación de los códigos de respuesta del servidor (RFC 7231) permite categorizar el comportamiento: <code>200 OK</code> indica lectura directa, <code>405 Method Not Allowed</code> señala restricciones en los verbos HTTP (como esperar POST en lugar de GET), y <code>500 Internal Server Error</code> denota fallas en el procesamiento de lógica backend.
+    </div>
+
+    <p>Ejecución de <code>gobuster</code> sobre ambas interfaces HTTP:</p>
+    <pre><code>gobuster dir -u http://10.0.2.4:8080 -w /usr/share/wordlists/dirb/common.txt -t 30</code></pre>
+
+    <div class="image-placeholder">
+      <img src="2002.jpg" alt="Salida de Gobuster">
+      <div class="caption">Figura 3.1: Identificación de endpoints en el puerto 8080, destacando /registration, /login, /users y /secret.</div>
+    </div>
+
+    <h3>Mapeo de Rutas Clave</h3>
+    <ul>
+      <li><code>/registration</code> (Status 200): Interfaz para registrar cuentas de usuario.</li>
+      <li><code>/login</code> (Status 405 en GET): Endpoint de autenticación que espera envío de parámetros por método POST.</li>
+      <li><code>/users</code> (Status 200 en GET): Consulta pública de la lista de cuentas en el backend.</li>
+      <li><code>/secret</code> (Status 500 / 405): Zona restringida que requiere cabeceras de autorización y validación de roles.</li>
+    </ul>
+  </section>
+
+  <!-- SECCIÓN 4 -->
+  <section class="section-card">
+    <h2>4. Interacción con la API e Identificación de Credenciales</h2>
+
+    <div class="callout">
+      <strong>Fundamento Teórico:</strong> Las APIs REST estructuradas con formato JSON procesan datos en el cuerpo de peticiones POST y manejan estados de autenticación sin sesión mediante tokens JWT (JSON Web Tokens). Estos tokens contienen información de cabecera, payload y una firma criptográfica para garantizar integridad entre cliente y servidor.
+    </div>
+
+    <h3>Registro y Creación de Sesión</h3>
+    <p>Se envió una petición con carga útil JSON para dar de alta un usuario y validar el formato de respuesta del backend:</p>
+
+    <pre><code>curl -i -X POST http://10.0.2.4:8080/registration \
+     -H "Content-Type: application/json" \
+     -d '{"username":"vane", "password":"Password123"}'</code></pre>
+
+    <div class="image-placeholder">
+      <img src="14d12f77-37e1-4feb-8c7c-a00d632c8c24.jpg" alt="Respuesta de Registro JSON">
+      <div class="caption">Figura 4.1: Confirmación de cuenta creada y recepción del primer token de acceso JWT.</div>
+    </div>
+
+    <h3>Extracción de Cuentas y Hash Criptográfico</h3>
+    <p>Al consumir el endpoint <code>/users</code> mediante el método <code>GET</code>, el sistema expuso los identificadores registrados y los valores hash de protección:</p>
+
+    <pre><code>curl -i http://10.0.2.4:8080/users</code></pre>
+
+    <div class="image-placeholder">
+      <img src="2005.jpg" alt="Respuesta de /users y /login">
+      <div class="caption">Figura 4.2: Volcado de datos de usuarios donde se identifica la cuenta 'patrick' y su hash PBKDF2-SHA256.</div>
+    </div>
+
+    <p>Estructura de la función de derivación de claves expuesta:</p>
+    <pre><code>$pbkdf2-sha256$29000$e0/J.V.rVSol5HxPqdW6Nw$FZJVgjNJIw99RIiojrT/gn9xRr9SI/RYn.CGF84rO40</code></pre>
+  </section>
+
+  <!-- SECCIÓN 5 -->
+  <section class="section-card">
+    <h2>5. Análisis del Esquema Criptográfico y Conclusiones de Fase</h2>
+
+    <div class="callout">
+      <strong>Fundamento Teórico:</strong> PBKDF2 (Password-Based Key Derivation Function 2) aplica una función pseudoaleatoria (en este caso HMAC-SHA256) junto con una sal (salt) a lo largo de un número alto de iteraciones (29,000 en esta instancia). Esto incrementa el costo computacional por intento, dificultando ataques de fuerza bruta masivos sin aceleración de hardware específica.
+    </div>
+
+    <p>Se aisló el valor hash para su evaluación con herramientas de procesamiento local:</p>
+    <pre><code>echo 'patrick:$pbkdf2-sha256$29000$e0/J.V.rVSol5HxPqdW6Nw$FZJVgjNJIw99RIiojrT/gn9xRr9SI/RYn.CGF84rO40' > hash.txt
+john --format=pbkdf2-hmac-sha256 --wordlist=/usr/share/wordlists/rockyou.txt hash.txt</code></pre>
+
+    <div class="image-placeholder">
+      <img src="2010.jpg" alt="Rendimiento del procesamiento del hash">
+      <div class="caption">Figura 5.1: Registro de tasa de cómputo (~573 c/s) evidenciando el retardo inducido por el factor de trabajo de 29,000 iteraciones.</div>
+    </div>
+
+    <h3>Hallazgos Principales</h3>
+    <ul>
+      <li><strong>Exposición de Información Sensible:</strong> El endpoint <code>/users</code> carece de controles de autorización (Broken Object Level Authorization), permitiendo a cualquier entidad no autenticada listar nombres de usuario y hashes.</li>
+      <li><strong>Robustez en Almacenamiento:</strong> A pesar de la fuga de datos, el uso de 29,000 iteraciones en PBKDF2 previene la resolución trivial mediante diccionarios genéricos sin un ataque altamente enfocado o acceso a diccionarios adaptados.</li>
+      <li><strong>Gestión de Métodos HTTP:</strong> Los endpoints del backend aplican restricciones de verbos que exigen transacciones controladas por API para la manipulación de estados de sesión.</li>
+    </ul>
+  </section>
+
+</div>
+
+</body>
+</html>
