@@ -72,36 +72,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('response-modal');
     const closeBtn = document.querySelector('.close-btn');
 
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Evita recargar la página
-        
-        // Simular envío
-        const btn = this.querySelector('.btn-submit');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-        btn.disabled = true;
-
-        setTimeout(() => {
-            // Mostrar modal
-            modal.style.display = 'block';
+    if (contactForm && modal && closeBtn) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita recargar la página
             
-            // Resetear formulario y botón
-            contactForm.reset();
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-        }, 1500);
-    });
+            // Simular envío
+            const btn = this.querySelector('.btn-submit');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            btn.disabled = true;
 
-    // Cerrar modal
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+            setTimeout(() => {
+                // Mostrar modal
+                modal.style.display = 'block';
+                
+                // Resetear formulario y botón
+                contactForm.reset();
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1500);
+        });
 
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
+        // Cerrar modal
+        closeBtn.addEventListener('click', () => {
             modal.style.display = 'none';
-        }
-    });
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
 
     // 4. Generación de fondo dinámico (estrellas)
     function createStars(elementId, count) {

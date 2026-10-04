@@ -438,3 +438,35 @@ html {
         grid-template-columns: 1fr;
     }
 }
+
+/* Secondary Header (Subpages) */
+.header-secondary {
+    padding: 0.5rem 0;
+    background: rgba(11, 5, 16, 0.95);
+}
+.header-secondary .branding h1 {
+    font-size: 1.2rem;
+}
+.header-secondary .branding h2 {
+    font-size: 0.85rem;
+}
+.header-secondary .nav-menu a {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+}
+
+/* Activities Grid */
+.grid-activities {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.activity-card {
+    padding: 1.5rem;
+    text-align: center;
+}
+.activity-card h4 {
+    color: var(--accent-purple);
+    margin-bottom: 0.5rem;
+}
