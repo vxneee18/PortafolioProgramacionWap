@@ -3,108 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio | Vanessa</title>
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Space+Grotesk:wght@400;700&family=Titan+One&display=swap" rel="stylesheet">
+    <title>Portafolio Digital - Seguridad Informática | Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-    <div class="bg-animated"></div>
-
-    <div class="bg-animated"></div>
-    
-    <div class="cyber-rain">
-        <span class="rain-item" style="--delay: 1s; --x: 10%; --s: 1.2rem;">>></span>
-        <span class="rain-item" style="--delay: 3s; --x: 25%; --s: 1.5rem;">0x00</span>
-        <span class="rain-item" style="--delay: 0s; --x: 40%; --s: 1rem;">[SEC]</span>
-        <span class="rain-item" style="--delay: 5s; --x: 55%; --s: 2rem;">⚠</span>
-        <span class="rain-item" style="--delay: 2.5s; --x: 70%; --s: 1.3rem;">⚙</span>
-        <span class="rain-item" style="--delay: 4.5s; --x: 85%; --s: 1.6rem;">&lt; /&gt;</span>
-        <span class="rain-item" style="--delay: 6s; --x: 95%; --s: 1.1rem;">[ROOT]</span>
-        <span class="rain-item" style="--delay: 1.5s; --x: 15%; --s: 1.4rem;">404</span>
-        <span class="rain-item" style="--delay: 3.5s; --x: 75%; --s: 1.8rem;">#</span>
+    <!-- Efecto de fondo dinámico -->
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
     </div>
 
-    <div class="top-bar">
-        <span>CNO IV: SEGURIDAD INFORMÁTICA</span>
-        <span>UNIVERSIDAD POLITÉCNICA DE SAN LUIS POTOSÍ</span>
-        <span>7mo Semestre</span>
-    </div>
-    
-    <header class="main-header">
-        <div class="brand">
-            <span class="logo">Vane</span>
-            <span class="divider">|</span>
-            <span class="full-name">Karla Vanessa Gonzalez Espinoza</span>
+    <!-- 1. Encabezado (Header) -->
+    <header class="header">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#inicio" class="active">Inicio</a></li>
+                    <li><a href="#presentacion">Presentación</a></li>
+                    <li><a href="#perfil">Perfil</a></li>
+                    <li><a href="#tecnologia">Info Técnica</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav class="nav-links">
-            <a href="index.html" class="active">Inicio</a>
-            <a href="actividades.html">Actividades</a>
-            <a href="index.html">Cursos</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
     </header>
 
-    <section class="hero">
-        
-        <div class="dashed-line dl-1"></div>
-        <div class="dashed-line dl-2"></div>
-
-        <h1 class="massive-title">CIBER<br>SEGURIDAD</h1>
-        
-    </section>
-
-    <main class="content-wrapper">
-        
-        <section id="presentacion" class="editorial-box">
-            <h2 class="section-title">01. Presentación</h2>
-            <p>El propósito de este portafolio digital es servir como el repositorio oficial de mis evidencias académicas para la materia. El curso tiene un enfoque práctico y estructurado, centrado fundamentalmente en la <strong>seguridad informática, las metodologías para realizar pruebas de penetración y el análisis exhaustivo de vulnerabilidades</strong> en diversos entornos.</p>
-            <p>Mantener y documentar este portafolio es muy importante, ya que constituye la evidencia de mi proceso de aprendizaje continuo. Me permite registrar mi evolución técnica, estructurar mis conocimientos y demostrar la aplicación práctica de los conceptos teóricos revisados en clase.</p>
-        </section>
-
-        <section id="perfil" class="editorial-box" >
-            <h2 class="section-title">02. Mi Perfil</h2>
-            <p>Soy una estudiante de la carrera de Ingeniería en Tecnologías de la Información en la Universidad Politécnica de San Luis Potosí. A lo largo de mi formación académica, he aprendido desde la programación de sistemas embebidos y arquitecturas de hardware, hasta el desarrollo y gestión de bases de datos relacionales.</p>
-            <p>Mis intereses principales se concentran en la <strong>ciberseguridad, la protección de datos y la investigación tecnológica</strong>. Tengo un interés particular en el análisis y origen de los componentes, buscando comprender a profundidad los diseños y mecanismos de defensa.</p>
-        </section>
-
-        <section id="arquitectura" class="editorial-box">
-            <h2 class="section-title">03. Arquitectura Técnica</h2>
-            <p style="margin-bottom: 15px;">Para la construcción y despliegue de este portafolio se implementó la siguiente estructura:</p>
-            <ul style="list-style-type: square; padding-left: 20px;">
-                <li><strong>Lenguajes y tecnologías:</strong> Desarrollo web estático empleando HTML5 y CSS3.</li>
-                <li><strong>Plataforma de publicación:</strong> GitHub Pages.</li>
-                <li><strong>Control de versiones:</strong> Gestión de Git mediante un repositorio.</li>
-            </ul>
-        </section>
-
-        <section id="contacto" class="editorial-box" >
-            <h2 class="section-title">04. Contacto</h2>
-            <p style="margin-bottom: 25px;">¿Tienes alguna duda o sugerencia? Déjame un mensaje.</p>
-            
-            <form action="https://formspree.io/f/xgawbbkz" method="POST">
-                <div class="form-group">
-                    <label for="email">CORREO ELECTRÓNICO:</label>
-                    <input type="email" id="email" name="email" required>
+    <main class="main-content">
+        <!-- 2. Presentación del portafolio -->
+        <section id="presentacion" class="section card-container reveal">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-shield-halved"></i></div>
+                <h3 class="section-title">Presentación del Portafolio</h3>
+                <div class="content-text">
+                    <p><strong>Propósito:</strong> Este portafolio digital tiene como finalidad documentar y estructurar mi avance académico y técnico a lo largo del curso. Servirá como un repositorio centralizado y oficial de evidencias, demostrando el desarrollo de mis habilidades y conocimientos.</p>
+                    <p><strong>Enfoque del Curso:</strong> La asignatura abarca fundamentos críticos de la <em>seguridad informática</em>, metodologías para la realización de <em>pruebas de penetración (pentesting)</em> y el <em>análisis exhaustivo de vulnerabilidades</em> en diferentes sistemas.</p>
+                    <p><strong>Importancia:</strong> Más que un requisito, esta plataforma constituye una evidencia viva de mi proceso de aprendizaje, reflejando mi capacidad para investigar, implementar y documentar soluciones en el ámbito de la ciberseguridad.</p>
                 </div>
-                <div class="form-group">
-                    <label for="message">MENSAJE:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="btn-submit">ENVIAR MENSAJE</button>
-            </form>
+            </div>
         </section>
 
+        <!-- 3. Perfil del estudiante -->
+        <section id="perfil" class="section card-container reveal">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-user-astronaut"></i></div>
+                <h3 class="section-title">Perfil del Estudiante</h3>
+                
+                <div class="profile-grid">
+                    <div class="profile-bio">
+                        <h4><i class="fas fa-graduation-cap"></i> Semblanza Académica</h4>
+                        <p>Soy una estudiante de séptimo semestre profundamente interesada en la asimilación continua de nuevos conocimientos, tanto teóricos como técnicos. A lo largo de mi trayectoria universitaria, he desarrollado proyectos relevantes enfocados en el diseño e integración de hardware y software, destacando la construcción de un dron y un robot seguidor de línea impulsados por microcontroladores.</p>
+                        <p>He adquirido experiencia práctica en la implementación de arquitecturas electrónicas utilizando displays, sensores ultrasónicos y motores de corriente continua (DC), aplicados en prácticas de aproximación de objetos y automatización. Mi objetivo principal como estudiante es culminar mi formación profesional con bases sólidas, manteniendo una disposición constante hacia el aprendizaje continuo para superar los retos técnicos que se presenten en el campo de las tecnologías de la información.</p>
+                    </div>
+
+                    <div class="profile-interests">
+                        <h4><i class="fas fa-microchip"></i> Intereses en Seguridad Informática</h4>
+                        <p>Me apasiona el ciclo de vida de la creación tecnológica y su impacto en la sociedad, lo que me ha llevado a comprender la necesidad crítica de proteger la integridad, confidencialidad y disponibilidad de la información.</p>
+                        <p>Mi interés se centra en la ciberseguridad y en cómo las arquitecturas defensivas deben adaptarse al nivel de criticidad de los datos. Me fascina el estudio de las metodologías de ataque, la manera en que los agentes maliciosos explotan vulnerabilidades empleando diversas herramientas (frecuentemente sin que el usuario sea consciente), y la manipulación remota de tecnologías.</p>
+                        <p>Asimismo, me interesa profundamente el análisis de malware, comprendiendo la arquitectura de los virus, sus métodos de propagación, su impacto destructivo y la ingeniería inversa detrás de su creación, con el fin de desarrollar contramedidas efectivas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Información técnica básica -->
+        <section id="tecnologia" class="section card-container reveal">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-code"></i></div>
+                <h3 class="section-title">Información Técnica Básica</h3>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub Pages</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Control de Versiones (Git)</span>
+                    </div>
+                </div>
+                <p class="tech-desc">Sitio construido con desarrollo web nativo, alojado mediante GitHub Pages garantizando alta disponibilidad y escalabilidad.</p>
+            </div>
+        </section>
+
+        <!-- 5. Formulario de contacto -->
+        <section id="contacto" class="section card-container reveal">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-envelope-open-text"></i></div>
+                <h3 class="section-title">Contacto</h3>
+                <form id="contact-form" class="contact-form">
+                    <div class="input-group">
+                        <input type="text" id="name" required placeholder="Tu Nombre">
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" required placeholder="Tu Correo Electrónico">
+                    </div>
+                    <div class="input-group">
+                        <textarea id="message" required placeholder="Tu Mensaje" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Mensaje <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </section>
     </main>
 
+    <!-- Modal para respuesta automática -->
+    <div id="response-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
+            <h3>¡Mensaje Recibido!</h3>
+            <p>Hola, gracias por contactarme. Esta es una respuesta automática del sistema para confirmar que he recibido tu mensaje. Me pondré en contacto contigo a la brevedad posible.</p>
+            <p class="modal-signature">- Vane</p>
+        </div>
+    </div>
+
+    <!-- 6. Pie de página y 7. SSL -->
     <footer class="footer">
-        <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza.</p>
-        <p>🔒 Conexión segura cifrada por HTTPS</p>
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane") - Todos los derechos reservados.</p>
+            <p class="teacher-info">Docente: Mtro. Servando López Contreras</p>
+            <div class="ssl-badge">
+                <i class="fas fa-lock"></i> Sitio seguro con protocolo HTTPS (Certificado SSL mediante GitHub Pages)
+            </div>
+        </div>
     </footer>
 
+    <script src="js/main.js"></script>
 </body>
 </html>
