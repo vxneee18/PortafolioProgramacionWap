@@ -23,18 +23,24 @@ document.addEventListener('DOMContentLoaded', () => {
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
             
-            window.scrollTo({
-                top: targetSection.offsetTop - 120, // Offset for fixed header
-                behavior: 'smooth'
-            });
+            // Solo aplicar scroll suave si es un ancla a la misma página
+            if (targetId.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 120, // Offset for fixed header
+                        behavior: 'smooth'
+                    });
+                }
 
-            // Update active class
-            navLinks.forEach(nav => nav.classList.remove('active'));
-            this.classList.add('active');
+                // Update active class
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            }
         });
     });
 
@@ -51,9 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === current) {
-                link.classList.add('active');
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                link.classList.remove('active');
+                if (href.substring(1) === current && current !== '') {
+                    link.classList.add('active');
+                }
             }
         });
     });
