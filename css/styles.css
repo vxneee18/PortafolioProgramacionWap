@@ -109,16 +109,16 @@ html {
 .nav-menu ul {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem; /* Gap más pequeño para compactar */
 }
 
 .nav-menu a {
     color: var(--text-main);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.85rem; /* Tamaño compacto */
     font-weight: 600;
     transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem; /* Padding compacto */
     border-radius: 20px;
 }
 
@@ -450,9 +450,13 @@ html {
 .header-secondary .branding h2 {
     font-size: 0.85rem;
 }
-.header-secondary .nav-menu a {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.8rem;
+.header-secondary .academic-info {
+    margin-top: 5px;
+}
+.header-secondary .academic-info p {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 0.75rem;
 }
 
 /* Activities Grid */
@@ -469,4 +473,196 @@ html {
 .activity-card h4 {
     color: var(--accent-purple);
     margin-bottom: 0.5rem;
+}
+
+/* Roadmap Duolingo Style */
+.roadmap-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 3rem 0;
+    gap: 4rem;
+}
+
+.roadmap-line {
+    position: absolute;
+    top: 50px;
+    bottom: 50px;
+    width: 6px;
+    background: var(--card-border);
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.roadmap-node {
+    position: relative;
+    z-index: 1;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.4), 0 10px 20px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+}
+
+.roadmap-node:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 rgba(0,0,0,0.4), 0 15px 30px var(--glow-color);
+}
+
+.roadmap-node:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.4);
+}
+
+.node-completed {
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    border: 4px solid #81C784;
+}
+
+.node-current {
+    background: linear-gradient(135deg, var(--light-purple), var(--primary-purple));
+    border: 4px solid var(--accent-purple);
+    box-shadow: 0 6px 0 #4a1580, 0 0 30px var(--glow-color);
+}
+
+.node-locked {
+    background: #333;
+    border: 4px solid #555;
+    color: #777;
+    cursor: not-allowed;
+    box-shadow: 0 6px 0 #111;
+}
+
+.node-locked:hover {
+    transform: none;
+    box-shadow: 0 6px 0 #111;
+}
+
+/* Zig-zag offset classes */
+.node-left {
+    transform: translateX(-60px);
+}
+.node-right {
+    transform: translateX(60px);
+}
+.node-center {
+    transform: translateX(0);
+}
+
+/* Ajustar hover para los zig-zag */
+.node-left:hover:not(.node-locked) { transform: translateX(-60px) translateY(-2px); }
+.node-left:active:not(.node-locked) { transform: translateX(-60px) translateY(4px); }
+.node-right:hover:not(.node-locked) { transform: translateX(60px) translateY(-2px); }
+.node-right:active:not(.node-locked) { transform: translateX(60px) translateY(4px); }
+
+.node-label {
+    position: absolute;
+    top: -30px;
+    background: var(--card-bg);
+    padding: 0.2rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border: 1px solid var(--card-border);
+}
+
+/* Lab Cards (Timeline style) */
+.roadmap-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.lab-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 500px;
+    margin-top: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+}
+
+.lab-card:hover {
+    border-color: var(--light-purple);
+    box-shadow: 0 12px 40px var(--glow-color);
+}
+
+.lab-image {
+    width: 100%;
+    height: 180px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-muted);
+    font-style: italic;
+    overflow: hidden;
+    border: 1px solid rgba(123, 44, 191, 0.2);
+}
+
+.lab-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lab-card h4 {
+    color: var(--accent-purple);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.lab-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+.evidence-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: rgba(123, 44, 191, 0.2);
+    border: 1px solid var(--primary-purple);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--light-purple);
+    margin-bottom: 0.5rem;
+}
+
+.download-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--primary-purple), var(--secondary-purple));
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    margin: 2rem auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(123, 44, 191, 0.4);
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--glow-color);
+    color: white;
 }
