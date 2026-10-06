@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 12 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html" class="active">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 900px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="road-to-hall-of-fame.html" style="color: var(--accent-purple); text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Volver al Roadmap
+            </a>
+        </div>
+        
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Actividad 12: Validation of file extension with null byte bypass
+            </h2>
+            
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-layer-group"></i> Nivel</h4>
+                <p style="color: var(--text-muted);">Apprentice</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bug"></i> Tipo de explotación</h4>
+                <p style="color: var(--text-muted);">Path Traversal con evasión de validación de extensión mediante byte nulo (Null Byte Injection) / CWE-22 y CWE-158.</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bullseye"></i> Objetivo del laboratorio</h4>
+                <p style="text-align: justify;">Comprender las fallas de seguridad originadas por la discrepancia en el manejo de terminadores de cadena entre lenguajes de alto nivel y llamadas del sistema en C/C++, demostrando cómo la inyección de un byte nulo (%00) permite eludir las restricciones de extensión de archivo requerida para acceder y divulgar archivos críticos fuera del directorio autorizado.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-book"></i> Explicación técnica (Marco Teórico)</h4>
+                <p style="text-align: justify; margin-bottom: 1rem;">Muchas aplicaciones web intentan mitigar ataques de Path Traversal validando que el nombre del archivo termine con una extensión permitida (por ejemplo, validando que finalice con .png o .jpg). Históricamente, en entornos donde el intérprete interactúa directamente con APIs del sistema de archivos escritas en C, las cadenas de texto son delimitadas por un carácter de terminación nulo (\0 o ASCII 0x00).</p>
+                <p style="text-align: justify; margin-bottom: 1rem;">Cuando una aplicación web recibe una entrada codificada en URL que contiene %00, el lenguaje de alto nivel puede procesar la cadena completa para validar si concluye con la extensión requerida. Sin embargo, al enviar dicha ruta a la función de apertura del sistema de archivos subyacente, la lectura de la cadena se trunca inmediatamente en el byte nulo, descartando por completo el sufijo posterior (MITRE, 2023).</p>
+                <p style="text-align: justify;">De acuerdo con CISA (2022) y OWASP Foundation (2023), depender únicamente de la validación sintáctica de sufijos sin saneamiento de caracteres de control ni canonicalización permite que un atacante combine secuencias de escape de directorios con la inyección de byte nulo.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple); margin-bottom: 1.5rem;"><i class="fas fa-list-ol"></i> Procedimiento y Evidencias</h4>
+                
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 1:</strong> Se inició el entorno del laboratorio provisto por Web Security Academy (File path traversal, validation of file extension with null byte bypass) y se configuró Burp Suite Community Edition para interceptar el tráfico HTTP del navegador integrado.</p>
+                    
+                    <p style="margin-bottom: 1rem; margin-top: 2rem;"><strong>Paso 2:</strong> En la pestaña Proxy > HTTP history, se localizó la solicitud HTTP dirigida al endpoint /image encargada de recuperar las imágenes de los productos (parámetro filename), observando que utiliza extensiones de imagen estándar.</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura12.1.png" alt="Evidencia 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura12.2.png" alt="Evidencia 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 3:</strong> Se seleccionó la solicitud HTTP (GET /image?filename=36.jpg HTTP/2) y se envió al módulo Repeater utilizando el atajo Ctrl + R o el menú contextual para realizar pruebas controladas de manipulación del parámetro. </p>
+
+                    <p style="margin-bottom: 1rem;"><strong>Paso 4:</strong> Se construyó la carga útil (payload) modificando el valor de filename. Para evadir la regla que exige una extensión válida al final, se inyectaron secuencias de retroceso seguidas de la ruta del archivo objetivo, un byte nulo codificado en URL (%00) y la extensión requerida: ../../../etc/passwd%00.png </p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura12.3.png" alt="Evidencia 3" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura12.4.png" alt="Evidencia 4" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 5:</strong> Se emitió la solicitud manipulada y se analizó la respuesta HTTP devuelta por el servidor (código 200 OK), constatando la extracción exitosa del contenido del archivo /etc/passwd en el cuerpo de la respuesta, lo cual confirma la vulnerabilidad.</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura12.5.png" alt="Evidencia 5" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura12.6.png" alt="Evidencia 6" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-terminal"></i> Explicación del payload</h4>
+                <p><strong>Payload utilizado:</strong> <code>../../../etc/passwd%00.png</code></p>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong>Fase de validación de la aplicación:</strong> La aplicación web evalúa la cadena completa. Dado que los últimos 4 caracteres coinciden exactamente con .png, la comprobación resulta verdadera y la petición es autorizada.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Fase de ejecución del sistema operativo:</strong> La cadena se entrega a las funciones del núcleo o librerías del sistema de archivos en C. El compilador interpreta %00 como el carácter terminador de cadena. Como consecuencia, la lectura del nombre del archivo se detiene antes del byte nulo.</li>
+                    <li><strong>Resolución de ruta:</strong> El sistema operativo resuelve los saltos relativos retrocediendo hasta el directorio raíz y devuelve el contenido del archivo de cuentas del sistema, saltándose la restricción de tipo de archivo impuesta en la capa de software.</li>
+                </ol>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-shield-alt"></i> Mitigación recomendada</h4>
+                <p style="text-align: justify; margin-bottom: 1rem;">Para corregir y prevenir ataques con inyección de caracteres nulos, se deben seguir las siguientes medidas de defensa en profundidad (OWASP Foundation, 2023; CISA, 2022):</p>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted);">
+                    <li style="margin-bottom: 0.5rem;"><strong>Actualización de versiones y saneamiento de entradas:</strong> Asegurarse de utilizar versiones modernas de los lenguajes de desarrollo. Asimismo, rechazar explícitamente o limpiar cualquier entrada que contenga bytes nulos (%00, \0, 0x00).</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Canonicalización estricta de rutas:</strong> Resolver la ruta canónica y absoluta del archivo mediante funciones seguras del entorno antes de realizar cualquier validación de sufijo o acceso.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Verificación de contención de directorio:</strong> Validar que la ruta canónica obtenida comience indefectiblemente con el prefijo del directorio base autorizado.</li>
+                    <li><strong>Identificadores indirectos:</strong> Eliminar por completo el paso de rutas y nombres de archivos controlados por el usuario. Se recomienda mapear las imágenes a identificadores numéricos o UUIDs almacenados en una base de datos.</li>
+                </ol>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 3rem;">
+                <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Reporte Oficial</h4>
+                <a href="reportes/ReporteAct12_182928.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i> Descargar Reporte (PDF)
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

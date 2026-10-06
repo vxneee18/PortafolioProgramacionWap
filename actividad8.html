@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 08 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html" class="active">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 900px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="road-to-hall-of-fame.html" style="color: var(--accent-purple); text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Volver al Roadmap
+            </a>
+        </div>
+        
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Actividad 08: File path traversal, traversal sequences blocked with absolute path bypass
+            </h2>
+            
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-layer-group"></i> Nivel</h4>
+                <p style="color: var(--text-muted);">Apprentice</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bug"></i> Tipo de explotación</h4>
+                <p style="color: var(--text-muted);">Path Traversal Bypass / CWE-22: Improper Limitation of a Pathname to a Restricted Directory.</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bullseye"></i> Objetivo del laboratorio</h4>
+                <p style="text-align: justify;">El objetivo de este laboratorio es evadir los filtros de seguridad que bloquean secuencias de salto de directorio (como <code>../</code>) explotando el uso inseguro de rutas relativas y absolutas, con el fin de acceder al archivo protegido <code>/etc/passwd</code> del servidor.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-book"></i> Explicación técnica (Marco Teórico)</h4>
+                <p style="text-align: justify; margin-bottom: 1rem;">En un intento por mitigar ataques básicos de Directory Traversal, los desarrolladores suelen implementar filtros de validación de entrada que bloquean las secuencias comunes de salto, tales como <code>../</code> o <code>..\</code> (OWASP Foundation, 2023).</p>
+                <p style="text-align: justify; margin-bottom: 1rem;">Sin embargo, si la aplicación procesa el nombre de archivo asumiendo implícitamente que es relativo a un directorio de trabajo predeterminado, el filtro resulta ineficaz frente a <strong>rutas absolutas</strong>. Una ruta absoluta es aquella que se especifica desde el nodo raíz de la jerarquía de archivos del sistema operativo, como <code>/etc/passwd</code> en UNIX (MITRE, 2023).</p>
+                <p style="text-align: justify;">De acuerdo con CISA (2022), si no se valida explícitamente que la ruta canónica final resida dentro de los límites del directorio esperado, un atacante puede saltarse por completo el filtro suministrando la ruta absoluta directa al archivo objetivo.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple); margin-bottom: 1.5rem;"><i class="fas fa-list-ol"></i> Procedimiento y Evidencias</h4>
+                
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 1:</strong> Se inició el entorno de pruebas utilizando las credenciales provistas y se preparó Burp Suite Community Edition para interceptar el tráfico.</p>
+                    
+                    <p style="margin-bottom: 1rem; margin-top: 2rem;"><strong>Paso 2:</strong> Al cargar la página de detalles de un producto, la aplicación web realiza solicitudes para obtener recursos estáticos. Se inspeccionó el tráfico en el historial HTTP de Burp Suite, localizando la petición a <code>/image?filename=7.jpg</code> y enviándola al módulo Repeater para manipular los datos de entrada de forma manual.</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura8.1.png" alt="Evidencia Paso 2 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura8.2.png" alt="Evidencia Paso 2 - 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras 8.1 y 8.2: Navegación de producto y localización de petición en historial HTTP.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 3:</strong> Se preparó la petición dentro de Repeater para alterar el valor del parámetro <code>filename</code>, reconociendo que el uso de la secuencia <code>../</code> generaba un bloqueo por parte del servidor web.</p>
+                    <!-- Imágenes Paso 3 -->
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura8.3.png" alt="Evidencia Paso 3 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura8.4.png" alt="Evidencia Paso 3 - 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras 8.3 y 8.4: Petición original e inyección del payload absoluto en Repeater.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 4:</strong> Se evadió el filtro implementado sustituyendo la petición de archivo relativo por una ruta absoluta, inyectando el payload malicioso <code>/etc/passwd</code>. Al enviar la petición, se obtuvo el estado <code>HTTP/2 200 OK</code> revelando el contenido del archivo de usuarios del sistema Linux.</p>
+                    <div style="text-align: center; margin: 1.5rem 0;">
+                        <img src="img/figura8.5.png" alt="Evidencia Paso 4" style="max-width: 100%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Figura 8.5: Explotación exitosa mediante ruta absoluta entregando /etc/passwd.</p>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 5:</strong> Se recargó la interfaz del navegador, validando exitosamente el compromiso del objetivo con el indicador visual "Lab Solved".</p>
+                    <div style="text-align: center; margin: 1.5rem 0;">
+                        <img src="img/figura8.6.png" alt="Evidencia Paso 5" style="max-width: 100%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Figura 8.6: Confirmación de resolución del laboratorio bypass.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-terminal"></i> Explicación del payload</h4>
+                <p><strong>Payload utilizado:</strong> <code>/etc/passwd</code></p>
+                <p style="text-align: justify; margin-top: 1rem;">A diferencia del laboratorio anterior, la aplicación implementa una defensa que busca y bloquea secuencias de caracteres como <code>../</code>. No obstante, al proporcionar la ruta absoluta <code>/etc/passwd</code> (que inicia directamente en el directorio raíz), la aplicación no encuentra la cadena de escape bloqueada y aprueba la validación. El sistema operativo resuelve la ruta absoluta exactamente como se le solicita, obviando el directorio predeterminado de imágenes.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-shield-alt"></i> Mitigación recomendada</h4>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted);">
+                    <li style="margin-bottom: 0.5rem;"><strong>Evitar concatenaciones inseguras:</strong> Jamás pasar entradas del usuario directamente a las APIs de archivos. Emplear enfoques basados en identificadores indirectos estáticos (OWASP Foundation, 2023).</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Validación de nombre de archivo estricto (Allow-list):</strong> Aplicar expresiones regulares estrictas (regex) para garantizar que el valor contenga únicamente caracteres alfanuméricos válidos y rechazar el uso de diagonales.</li>
+                    <li><strong>Resolución de ruta canónica:</strong> Validar que la ruta absoluta resuelta comience exactamente con la ruta base autorizada de almacenamiento antes de permitir el acceso (CISA, 2022).</li>
+                </ol>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 3rem;">
+                <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Reporte Oficial</h4>
+                <a href="reportes/ReporteAct8_182928.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i> Descargar Reporte (PDF)
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

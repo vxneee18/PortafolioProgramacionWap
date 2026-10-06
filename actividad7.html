@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 07 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <!-- Encabezado Secundario -->
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html" class="active">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 900px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="road-to-hall-of-fame.html" style="color: var(--accent-purple); text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Volver al Roadmap
+            </a>
+        </div>
+        
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Actividad 07: File path traversal, simple case
+            </h2>
+            
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-layer-group"></i> Nivel</h4>
+                <p style="color: var(--text-muted);">Apprentice</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bug"></i> Tipo de explotación</h4>
+                <p style="color: var(--text-muted);">Path Traversal (Directory Traversal) / CWE-22: Improper Limitation of a Pathname to a Restricted Directory.</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bullseye"></i> Objetivo del laboratorio</h4>
+                <p style="text-align: justify;">El objetivo de este entorno de pruebas es explotar una vulnerabilidad de salto de directorio (Path Traversal) en la funcionalidad de visualización de imágenes de productos de la aplicación web, con la finalidad de leer el archivo sensible <code>/etc/passwd</code> del sistema operativo subyacente.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-book"></i> Explicación técnica (Marco Teórico)</h4>
+                <p style="text-align: justify; margin-bottom: 1rem;">El <strong>Path Traversal</strong>, también conocido como Directory Traversal, es una vulnerabilidad de seguridad web crítica que permite a un atacante leer archivos arbitrarios en el servidor que ejecuta la aplicación. Esto incluye código fuente de la aplicación, credenciales, archivos de configuración del sistema operativo y otros datos sensibles (OWASP Foundation, 2023).</p>
+                <p style="text-align: justify; margin-bottom: 1rem;">De acuerdo con la tríada de la seguridad de la información (CIA), esta vulnerabilidad compromete de manera directa la <strong>Confidencialidad</strong> de los datos, ya que expone información a la que el usuario no debería tener acceso (CISA, 2022).</p>
+                <p style="text-align: justify;">La vulnerabilidad ocurre cuando la aplicación web recibe entradas del usuario para construir la ruta de un archivo, pero no implementa los mecanismos de validación adecuados. En un escenario vulnerable, un atacante puede utilizar secuencias de caracteres como <code>../</code> para escapar del directorio previsto, forzando al servidor a navegar hacia atrás en la jerarquía del sistema (MITRE, 2023).</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple); margin-bottom: 1.5rem;"><i class="fas fa-list-ol"></i> Procedimiento y Evidencias</h4>
+                
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 1:</strong> Se inició la máquina de laboratorio utilizando las credenciales provistas por Web Security Academy y se configuró la herramienta Burp Suite Community Edition como proxy HTTP.</p>
+                    
+                    <p style="margin-bottom: 1rem; margin-top: 2rem;"><strong>Paso 2:</strong> Se navegó a la página principal de la tienda y se seleccionó el apartado "View details" de un producto. Al revisar el historial HTTP en Burp Suite, se identificó la petición <code>GET /image?filename=30.jpg</code>. Se envió esta petición específica al módulo Repeater para su manipulación.</p>
+                    <!-- Imágenes Paso 2 -->
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura7.1.png" alt="Evidencia Paso 2 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura7.2.png" alt="Evidencia Paso 2 - 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras 7.1 y 7.2: Interceptación de la petición en Burp Suite Repeater.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 3:</strong> Dentro de Repeater, se modificó el valor original del parámetro <code>filename</code> por el payload malicioso <code>../../../etc/passwd</code> y se envió la petición.</p>
+                    <!-- Imágenes Paso 3 -->
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura7.3.png" alt="Evidencia Paso 3 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura7.4.png" alt="Evidencia Paso 3 - 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras 7.3 y 7.4: Inserción del payload malicioso en el request.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 4:</strong> Se analizó la respuesta del servidor en la que se observó un código de estado <code>HTTP/2 200 OK</code> acompañado del contenido íntegro del archivo <code>/etc/passwd</code> del servidor Linux, confirmando la explotación exitosa.</p>
+                    <!-- Imagen Paso 4 -->
+                    <div style="text-align: center; margin: 1.5rem 0;">
+                        <img src="img/figura7.5.png" alt="Evidencia Paso 4" style="max-width: 100%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Figura 7.5: Respuesta del servidor con los usuarios del sistema.</p>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 5:</strong> Finalmente, se recargó la página en el navegador principal, validando que el sistema de PortSwigger reconociera la vulnerabilidad explotada y mostrando el banner de "Lab Solved".</p>
+                    <!-- Imagen Paso 5 -->
+                    <div style="text-align: center; margin: 1.5rem 0;">
+                        <img src="img/figura7.6.png" alt="Evidencia Paso 5" style="max-width: 100%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Figura 7.6: Confirmación de resolución exitosa del laboratorio.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-terminal"></i> Explicación del payload</h4>
+                <p><strong>Payload utilizado:</strong> <code>../../../etc/passwd</code></p>
+                <p style="text-align: justify; margin-top: 1rem;">La aplicación web asume que las imágenes residen en un directorio específico. Al no validar la entrada, el servidor concatena ciegamente la ruta base con el valor proporcionado por el usuario. La secuencia <code>../</code> indica al sistema que debe ascender un nivel en la jerarquía de directorios. Al enviar <code>../../../</code>, se instruye al sistema a retroceder tres niveles hasta alcanzar la raíz (<code>/</code>), para luego leer <code>etc/passwd</code>.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-shield-alt"></i> Mitigación recomendada</h4>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted);">
+                    <li style="margin-bottom: 0.5rem;"><strong>Evitar la entrada directa del usuario:</strong> Utilizar identificadores indirectos (números o hashes) mapeados a los archivos reales en el backend (OWASP Foundation, 2023).</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Validación fuerte (Allow-listing):</strong> Implementar una lista blanca estricta que solo permita caracteres alfanuméricos y rechace diagonales o puntos.</li>
+                    <li><strong>Canonicalización de rutas:</strong> Resolver la ruta absoluta real utilizando funciones seguras y verificar explícitamente que comience dentro del directorio base esperado (CISA, 2022).</li>
+                </ol>
+            </div>
+
+            <!-- Botón de Descarga de Reporte Específico -->
+            <div style="text-align: center; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 3rem;">
+                <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Reporte Oficial</h4>
+                <a href="reportes/ReporteAct7_182928.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i> Descargar Reporte (PDF)
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

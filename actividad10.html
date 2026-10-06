@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 10 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html" class="active">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 900px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="road-to-hall-of-fame.html" style="color: var(--accent-purple); text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Volver al Roadmap
+            </a>
+        </div>
+        
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Actividad 10: File path traversal, traversal sequences stripped with superfluous URL-decode
+            </h2>
+            
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-layer-group"></i> Nivel</h4>
+                <p style="color: var(--text-muted);">Apprentice</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bug"></i> Tipo de explotación</h4>
+                <p style="color: var(--text-muted);">Path Traversal Bypass mediante Double URL Encoding / CWE-22: Improper Limitation of a Pathname to a Restricted Directory.</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bullseye"></i> Objetivo del laboratorio</h4>
+                <p style="text-align: justify;">El objetivo de esta práctica es evadir los controles de seguridad que bloquean secuencias de evasión de directorios y sus variantes con codificación URL simple, explotando una vulnerabilidad de decodificación URL redundante (superflua) para lograr acceso al archivo protegido <code>/etc/passwd</code>.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-book"></i> Explicación técnica (Marco Teórico)</h4>
+                <p style="text-align: justify; margin-bottom: 1rem;">Para protegerse, los desarrolladores suelen implementar validaciones que bloquean tanto el texto plano (<code>../</code>) como su representación codificada una sola vez (<code>%2e%2e%2f</code>). Sin embargo, una vulnerabilidad de "Double URL Encoding" surge cuando la aplicación decodifica los datos de forma redundante (dos o más veces) después de haber ejecutado el control de seguridad (MITRE, 2023).</p>
+                <p style="text-align: justify; margin-bottom: 1rem;">En un ataque de doble codificación, el atacante codifica el propio carácter de escape <code>%</code> como <code>%25</code>. De este modo, <code>%2e</code> se convierte en <code>%252e</code>.</p>
+                <p style="text-align: justify;">Cuando este payload pasa por el filtro de seguridad, el filtro no reconoce la firma maliciosa y lo permite. Posteriormente, la rutina de decodificación superflua transforma el <code>%252e</code> de regreso a <code>%2e</code>, y luego a <code>.</code>, ensamblando el payload final justo antes de ser enviado al sistema de archivos (CISA, 2022).</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple); margin-bottom: 1.5rem;"><i class="fas fa-list-ol"></i> Procedimiento y Evidencias</h4>
+                
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 1:</strong> Se inició el entorno virtual del laboratorio provisto por Web Security Academy y se configuró Burp Suite Community Edition para la intercepción de tráfico.</p>
+                    
+                    <p style="margin-bottom: 1rem; margin-top: 2rem;"><strong>Paso 2:</strong> Se accedió a la página de descripción de un artículo. En la pestaña de HTTP history, se localizó la petición encargada de renderizar la imagen del producto y se envió a la herramienta Repeater.</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura10.1.png" alt="Evidencia Paso 2 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura10.2.png" alt="Evidencia Paso 2 - 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras 10.1 y 10.2: Identificación de la petición en el historial HTTP.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 3:</strong> Se observó que la aplicación bloqueaba exitosamente las secuencias estándar. Por ello, se modificó el parámetro inyectando el payload con doble codificación URL: <code>%252e%252e%252f</code>.</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura10.3.png" alt="Evidencia Paso 3 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura10.4.png" alt="Evidencia Paso 3 - 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras 10.3 y 10.4: Petición original e inyección del payload con Double URL Encoding.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 4:</strong> Se ejecutó la petición maliciosa al servidor. El mecanismo de decodificación redundante tradujo la secuencia hasta construir la ruta absoluta hacia el archivo objetivo devolviendo sus datos.</p>
+                    <div style="text-align: center; margin: 1.5rem 0;">
+                        <img src="img/figura10.5.png" alt="Evidencia Paso 4" style="max-width: 100%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Figura 10.5: Respuesta del servidor entregando /etc/passwd tras decodificación superflua.</p>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 5:</strong> Se recargó la sesión en el navegador principal, validando de manera gráfica la consecución y resolución exitosa del desafío técnico ("Lab Solved").</p>
+                    <div style="text-align: center; margin: 1.5rem 0;">
+                        <img src="img/figura10.6.png" alt="Evidencia Paso 5" style="max-width: 100%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Figura 10.6: Confirmación de resolución del laboratorio bypass.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-terminal"></i> Explicación del payload</h4>
+                <p><strong>Payload utilizado:</strong> <code>%252e%252e%252f%252e%252e%252f%252e%252e%252fetc/passwd</code></p>
+                <p style="text-align: justify; margin-top: 1rem;">Al enviar <code>%252e%252e%252f</code>, el filtro de validación, que típicamente buscaría un <code>.</code> o un <code>%2e</code>, evalúa la cadena y solo observa caracteres permitidos y signos de porcentaje que no forman un patrón conocido de salto de directorio. Después de pasar este filtro, la aplicación implementa llamadas de decodificación de URLs redundantes. En la primera, <code>%25</code> se transforma en <code>%</code> (quedando <code>%2e%2e%2f</code>). En la segunda pasada, se convierte en su forma canónica: <code>../</code>.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-shield-alt"></i> Mitigación recomendada</h4>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted);">
+                    <li style="margin-bottom: 0.5rem;"><strong>Unificar la lógica de decodificación:</strong> Garantizar que los datos suministrados por el usuario se decodifiquen estrictamente una sola vez y antes de ejecutar cualquier validación de seguridad (OWASP Foundation, 2023).</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Validación tras la canonicalización:</strong> Ejecutar las validaciones de listas blancas (allow-lists) únicamente sobre la forma final del string decodificado y después de resolver la ruta canónica absoluta en el sistema operativo.</li>
+                    <li><strong>Mapeo indirecto:</strong> Rechazar el paso de rutas de sistema de archivos en los parámetros HTTP y recuperar la ubicación mapeando un ID numérico (CISA, 2022).</li>
+                </ol>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 3rem;">
+                <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Reporte Oficial</h4>
+                <a href="reportes/ReporteAct10_182928.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i> Descargar Reporte (PDF)
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

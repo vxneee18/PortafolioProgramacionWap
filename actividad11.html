@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 11 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html" class="active">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 900px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="road-to-hall-of-fame.html" style="color: var(--accent-purple); text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Volver al Roadmap
+            </a>
+        </div>
+        
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Actividad 11: File path traversal, validation of start of path
+            </h2>
+            
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-layer-group"></i> Nivel</h4>
+                <p style="color: var(--text-muted);">Apprentice</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bug"></i> Tipo de vulnerabilidad</h4>
+                <p style="color: var(--text-muted);">Path Traversal por validación insuficiente de prefijo / CWE-22.</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bullseye"></i> Objetivo del laboratorio</h4>
+                <p style="text-align: justify;">Comprender las deficiencias de implementar validaciones de seguridad basadas únicamente en el prefijo (inicio) de una ruta de archivo y demostrar cómo la falta de canonicalización permite a un usuario acceder a archivos fuera del directorio restringido.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-book"></i> Explicación técnica (Marco Teórico)</h4>
+                <p style="text-align: justify; margin-bottom: 1rem;">Una estrategia defensiva defectuosa contra los ataques de Path Traversal consiste en verificar si el nombre de archivo proporcionado comienza con una ruta base esperada (por ejemplo, validar que empiece con <code>/var/www/images/</code>).</p>
+                <p style="text-align: justify; margin-bottom: 1rem;">El fallo crítico radica en que el sistema operativo procesa las secuencias de navegación de directorios de forma dinámica. Si un usuario proporciona una ruta que satisface la validación del prefijo, pero inmediatamente después anexa secuencias de "salto hacia atrás" (MITRE, 2023), el filtro lo considerará válido.</p>
+                <p style="text-align: justify;">De acuerdo con CISA (2022), validar la forma original de una cadena sin interpretarla como lo haría el sistema de archivos conduce a la evasión de los controles (OWASP Foundation, 2023).</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple); margin-bottom: 1.5rem;"><i class="fas fa-list-ol"></i> Procedimiento y Evidencias</h4>
+                
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 1 y 2:</strong> Inicialización de herramientas de intercepción e identificación de los requerimientos de la ruta (prefijo específico) a través del historial HTTP.</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura11.1.png" alt="Evidencia 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura11.2.png" alt="Evidencia 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 3 y 4:</strong> Pruebas de validación en Repeater y demostración teórica del salto de directorios utilizando el prefijo de ruta esperado como base inicial.</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura11.3.png" alt="Evidencia 3" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura11.4.png" alt="Evidencia 4" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 5:</strong> Comprobación de la resolución del laboratorio a través del visor web tras la ejecución teórica exitosa.</p>
+                    <div style="text-align: center; margin: 1.5rem 0;">
+                        <img src="img/figura11.5.png" alt="Evidencia 5" style="max-width: 100%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-shield-alt"></i> Mitigación recomendada</h4>
+                <p style="text-align: justify; margin-bottom: 1rem;">Para remediar esta vulnerabilidad, las defensas deben basarse en la ruta real que el sistema operativo accederá, no en la cadena de texto original (OWASP Foundation, 2023).</p>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted);">
+                    <li style="margin-bottom: 0.5rem;"><strong>Canonicalización de rutas:</strong> Resolver la ruta absoluta real utilizando funciones seguras proporcionadas por el entorno (como <code>realpath()</code>) que resuelven todas las secuencias de evasión.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Validación post-canonicalización:</strong> Una vez obtenida la ruta canónica, verificar explícitamente que dicha ruta comience con el directorio base autorizado.</li>
+                    <li><strong>Mapeo indirecto:</strong> Evitar que el usuario manipule rutas de archivos directamente y usar identificadores internos de base de datos (CISA, 2022).</li>
+                </ol>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 3rem;">
+                <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Reporte Oficial</h4>
+                <a href="reportes/ReporteAct11_182928.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i> Descargar Reporte (PDF)
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

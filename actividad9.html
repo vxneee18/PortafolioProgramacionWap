@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 09 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html" class="active">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 900px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="road-to-hall-of-fame.html" style="color: var(--accent-purple); text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Volver al Roadmap
+            </a>
+        </div>
+        
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Actividad 09: File path traversal, traversal sequences stripped non-recursively
+            </h2>
+            
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-layer-group"></i> Nivel</h4>
+                <p style="color: var(--text-muted);">Apprentice</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bug"></i> Tipo de explotación</h4>
+                <p style="color: var(--text-muted);">Path Traversal Bypass / CWE-22: Improper Limitation of a Pathname to a Restricted Directory.</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bullseye"></i> Objetivo del laboratorio</h4>
+                <p style="text-align: justify;">El objetivo de este laboratorio es vulnerar una aplicación web que implementa un mecanismo de defensa de sanitización de entradas defectuoso. Se busca evadir un filtro que elimina secuencias de salto de directorio de forma no recursiva, logrando así recuperar el archivo <code>/etc/passwd</code>.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-book"></i> Explicación técnica (Marco Teórico)</h4>
+                <p style="text-align: justify; margin-bottom: 1rem;">Una técnica común de mitigación contra ataques de Path Traversal es la "sanitización" o limpieza de las entradas del usuario. En este enfoque, el servidor busca cadenas maliciosas conocidas, como <code>../</code>, y las elimina (OWASP Foundation, 2023).</p>
+                <p style="text-align: justify; margin-bottom: 1rem;">El fallo crítico ocurre cuando esta sanitización se implementa de manera <strong>no recursiva</strong>. Un filtro no recursivo recorre la cadena una única vez. Si un atacante inyecta secuencias anidadas como <code>....//</code>, el filtro identificará la secuencia central <code>../</code> y la eliminará. Sin embargo, al eliminarse el segmento interno, los caracteres restantes colapsan y forman una nueva secuencia maliciosa <code>../</code> que el filtro ya no vuelve a revisar (MITRE, 2023).</p>
+                <p style="text-align: justify;">Como establece CISA (2022), las estrategias basadas en reemplazo simple son frágiles, permitiendo a los atacantes aplicar técnicas de ofuscación que comprometen la Confidencialidad de la información.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple); margin-bottom: 1.5rem;"><i class="fas fa-list-ol"></i> Procedimiento y Evidencias</h4>
+                
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 1:</strong> Se ingresó al entorno de pruebas provisto y se inicializó Burp Suite para actuar como proxy de intercepción HTTP.</p>
+                    
+                    <p style="margin-bottom: 1rem; margin-top: 2rem;"><strong>Paso 2:</strong> Se navegó hacia el detalle de un producto. En el historial HTTP de Burp Suite, se identificó la solicitud original de obtención del archivo (<code>GET /image?filename=6.jpg</code>) y se envió al módulo Repeater.</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura9.1.png" alt="Evidencia Paso 2 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura9.2.png" alt="Evidencia Paso 2 - 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras 9.1 y 9.2: Identificación de la petición de imagen en el historial HTTP.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 3:</strong> Una vez en Repeater, se identificó que el servidor eliminaba la secuencia estándar <code>../</code>. Consecuentemente, se modificó el parámetro inyectando el payload ofuscado mediante secuencias anidadas <code>....//</code>.</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figura9.3.png" alt="Evidencia Paso 3 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura9.4.png" alt="Evidencia Paso 3 - 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras 9.3 y 9.4: Petición original e inyección del payload no recursivo.</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 4:</strong> Se envió la solicitud manipulada. Al procesarla, el servidor eliminó la porción media no recursivamente, reestructurando internamente el ataque a una ruta Path Traversal válida y devolviendo el archivo de usuarios.</p>
+                    <div style="text-align: center; margin: 1.5rem 0;">
+                        <img src="img/figura9.5.png" alt="Evidencia Paso 4" style="max-width: 100%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Figura 9.5: Respuesta del servidor entregando /etc/passwd.</p>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 5:</strong> Se recargó la vista del navegador, corroborando la correcta explotación de la vulnerabilidad mediante la obtención de la insignia "Lab Solved".</p>
+                    <div style="text-align: center; margin: 1.5rem 0;">
+                        <img src="img/figura9.6.png" alt="Evidencia Paso 5" style="max-width: 100%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Figura 9.6: Confirmación de resolución del laboratorio bypass.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-terminal"></i> Explicación del payload</h4>
+                <p><strong>Payload utilizado:</strong> <code>....//....//....//etc/passwd</code></p>
+                <p style="text-align: justify; margin-top: 1rem;">La aplicación contiene una rutina de seguridad deficiente. Al proporcionar la cadena anidada <code>....//</code>, la aplicación encuentra el patrón central <code>../</code> y lo suprime. Tras esta eliminación, los dos puntos iniciales y la barra diagonal final convergen matemáticamente para crear una nueva directiva de salto de directorio <code>../</code>. Este proceso ocurre para cada uno de los tres bloques inyectados, por lo que el servidor termina interpretando la ruta <code>../../../etc/passwd</code>.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-shield-alt"></i> Mitigación recomendada</h4>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted);">
+                    <li style="margin-bottom: 0.5rem;"><strong>Validación fuerte basada en Allow-list:</strong> La validación debe rechazar contundentemente cualquier entrada que contenga secuencias dudosas en lugar de intentar "limpiar" la entrada maliciosa (CISA, 2022).</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Utilizar identificadores indirectos:</strong> Eliminar por completo el uso de nombres de archivo suministrados por el cliente (OWASP Foundation, 2023).</li>
+                    <li><strong>Restringir permisos del proceso:</strong> Configurar el servicio web para que se ejecute en un entorno de sistema de archivos aislado (chroot jail).</li>
+                </ol>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 3rem;">
+                <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Reporte Oficial</h4>
+                <a href="reportes/ReporteAct9_182928.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i> Descargar Reporte (PDF)
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
