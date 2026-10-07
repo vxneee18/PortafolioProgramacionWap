@@ -76,25 +76,42 @@
                 <h4 style="color: var(--accent-purple); margin-bottom: 1.5rem;"><i class="fas fa-list-ol"></i> Procedimiento y Evidencias</h4>
                 
                 <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
-                    <p style="margin-bottom: 1rem;"><strong>Paso 1 y 2:</strong> Inicialización de herramientas de intercepción e identificación de los requerimientos de la ruta (prefijo específico) a través del historial HTTP.</p>
+                    <p style="margin-bottom: 1rem;"><strong>Paso 1:</strong> Se inició el entorno virtual del laboratorio provisto por Web Security Academy y
+                            se configuró Burp Suite Community Edition para la intercepción de tráfico HTTP.</p>
+                    
+                    <p style="margin-bottom: 1rem; margin-top: 2rem;"><strong>Paso 2:</strong> En la sección del historial HTTP (HTTP History) de Burp Suite, se identificó la
+                            solicitud que obtiene los recursos de imágenes. Se observó que el parámetro de la ruta
+                            requería un directorio. </p>
                     <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                        <img src="img/figura11.1.png" alt="Evidencia 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
-                        <img src="img/figura11.2.png" alt="Evidencia 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura11.1.png" alt="Evidencia Paso 2 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura11.2.png" alt="Evidencia Paso 2 - 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
                     </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras 11.1 y 11.2: Navegación de producto y localización de petición en historial HTTP.</p>
                 </div>
 
                 <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
-                    <p style="margin-bottom: 1rem;"><strong>Paso 3 y 4:</strong> Pruebas de validación en Repeater y demostración teórica del salto de directorios utilizando el prefijo de ruta esperado como base inicial.</p>
+                    <p style="margin-bottom: 1rem;"><strong>Paso 3:</strong> Se envió la solicitud al módulo Repeater para realizar pruebas de validación. </p>
+                    <!-- Imágenes Paso 3 -->
                     <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                        <img src="img/figura11.3.png" alt="Evidencia 3" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
-                        <img src="img/figura11.4.png" alt="Evidencia 4" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura11.3.png" alt="Evidencia Paso 3 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura11.4.png" alt="Evidencia Paso 3 - 2" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
                     </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras 11.3 y 11.4: Petición original e inyección del payload absoluto en Repeater.</p>
                 </div>
 
                 <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
-                    <p style="margin-bottom: 1rem;"><strong>Paso 5:</strong> Comprobación de la resolución del laboratorio a través del visor web tras la ejecución teórica exitosa.</p>
+                    <p style="margin-bottom: 1rem;"><strong>Paso 4:</strong> Se evadió el filtro implementado sustituyendo la petición de archivo relativo por una ruta absoluta, inyectando el payload malicioso <code>/etc/passwd</code>. Al enviar la petición, se obtuvo el estado <code>HTTP/2 200 OK</code> revelando el contenido del archivo de usuarios del sistema Linux.</p>
                     <div style="text-align: center; margin: 1.5rem 0;">
-                        <img src="img/figura11.5.png" alt="Evidencia 5" style="max-width: 100%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <img src="img/figura11.5.png" alt="Evidencia Paso 4" style="max-width: 100%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Figura 11.5: Explotación exitosa mediante ruta absoluta entregando /etc/passwd.</p>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Paso 5:</strong> Se recargó la interfaz del navegador, validando exitosamente el compromiso del objetivo con el indicador visual "Lab Solved".</p>
+                    <div style="text-align: center; margin: 1.5rem 0;">
+                        <img src="img/figura11.6.png" alt="Evidencia Paso 5" style="max-width: 100%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Figura 11.6: Confirmación de resolución del laboratorio bypass.</p>
                     </div>
                 </div>
             </div>
