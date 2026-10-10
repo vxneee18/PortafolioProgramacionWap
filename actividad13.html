@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 13 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html" class="active">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 900px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="road-to-hall-of-fame.html" style="color: var(--accent-purple); text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Volver al Roadmap
+            </a>
+        </div>
+        
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Actividad 13: Red Team Report - Pentesting de My File Server 1
+            </h2>
+            
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-layer-group"></i> Nivel</h4>
+                <p style="color: var(--text-muted);">Avanzado / Red Team Analyst</p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bullseye"></i> Objetivo del proyecto</h4>
+                <p style="text-align: justify;">Desarrollar un informe técnico profesional de pruebas de penetración (Pentesting Report) sobre la máquina vulnerable My File Server 1, aplicando una metodología estructurada de evaluación de seguridad, documentando hallazgos, evidencias técnicas, análisis de riesgo y propuestas de mitigación.</p>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-tasks"></i> Alcance y Metodología</h4>
+                <p style="text-align: justify; margin-bottom: 1rem;">El entorno evaluado simula una infraestructura corporativa vulnerable orientada a servicios de almacenamiento y servidor de archivos. Para esta evaluación, se actuó bajo el rol de analista Red Team, aplicando marcos de trabajo reconocidos en la industria como <strong>PTES</strong> y directrices <strong>OWASP</strong>.</p>
+                <ul style="margin-left: 1.5rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    <li>Fase 1: Reconocimiento y Enumeración</li>
+                    <li>Fase 2: Identificación de Vulnerabilidades</li>
+                    <li>Fase 3: Explotación (Acceso Inicial)</li>
+                    <li>Fase 4: Escalada de Privilegios</li>
+                </ul>
+            </div>
+
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple); margin-bottom: 1.5rem;"><i class="fas fa-laptop-code"></i> Hallazgos y Ejecución Técnica</h4>
+                
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Fase de Reconocimiento y Enumeración:</strong></p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Mediante escaneos de red activos (Nmap) se identificaron múltiples servicios expuestos, destacando un servidor FTP con acceso anónimo habilitado y un servicio ProFTPD 1.3.5 vulnerable. Asimismo, se enumeraron recursos compartidos y usuarios mediante los protocolos SMB y NFS.</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <figure style="max-width: 48%; margin: 0;">
+                            <img src="img/tu-captura-nmap.png" alt="Escaneo Nmap" style="width: 100%; border: 1px solid var(--card-border); border-radius: 5px;" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjE1MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPltJbnNlcnRhIHR1IGltYWdlbiBhZXXDrV08L3RleHQ+PC9zdmc+'">
+                            <figcaption style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 0.5rem; font-style: italic;">Figura 13.1: Escaneo de puertos y descubrimiento de servicios.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Explotación Inicial:</strong></p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Se aprovechó una vulnerabilidad crítica en el módulo <code>mod_copy</code> de ProFTPD. Esta falla permitió manipular archivos internos para implantar una llave pública SSH autorizada por el atacante, logrando acceso inicial al sistema bajo el usuario <code>smbuser</code>.</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <figure style="max-width: 48%; margin: 0;">
+                            <img src="img/tu-captura-ssh.png" alt="Acceso SSH" style="width: 100%; border: 1px solid var(--card-border); border-radius: 5px;" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjE1MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPltJbnNlcnRhIHR1IGltYWdlbiBhZXXDrV08L3RleHQ+PC9zdmc+'">
+                            <figcaption style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 0.5rem; font-style: italic;">Figura 13.2: Acceso inicial logrado explotando ProFTPD y llaves SSH.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--primary-purple);">
+                    <p style="margin-bottom: 1rem;"><strong>Escalada de Privilegios:</strong></p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Tras obtener el punto de apoyo inicial, la enumeración local reveló que el sistema era susceptible a <strong>CVE-2021-4034 (PwnKit)</strong>. Utilizando el framework Metasploit, se explotó el componente Polkit, logrando escalar privilegios exitosamente al usuario <code>root</code> y comprometiendo la integridad total del servidor.</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <figure style="max-width: 48%; margin: 0;">
+                            <img src="img/tu-captura-root.png" alt="Acceso Root" style="width: 100%; border: 1px solid var(--card-border); border-radius: 5px;" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjE1MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPltJbnNlcnRhIHR1IGltYWdlbiBhZXXDrV08L3RleHQ+PC9zdmc+'">
+                            <figcaption style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 0.5rem; font-style: italic;">Figura 13.3: Escalada de privilegios y obtención de la bandera como usuario root.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 3rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <div>
+                    <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Reporte de Pentesting</h4>
+                    <a href="reportes/ReporteAct13_Pentesting.pdf" class="download-btn" download style="background: linear-gradient(45deg, #2b5876, #4e4376);">
+                        <i class="fas fa-file-pdf"></i> Informe Técnico
+                    </a>
+                </div>
+                <div>
+                    <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Presentación Directiva</h4>
+                    <a href="reportes/PresentacionAct13_Ejecutiva.pdf" class="download-btn" download style="background: linear-gradient(45deg, #1e3c72, #2a5298);">
+                        <i class="fas fa-file-powerpoint"></i> Resumen Ejecutivo
+                    </a>
+                </div>
+                <div>
+                    <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Anexo de Evidencias</h4>
+                    <a href="reportes/EvidenciasAct13_Completas.pdf" class="download-btn" download style="background: linear-gradient(45deg, #434343, #000000);">
+                        <i class="fas fa-images"></i> Evidencia Completa
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
