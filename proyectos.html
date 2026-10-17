@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -30,7 +30,7 @@
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="actividades.html">Actividades</a></li>
                     <li><a href="road-to-hall-of-fame.html">Road to Hall of Fame</a></li>
-                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="proyectos.html" class="active">Proyectos</a></li>
                     <li><a href="certificaciones.html">Certificaciones</a></li>
                     <li><a href="index.html#contacto">Contacto</a></li>
                 </ul>
@@ -39,12 +39,77 @@
     </header>
 
     <main class="main-content">
-        <section class="section card-container reveal">
-            <div class="card">
-                <h3 class="section-title">Proyectos</h3>
-                <p>Esta sección estará disponible próximamente.</p>
+        <h2 style="text-align: center; color: var(--light-purple); margin-bottom: 0.5rem; font-size: 2.5rem; text-shadow: 0 0 10px var(--glow-color);">Mis Proyectos</h2>
+        <h3 style="text-align: center; color: var(--accent-purple); font-size: 1.8rem; margin-bottom: 1.5rem;">RUTA DE PROYECTOS INTEGRADORES</h3>
+
+        <!-- Barra de Progreso -->
+        <div style="max-width: 600px; margin: 0 auto 4rem auto; background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 15px; border: 1px solid var(--card-border); text-align: center;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-light); font-weight: 600;">
+                <span>Progreso de Proyectos</span>
+                <span>1 de 2 completados (50%)</span>
             </div>
-        </section>
+            <div style="width: 100%; background: #2a2a2a; border-radius: 10px; height: 20px; overflow: hidden; border: 1px solid var(--card-border);">
+                <div style="width: 50%; height: 100%; background: linear-gradient(90deg, var(--primary-purple), #4CAF50); border-radius: 10px; transition: width 1s ease-in-out;"></div>
+            </div>
+        </div>
+
+        <div class="roadmap-container">
+            <!-- Línea conectora -->
+            <div class="roadmap-line"></div>
+
+            <!-- Paso 1: PR01 (Pendiente) -->
+            <div class="roadmap-step">
+                <div class="roadmap-node node-locked node-left reveal" title="Proyecto 01 (Pendiente)">
+                    <span class="node-label">PR01</span>
+                    <i class="fas fa-hourglass-half"></i>
+                </div>
+                <div class="lab-card reveal" style="width: 90%; max-width: 550px; margin-top: 1.5rem; border-style: dashed; opacity: 0.85;">
+                    <div class="lab-image" style="height: 140px; background: rgba(20, 10, 35, 0.6);">
+                        <div style="text-align: center; color: var(--text-muted);">
+                            <i class="fas fa-clock" style="font-size: 2.5rem; color: var(--light-purple); margin-bottom: 0.5rem; display: block;"></i>
+                            <span>En desarrollo / Pendiente de publicación</span>
+                        </div>
+                    </div>
+                    <h4>PR01: Proyecto Integrador I</h4>
+                    <span class="evidence-badge" style="background: rgba(255, 193, 7, 0.15); border-color: #FFC107; color: #FFC107;">
+                        <i class="fas fa-clock"></i> Pendiente
+                    </span>
+                    <p>Primera fase de evaluación y documentación de proyectos de Seguridad Informática. Próximamente se integrará el reporte completo y sus evidencias correspondientes.</p>
+                </div>
+            </div>
+
+            <!-- Paso 2: PR02 (Completado) -->
+            <div class="roadmap-step">
+                <a href="pr02.html" class="roadmap-node node-completed node-right reveal" title="Ir a Proyecto PR02">
+                    <span class="node-label">PR02</span>
+                    <i class="fas fa-shield-alt"></i>
+                </a>
+                <a href="pr02.html" style="text-decoration: none; color: inherit; width: 90%; max-width: 550px;" class="reveal">
+                    <div class="lab-card" style="width: 100%; margin-top: 1.5rem;">
+                        <div class="lab-image" style="height: 160px; background: linear-gradient(135deg, rgba(90,24,154,0.4), rgba(11,5,16,0.9));">
+                            <div style="text-align: center; padding: 1rem;">
+                                <i class="fas fa-network-wired" style="font-size: 2.8rem; color: var(--accent-purple); margin-bottom: 0.5rem; display: block;"></i>
+                                <span style="font-style: normal; font-weight: 600; color: #fff; font-size: 0.95rem;">INTERAFAS-LAB v1.0.0 · Compromiso IT → OT (20/20 Retos)</span>
+                            </div>
+                        </div>
+                        <h4>PR02: Informe de Auditoría de Seguridad Ofensiva (INTERAFAS-LAB)</h4>
+                        <span class="evidence-badge" style="background: rgba(76, 175, 80, 0.2); border-color: #4CAF50; color: #4CAF50;">
+                            <i class="fas fa-check-double"></i> Completado (20/20 Hallazgos)
+                        </span>
+                        <p>Evaluación integral de seguridad y resiliencia en infraestructura crítica simulada de agua y saneamiento (INTERAFAS). Incluye alcance, metodología (OWASP WSTG, API Top 10, NIST SP 800-82), inventario maestro de 20 vulnerabilidades, análisis de cadena de ataque IT → OT y plan de remediación.</p>
+                        <span style="color: var(--accent-purple); font-size: 0.9rem; font-weight: 600;"><i class="fas fa-arrow-right"></i> Ver informe completo de auditoría (PR02-01 a PR02-10)</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Meta Final -->
+            <div class="roadmap-step">
+                <div class="roadmap-node node-current node-center reveal" style="width: 95px; height: 95px; font-size: 2.2rem; margin-top: 1rem;">
+                    <span class="node-label">Meta Final</span>
+                    <i class="fas fa-flag-checkered"></i>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
@@ -55,7 +120,3 @@
     <script src="js/main.js"></script>
 </body>
 </html>
-
-
-
-

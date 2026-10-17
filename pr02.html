@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto PR02 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pr-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.35);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            margin-bottom: 2.5rem;
+        }
+        .pr-meta-item span {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        .pr-meta-item strong {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+        .pr-section {
+            margin-bottom: 3rem;
+        }
+        .pr-section h3 {
+            color: var(--light-purple);
+            font-size: 1.45rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .pr-section h4 {
+            color: var(--accent-purple);
+            font-size: 1.15rem;
+            margin: 1.5rem 0 0.75rem 0;
+        }
+        .pr-table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+        .pr-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            background: rgba(0, 0, 0, 0.35);
+        }
+        .pr-table th, .pr-table td {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(123, 44, 191, 0.25);
+        }
+        .pr-table th {
+            background: rgba(90, 24, 154, 0.45);
+            color: var(--accent-purple);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .pr-table tr:hover {
+            background: rgba(123, 44, 191, 0.12);
+        }
+        .sev-badge {
+            padding: 0.2rem 0.65rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            text-align: center;
+        }
+        .sev-baja { background: rgba(76, 175, 80, 0.2); color: #81C784; border: 1px solid #4CAF50; }
+        .sev-media { background: rgba(255, 193, 7, 0.2); color: #FFD54F; border: 1px solid #FFC107; }
+        .sev-alta { background: rgba(255, 152, 0, 0.2); color: #FFB74D; border: 1px solid #FF9800; }
+        .sev-critica { background: rgba(244, 67, 54, 0.25); color: #E57373; border: 1px solid #F44336; }
+
+        .reto-card {
+            background: rgba(0, 0, 0, 0.32);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--primary-purple);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s ease;
+        }
+        .reto-card:hover {
+            border-color: var(--light-purple);
+        }
+        .reto-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed rgba(123, 44, 191, 0.35);
+            padding-bottom: 0.6rem;
+        }
+        .reto-header h4 {
+            margin: 0;
+            color: var(--accent-purple);
+            font-size: 1.1rem;
+        }
+        .reto-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .reto-list li {
+            margin-bottom: 0.65rem;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+        .reto-list li strong {
+            color: var(--text-main);
+        }
+        code {
+            background: rgba(157, 78, 221, 0.18);
+            color: #e0aaff;
+            padding: 0.15rem 0.45rem;
+            border-radius: 5px;
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+            font-size: 0.86em;
+        }
+        .chain-phase {
+            background: rgba(90, 24, 154, 0.18);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .chain-phase h5 {
+            color: var(--accent-purple);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .chain-arrow {
+            text-align: center;
+            color: var(--light-purple);
+            font-size: 1.4rem;
+            margin: 0.3rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html" class="active">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 1050px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="proyectos.html" style="color: var(--accent-purple); text-decoration: none; font-weight: 600;">
+                <i class="fas fa-arrow-left"></i> Volver al Camino de Proyectos
+            </a>
+        </div>
+
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 0.4rem;">
+                INFORME DE AUDITORÍA DE SEGURIDAD OFENSIVA (PR02)
+            </h2>
+            <p style="color: var(--accent-purple); font-size: 1.15rem; font-weight: 600; margin-bottom: 1.5rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Evaluación de Seguridad y Resiliencia en Infraestructura Crítica Simulada
+            </p>
+
+            <!-- Metadatos del Proyecto -->
+            <div class="pr-meta-grid">
+                <div class="pr-meta-item">
+                    <span>Entorno</span>
+                    <strong>INTERAFAS-LAB (Edición Estudiante v1.0.0)</strong>
+                </div>
+                <div class="pr-meta-item">
+                    <span>Asignatura</span>
+                    <strong>CNO IV (T37A): Seguridad Informática</strong>
+                </div>
+                <div class="pr-meta-item">
+                    <span>Docente</span>
+                    <strong>Mtro. Servando López Contreras</strong>
+                </div>
+                <div class="pr-meta-item">
+                    <span>Institución</span>
+                    <strong>Universidad Politécnica de San Luis Potosí (UPSLP)</strong>
+                </div>
+                <div class="pr-meta-item">
+                    <span>Fecha de Evaluación</span>
+                    <strong>Octubre de 2026</strong>
+                </div>
+                <div class="pr-meta-item">
+                    <span>Alcance del Documento</span>
+                    <strong>Retos 01 al 20</strong>
+                </div>
+            </div>
+
+            <!-- 1. ALCANCE Y METODOLOGÍA (PR02-01) -->
+            <section class="pr-section">
+                <h3><i class="fas fa-compass"></i> 1. Alcance y Metodología</h3>
+
+                <h4>1.1 Objetivo General</h4>
+                <p style="text-align: justify; color: var(--text-muted);">
+                    Evaluar integralmente la postura de ciberseguridad, resiliencia y controles de protección del organismo operador ficticio de servicios de agua y saneamiento <strong>INTERAFAS</strong>, identificando vulnerabilidades técnicas en sus aplicaciones web, interfaces de programación, fronteras de acceso y módulos simulados de supervisión.
+                </p>
+
+                <h4>1.2 Alcance del Entorno</h4>
+                <p style="color: var(--text-muted); margin-bottom: 0.75rem;">La auditoría se limitó al entorno de laboratorio controlado y aislado provisto en contenedores Docker:</p>
+                <ul style="margin-left: 1.5rem; color: var(--text-muted);">
+                    <li><strong>Portal Institucional y Ciudadano (INTERAFAS):</strong> <code>http://localhost:8080</code> (Contenedor <code>interafas-web</code>)</li>
+                    <li><strong>Portal Informativo Metropolitano (Pulso Metropolitano):</strong> <code>http://localhost:8091</code> (Contenedor <code>interafas-news</code>)</li>
+                    <li><strong>Portal del Auditor y Bitácora Forense:</strong> <code>http://localhost:8092</code> (Contenedor <code>interafas-auditor</code>)</li>
+                    <li><strong>Base de Datos Centralizada:</strong> <code>interafas-db:3306</code></li>
+                    <li><strong>Simulador de Control y Telemetría Operacional (OT):</strong> <code>interafas-ot-sim:8081</code></li>
+                </ul>
+
+                <h4>1.3 Metodología</h4>
+                <p style="color: var(--text-muted); margin-bottom: 0.75rem;">Se aplicaron estándares internacionales reconocidos para pruebas de penetración y auditorías de seguridad web:</p>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted);">
+                    <li style="margin-bottom: 0.5rem;">
+                        <strong>OWASP Web Security Testing Guide (WSTG v4.2):</strong>
+                        <em>Information Gathering (WSTG-INFO)</em>, <em>Configuration and Deployment Management (WSTG-CONF)</em>, <em>Identity &amp; Authentication Management (WSTG-ATHN)</em>, <em>Authorization Testing (WSTG-ATHZ)</em>, <em>Session Management Testing (WSTG-SESS)</em>, <em>Input Validation Testing (WSTG-INPV)</em>, <em>Error Handling (WSTG-ERRH)</em> y <em>Business Logic Testing (WSTG-BUSL)</em>.
+                    </li>
+                    <li style="margin-bottom: 0.5rem;">
+                        <strong>OWASP API Security Top 10 (2023):</strong>
+                        <em>API1: Broken Object Level Authorization (BOLA)</em>, <em>API8: Security Misconfiguration</em> y <em>API9: Improper Inventory Management</em>.
+                    </li>
+                    <li>
+                        <strong>NIST SP 800-82 Rev. 3 (Guide to Operational Technology Security) &amp; CISA Playbooks:</strong>
+                        Para el análisis de segmentación IT/OT, control de privilegios en ingeniería y validación de integridad de configuraciones.
+                    </li>
+                </ol>
+            </section>
+
+            <!-- 2. RESUMEN EJECUTIVO (PR02-02) -->
+            <section class="pr-section">
+                <h3><i class="fas fa-briefcase"></i> 2. Resumen Ejecutivo</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem; text-align: justify;">
+                    Durante la evaluación de las 20 vulnerabilidades del entorno <strong>INTERAFAS-LAB</strong>, se identificó una postura de seguridad crítica caracterizada por cinco debilidades sistémicas:
+                </p>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify;">
+                    <li style="margin-bottom: 0.6rem;"><strong>Deuda técnica acumulada:</strong> Presencia de artefactos de desarrollo, código fuente de respaldo sin proteger y notas internas de despliegue accesibles públicamente en el servidor web.</li>
+                    <li style="margin-bottom: 0.6rem;"><strong>Fallas estructurales en el control de acceso:</strong> Ausencia de validación de propiedad en consultas de expedientes ciudadanos (IDOR) y falta de controles de autorización por objeto en la API REST de servicios históricos (BOLA).</li>
+                    <li style="margin-bottom: 0.6rem;"><strong>Mala gestión de sesiones y lógica de negocio:</strong> La aplicación web tolera fijación de sesiones anónimas a sesiones autenticadas sin rotación de identificadores, y la pasarela de pagos confía en montos manipulables del lado del cliente.</li>
+                    <li style="margin-bottom: 0.6rem;"><strong>Debilitamiento de la frontera de confianza IT/OT:</strong> Las APIs públicas divulgan la segmentación privada del Centro de Operaciones (<code>10.40.20.0/24</code>), y el gateway de enlace confía en cabeceras HTTP manipulables (<code>X-Forwarded-For</code>), permitiendo cruzar la frontera web hacia la zona operacional.</li>
+                    <li><strong>Desprotección de telemetría, paquetes de actualización y parámetros operacionales en OT:</strong> El servicio de telemetría expone el estado de la planta sin sesión autenticada; el canal de actualización acepta paquetes validando únicamente sumas SHA-256 sin firma criptográfica; el rol <code>maintenance</code> carece de aislamiento respecto a la cadena de dependencias del proceso; y el módulo de configuración carece de validación de límites de seguridad (<em>safety bounds</em>) sobre el parámetro <code>pressure_setpoint_bar</code>.</li>
+                </ol>
+            </section>
+
+            <!-- 3. INVENTARIO MAESTRO DE VULNERABILIDADES (PR02-03) -->
+            <section class="pr-section">
+                <h3><i class="fas fa-table"></i> 3. Vulnerabilidades</h3>
+                <div class="pr-table-wrapper">
+                    <table class="pr-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Código Interno</th>
+                                <th>Nombre del Hallazgo</th>
+                                <th>Componente Afectado</th>
+                                <th>Categoría OWASP / NIST</th>
+                                <th>Severidad</th>
+                                <th>Bandera Registrada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>01</strong></td>
+                                <td><code>OPEN-DOOR</code></td>
+                                <td>Archivo público olvidado / Listado de directorios</td>
+                                <td><code>/assets/docs/public/revision/</code></td>
+                                <td>Exposición de Información</td>
+                                <td><span class="sev-badge sev-baja">Baja</span></td>
+                                <td><code>UPSLP_CNOIV-OPEN-DOOR-01</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>02</strong></td>
+                                <td><code>LOOK-CLOSER</code></td>
+                                <td>Información sensible en recursos del cliente</td>
+                                <td><code>/assets/meta/build-manifest.php</code></td>
+                                <td>Reconocimiento / Fuga de datos</td>
+                                <td><span class="sev-badge sev-baja">Baja</span></td>
+                                <td><code>UPSLP_CNOIV-LOOK-CLOSER-02</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>03</strong></td>
+                                <td><code>NOT-YOURS</code></td>
+                                <td>Referencia directa insegura a objetos (IDOR)</td>
+                                <td><code>/expediente.php?id=</code></td>
+                                <td>Control de Acceso Roto</td>
+                                <td><span class="sev-badge sev-media">Media</span></td>
+                                <td><code>UPSLP_CNOIV-NOT-YOURS-03</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>04</strong></td>
+                                <td><code>OLD-MEMORIES</code></td>
+                                <td>Respaldo o archivo histórico expuesto</td>
+                                <td><code>/transparencia.php.bak</code></td>
+                                <td>Fuga de Código Fuente</td>
+                                <td><span class="sev-badge sev-media">Media</span></td>
+                                <td><code>UPSLP_CNOIV-OLD-MEMORIES-04</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>05</strong></td>
+                                <td><code>TOO-MUCH-INFO</code></td>
+                                <td>Divulgación de información técnica mediante errores</td>
+                                <td><code>/exportar.php?tipo=</code></td>
+                                <td>Manejo Inadecuado de Errores</td>
+                                <td><span class="sev-badge sev-media">Media</span></td>
+                                <td><code>UPSLP_CNOIV-TOO-MUCH-INFO-05</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>06</strong></td>
+                                <td><code>WRONG-ROLE</code></td>
+                                <td>Control de acceso por rol deficiente</td>
+                                <td><code>/gestion-proveedores.php</code></td>
+                                <td>Falla de Autorización</td>
+                                <td><span class="sev-badge sev-media">Media</span></td>
+                                <td><code>UPSLP_CNOIV-WRONG-ROLE-06</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>07</strong></td>
+                                <td><code>SILENT-ANSWER</code></td>
+                                <td>SQL Injection ciega basada en inferencia</td>
+                                <td><code>/validar-referencia.php?ref=</code></td>
+                                <td>Inyección (SQLi Booleana)</td>
+                                <td><span class="sev-badge sev-alta">Alta</span></td>
+                                <td><code>UPSLP_CNOIV-SILENT-ANSWER-07</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>08</strong></td>
+                                <td><code>STORED-WORDS</code></td>
+                                <td>Entrada persistente procesada de forma insegura</td>
+                                <td><code>/reportes.php</code> → <code>/seguimiento-reporte.php</code></td>
+                                <td>Stored XSS</td>
+                                <td><span class="sev-badge sev-media">Media</span></td>
+                                <td><code>UPSLP_CNOIV-STORED-WORDS-08</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>09</strong></td>
+                                <td><code>TOO-DEEP</code></td>
+                                <td>Acceso a rutas fuera del directorio autorizado</td>
+                                <td><code>/descargar-documento.php?file=</code></td>
+                                <td>Path Traversal</td>
+                                <td><span class="sev-badge sev-alta">Alta</span></td>
+                                <td><code>UPSLP_CNOIV-TOO-DEEP-09</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>10</strong></td>
+                                <td><code>WHO-ARE-YOU</code></td>
+                                <td>Fijación y reutilización indebida de sesión</td>
+                                <td><code>/login.php</code> / <code>/perfil.php</code></td>
+                                <td>Gestión Débil de Sesión</td>
+                                <td><span class="sev-badge sev-media">Media</span></td>
+                                <td><code>UPSLP_CNOIV-WHO-ARE-YOU-10</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>11</strong></td>
+                                <td><code>HIDDEN-HISTORY</code></td>
+                                <td>Descubrimiento de endpoint API no documentado</td>
+                                <td><code>/api/account-context.php</code> → <code>/api/service-history.php</code></td>
+                                <td>API9: Shadow Endpoint</td>
+                                <td><span class="sev-badge sev-media">Media</span></td>
+                                <td><code>UPSLP_CNOIV-HIDDEN-HISTORY-11</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>12</strong></td>
+                                <td><code>SECOND-ACCOUNT</code></td>
+                                <td>Autorización de objetos deficiente en API (BOLA)</td>
+                                <td><code>/api/service-history.php?account=</code></td>
+                                <td>API1: BOLA / IDOR</td>
+                                <td><span class="sev-badge sev-alta">Alta</span></td>
+                                <td><code>UPSLP_CNOIV-SECOND-ACCOUNT-12</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>13</strong></td>
+                                <td><code>PAYMENT-PATH</code></td>
+                                <td>Abuso de lógica de negocio en flujo de pago</td>
+                                <td><code>/pago.php</code></td>
+                                <td>Falla de Lógica de Negocio</td>
+                                <td><span class="sev-badge sev-alta">Alta</span></td>
+                                <td><code>UPSLP_CNOIV-PAYMENT-PATH-13</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>14</strong></td>
+                                <td><code>TRUSTED-SUPPLIER</code></td>
+                                <td>Control deficiente de relaciones proveedor-contrato</td>
+                                <td><code>/validar-vinculo-contractual.php</code></td>
+                                <td>Falla de Lógica / ReBAC</td>
+                                <td><span class="sev-badge sev-media">Media</span></td>
+                                <td><code>UPSLP_CNOIV-TRUSTED-SUPPLIER-14</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>15</strong></td>
+                                <td><code>BEHIND-THE-DESK</code></td>
+                                <td>Exposición de arquitectura y segmentación interna</td>
+                                <td><code>/api/infrastructure-status.php</code></td>
+                                <td>Fuga de Arquitectura de Red</td>
+                                <td><span class="sev-badge sev-alta">Alta</span></td>
+                                <td><code>UPSLP_CNOIV-BEHIND-THE-DESK-15</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>16</strong></td>
+                                <td><code>BEYOND-THE-WEB</code></td>
+                                <td>Bypass de frontera operacional por cabecera de proxy</td>
+                                <td><code>/operations/gateway.php</code></td>
+                                <td>Evasión de Frontera (IT→OT)</td>
+                                <td><span class="sev-badge sev-critica">Crítica</span></td>
+                                <td><code>UPSLP_CNOIV-BEYOND-THE-WEB-16</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>17</strong></td>
+                                <td><code>EYES-ON-THE-PLANT</code></td>
+                                <td>Telemetría operacional expuesta sin sesión autenticada</td>
+                                <td><code>/operations/telemetry.php</code></td>
+                                <td>Falta de Autenticación en OT</td>
+                                <td><span class="sev-badge sev-alta">Alta</span></td>
+                                <td><code>UPSLP_CNOIV-EYES-ON-THE-PLANT-17</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>18</strong></td>
+                                <td><code>TRUST-THE-PACKAGE</code></td>
+                                <td>Validación defectuosa de paquete de firmware (solo hash)</td>
+                                <td><code>/operations/updates/install.php</code></td>
+                                <td>Fallas de Integridad de Software</td>
+                                <td><span class="sev-badge sev-critica">Crítica</span></td>
+                                <td><code>UPSLP_CNOIV-TRUST-THE-PACKAGE-18</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>19</strong></td>
+                                <td><code>CHAIN-REACTION</code></td>
+                                <td>Exceso de privilegios en contexto de dependencias OT</td>
+                                <td><code>/operations/asset-context.php</code></td>
+                                <td>Violación de Mínimo Privilegio</td>
+                                <td><span class="sev-badge sev-critica">Crítica</span></td>
+                                <td><code>UPSLP_CNOIV-CHAIN-REACTION-19</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>20</strong></td>
+                                <td><code>NOW-YOU-CONTROL</code></td>
+                                <td>Ausencia de límites seguros en parámetros de proceso</td>
+                                <td><code>/operations/firmware.php</code></td>
+                                <td>Validación de Parámetros OT</td>
+                                <td><span class="sev-badge sev-critica">Crítica</span></td>
+                                <td><code>UPSLP_CNOIV-NOW-YOU-CONTROL-20</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 4. DETALLE TÉCNICO (PR02-04 a PR02-08) -->
+            <section class="pr-section">
+                <h3><i class="fas fa-microscope"></i> 4. Detalles Técnicos por Hallazgo</h3>
+
+                <!-- Reto 01 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 01: Archivo público olvidado (<code>OPEN-DOOR</code>)</h4>
+                        <span class="sev-badge sev-baja">Severidad: Baja</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> El archivo <code>robots.txt</code> expuso la ruta <code>/assets/docs/public/revision/</code>. El servidor Apache tiene habilitado el módulo <code>mod_autoindex</code> (<code>Options +Indexes</code>) sin archivo <code>index.html</code>, permitiendo listar el contenido donde se olvidó el paquete de despliegue <code>portal-release_20260407_rc3.zip</code>.</li>
+                        <li><strong>Evidencia Técnica:</strong> Línea en <code>deploy/release-check.env</code>: <code>SMOKE_TEST_TOKEN=UPSLP_CNOIV-OPEN-DOOR-01</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Confidencialidad media. Expone metadatos de compilación, scripts de sincronización (<code>rsync</code>) y rutas de la aplicación.</li>
+                        <li><strong>Mitigación Específica:</strong> Deshabilitar <code>Options -Indexes</code> en la configuración de Apache y automatizar la eliminación de archivos de empaquetado post-despliegue mediante pipelines de CI/CD.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto1.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-1.1 y PR02-1.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+
+                <!-- Reto 02 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 02: Información sensible en recursos del cliente (<code>LOOK-CLOSER</code>)</h4>
+                        <span class="sev-badge sev-baja">Severidad: Baja</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> Enlaces a metadatos de compilación y runtime (<code>/assets/meta/build-manifest.php</code>) expuestos en recursos accesibles desde el frontend sin restricción de acceso.</li>
+                        <li><strong>Evidencia Técnica:</strong> Token en JSON: <code>release_validation_token: UPSLP_CNOIV-LOOK-CLOSER-02</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Fuga de información que permite mapear componentes y librerías internas.</li>
+                        <li><strong>Mitigación Específica:</strong> Restringir el acceso a la carpeta <code>/assets/meta/</code> mediante reglas de servidor web (<code>Require all denied</code>).</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto2.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-2.1 y PR02-2.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 03 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 03: Referencia Directa Insegura a Objetos - IDOR (<code>NOT-YOURS</code>)</h4>
+                        <span class="sev-badge sev-media">Severidad: Media</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> El script <code>/expediente.php</code> recibe el parámetro <code>id</code> mediante GET. La consulta SQL <code>SELECT * FROM expedientes WHERE id=?</code> no valida que el <code>usuario_id</code> del registro coincida con la sesión activa (<code>$_SESSION['user']['id']</code>).</li>
+                        <li><strong>Evidencia Técnica:</strong> Campo visible en la sección <em>Expediente administrativo</em>: <code>Referencia de validación: UPSLP_CNOIV-NOT-YOURS-03</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Violación severa de Confidencialidad (PII) bajo regulaciones de protección de datos personales (LFPDPPP).</li>
+                        <li><strong>Mitigación Específica:</strong> Incluir verificación de pertenencia en la consulta: <code>SELECT * FROM expedientes WHERE id=? AND usuario_id=?</code>.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto3.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-3.1 y PR02-3.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 04 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 04: Respaldo de Código Fuente Expuesto (<code>OLD-MEMORIES</code>)</h4>
+                        <span class="sev-badge sev-media">Severidad: Media</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> Copia de respaldo previa (<code>transparencia.php.bak</code>) conservada en el document root. Al tener extensión <code>.bak</code>, el servidor Apache no la delega al intérprete PHP y la entrega como texto plano.</li>
+                        <li><strong>Evidencia Técnica:</strong> Línea 28 de <code>transparencia.php.bak</code>: <code>$releaseValidation = 'UPSLP_CNOIV-OLD-MEMORIES-04';</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Confidencialidad alta. Expone la lógica de programación del backend y nombres de funciones internas.</li>
+                        <li><strong>Mitigación Específica:</strong> Configurar directivas en Apache para prohibir la descarga de respaldos (<code>&lt;FilesMatch "\.(bak|old|tmp|save)$"&gt; Require all denied &lt;/FilesMatch&gt;</code>).</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto4.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-4.1 y PR02-4.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 05 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 05: Manejo Inadecuado de Errores - Verbose Debug (<code>TOO-MUCH-INFO</code>)</h4>
+                        <span class="sev-badge sev-media">Severidad: Media</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> La expresión <code>match($tipo)</code> en <code>/exportar.php</code> no cuenta con cláusula <code>default</code>. Al recibir un valor no contemplado, lanza un <code>UnhandledMatchError</code> capturado por un bloque que imprime información de depuración (<code>DEBUG RESPONSE ENABLED</code>).</li>
+                        <li><strong>Evidencia Técnica:</strong> Fila <code>Build validation</code> en el reporte: <code>UPSLP_CNOIV-TOO-MUCH-INFO-05</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Divulgación de rutas absolutas (<code>/var/www/html/</code>), versión de módulos y nombres del esquema de base de datos (<code>db:3306 / interafas</code>).</li>
+                        <li><strong>Mitigación Específica:</strong> Manejar cláusulas por defecto, configurar <code>display_errors = Off</code> en <code>php.ini</code> y renderizar páginas de error genéricas.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto5.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-5.1 y PR02-5.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 06 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 06: Control de Acceso por Rol Deficiente (<code>WRONG-ROLE</code>)</h4>
+                        <span class="sev-badge sev-media">Severidad: Media</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> El módulo <code>/gestion-proveedores.php</code> valida el rol del usuario confiando en un valor almacenado del lado del cliente (cookie <code>portal_role</code>) en lugar de verificar los privilegios en la sesión del servidor.</li>
+                        <li><strong>Evidencia Técnica:</strong> Acreditación con el token <code>UPSLP_CNOIV-WRONG-ROLE-06</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Escalación vertical de privilegios, permitiendo acceder a funciones administrativas de gestión de proveedores.</li>
+                        <li><strong>Mitigación Específica:</strong> Nunca delegar el rol del usuario a una cookie manipulable en el cliente; validar estrictamente contra <code>$_SESSION['user']['rol']</code> en el servidor.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto6.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-6.1 y PR02-6.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 07 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 07: SQL Injection Ciega basada en Inferencia Booleana (<code>SILENT-ANSWER</code>)</h4>
+                        <span class="sev-badge sev-alta">Severidad: Alta</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> En <code>/validar-referencia.php</code>, el parámetro <code>ref</code> se concatena directamente en la sentencia SQL sin parametrizar, permitiendo alterar la lógica booleana de la consulta e inferir datos a partir del mensaje de respuesta.</li>
+                        <li><strong>Evidencia Técnica:</strong> Acreditación del evento en bitácora y bandera: <code>UPSLP_CNOIV-SILENT-ANSWER-07</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Integridad y Confidencialidad críticas. Permite extracción por inferencia de registros de la base de datos.</li>
+                        <li><strong>Mitigación Específica:</strong> Reemplazar la concatenación de cadenas por sentencias preparadas con PDO (<code>$pdo-&gt;prepare("SELECT id FROM licitaciones WHERE numero = ?")</code>).</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto7.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-7.1 y PR02-7.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 08 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 08: Stored Cross-Site Scripting - XSS Almacenado (<code>STORED-WORDS</code>)</h4>
+                        <span class="sev-badge sev-media">Severidad: Media</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> El formulario de reportes ciudadanos (<code>/reportes.php</code>) almacena la descripción sin sanitizar y la vista <code>/seguimiento-reporte.php</code> la renderiza en el DOM sin codificación de entidades HTML.</li>
+                        <li><strong>Evidencia Técnica:</strong> Validación del hallazgo: <code>UPSLP_CNOIV-STORED-WORDS-08</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Ejecución de scripts en el contexto del navegador de los usuarios o personal de revisión que consulten el seguimiento del reporte.</li>
+                        <li><strong>Mitigación Específica:</strong> Aplicar codificación de salida (<code>htmlspecialchars($desc, ENT_QUOTES, 'UTF-8')</code>) e implementar cabeceras <code>Content-Security-Policy (CSP)</code> estrictas.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto8.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-8.1 y PR02-8.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 09 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 09: Path Traversal / Salto de Directorio (<code>TOO-DEEP</code>)</h4>
+                        <span class="sev-badge sev-alta">Severidad: Alta</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> En <code>/descargar-documento.php</code>, el parámetro <code>file</code> se concatena al directorio base sin neutralizar secuencias de navegación de directorios, permitiendo acceder a archivos fuera de la carpeta autorizada (como <code>/etc/motd</code>).</li>
+                        <li><strong>Evidencia Técnica:</strong> Contenido de validación: <code>UPSLP_CNOIV-TOO-DEEP-09</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Confidencialidad crítica. Permite lectura de archivos arbitrarios del sistema operativo a los que tenga permiso el usuario del servidor web.</li>
+                        <li><strong>Mitigación Específica:</strong> Aplicar <code>basename()</code> sobre el parámetro de entrada y verificar con <code>realpath()</code> que la ruta canónica inicie estrictamente en el directorio permitido.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto9.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-9.1 y PR02-9.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 10 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 10: Fijación de Sesión y Reutilización Indebida (<code>WHO-ARE-YOU</code>)</h4>
+                        <span class="sev-badge sev-media">Severidad: Media</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> En <code>/login.php</code>, al autenticar al usuario no se invoca <code>session_regenerate_id(true)</code>, manteniendo el mismo identificador <code>PHPSESSID</code> previo al inicio de sesión y tolerando su reutilización desde distintos contextos de cliente.</li>
+                        <li><strong>Evidencia Técnica:</strong> Cabeceras HTTP: <code>X-INTERAFAS-Session-State: replay-accepted</code> y <code>X-INTERAFAS-Validation: UPSLP_CNOIV-WHO-ARE-YOU-10</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Posibilidad de secuestro y fijación de sesiones activas sin comprometer contraseñas.</li>
+                        <li><strong>Mitigación Específica:</strong> Ejecutar obligatoriamente <code>session_regenerate_id(true)</code> tras cada autenticación exitosa y asociar metadatos de contexto a la sesión.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto10.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-10.1 y PR02-10.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 11 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 11: Descubrimiento de Endpoint API no Documentado (<code>HIDDEN-HISTORY</code>)</h4>
+                        <span class="sev-badge sev-media">Severidad: Media</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> El endpoint <code>/api/account-context.php</code> incluye en su respuesta referencias hacia rutas de API no expuestas en la interfaz gráfica (<code>/api/service-history.php</code>).</li>
+                        <li><strong>Evidencia Técnica:</strong> Cabecera HTTP de respuesta: <code>X-INTERAFAS-Validation: UPSLP_CNOIV-HIDDEN-HISTORY-11</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Ampliación de la superficie de ataque mediante endpoints sin supervisión o inventario (OWASP API9: Improper Inventory Management).</li>
+                        <li><strong>Mitigación Específica:</strong> Mantener inventarios de APIs depurados, deshabilitar rutas legadas y no exponer hipervínculos internos innecesarios.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto11.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-11.1 y PR02-11.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 12 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 12: Broken Object Level Authorization en API - BOLA (<code>SECOND-ACCOUNT</code>)</h4>
+                        <span class="sev-badge sev-alta">Severidad: Alta</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> En <code>/api/service-history.php</code>, aunque el backend evalúa la bandera <code>$isOwner</code> para verificar si la cuenta consultada pertenece al usuario autenticado, no detiene la ejecución cuando es falsa y retorna el historial financiero de terceros.</li>
+                        <li><strong>Evidencia Técnica:</strong> Cabeceras HTTP: <code>X-INTERAFAS-Object-Authorization: missing</code> y <code>X-INTERAFAS-Validation: UPSLP_CNOIV-SECOND-ACCOUNT-12</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Confidencialidad alta (OWASP API1:2023). Exposición de historiales de consumo, facturación y pagos de otros cuentahabientes.</li>
+                        <li><strong>Mitigación Específica:</strong> Imponer bloqueo estricto en el servidor cuando la propiedad del objeto no coincida (<code>if (!$isOwner) { http_response_code(403); exit; }</code>).</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto12.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-12.1 y PR02-12.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 13 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 13: Manipulación de Monto en Pasarela de Pagos (<code>PAYMENT-PATH</code>)</h4>
+                        <span class="sev-badge sev-alta">Severidad: Alta</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> En <code>/pago.php</code>, el importe a pagar únicamente se restringe en la interfaz con el atributo HTML <code>readonly</code>. El servidor liquida el recibo completo (`saldo=0, estado='Pagada'`) confiando en el monto enviado desde el navegador.</li>
+                        <li><strong>Evidencia Técnica:</strong> Cabecera HTTP: <code>X-INTERAFAS-Validation: UPSLP_CNOIV-PAYMENT-PATH-13</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Integridad y quebranto patrimonial directo al permitir liquidar adeudos reales con importes modificados por el cliente.</li>
+                        <li><strong>Mitigación Específica:</strong> Ignorar cualquier monto proveniente del cliente y obtener el importe a cobrar directamente del registro en la base de datos en el servidor.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto13.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-13.1 y PR02-13.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 14 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 14: Validación Inconsistente Proveedor-Contrato (<code>TRUSTED-SUPPLIER</code>)</h4>
+                        <span class="sev-badge sev-media">Severidad: Media</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> En <code>/validar-vinculo-contractual.php</code>, el sistema verifica que el contrato y el proveedor existan y estén vigentes por separado, pero omite validar la llave foránea que acredita que dicho proveedor es el titular del contrato.</li>
+                        <li><strong>Evidencia Técnica:</strong> Estado <code>Relación inconsistente aceptada</code> y bandera <code>UPSLP_CNOIV-TRUSTED-SUPPLIER-14</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Falla en la lógica de validación contractual que permite acreditar relaciones inexistentes entre proveedores y contratos públicos.</li>
+                        <li><strong>Mitigación Específica:</strong> Validar explícitamente la relación en la consulta: <code>SELECT id FROM contratos WHERE id=? AND proveedor_id=? AND estado='Vigente'</code>.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto14.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-14.1 y PR02-14.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 15 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 15: Exposición de Arquitectura y Segmento Operacional (<code>BEHIND-THE-DESK</code>)</h4>
+                        <span class="sev-badge sev-alta">Severidad: Alta</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> La API pública <code>/api/infrastructure-status.php</code> incluye un nodo <code>diagnostics</code> que expone la subred interna del Centro de Operaciones (<code>10.40.20.0/24</code>), el activo <code>RTU-GW-07</code> y la ruta del gateway (<code>/operations/gateway.php</code>).</li>
+                        <li><strong>Evidencia Técnica:</strong> Cabecera HTTP: <code>X-INTERAFAS-Validation: UPSLP_CNOIV-BEHIND-THE-DESK-15</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Reconocimiento crítico que facilita el mapeo de la topología privada y prepara el pivote hacia la red operacional (OT).</li>
+                        <li><strong>Mitigación Específica:</strong> Retirar toda información de diagnóstico interno y direccionamiento de red de las APIs públicas del portal ciudadano.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto15.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-15.1 y PR02-15.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 16 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 16: Bypass de Frontera IT/OT mediante Cabecera de Proxy (<code>BEYOND-THE-WEB</code>)</h4>
+                        <span class="sev-badge sev-critica">Severidad: Crítica</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> El módulo <code>/operations/gateway.php</code> valida la pertenencia al segmento operacional <code>10.40.20.0/24</code> confiando en la cabecera HTTP <code>X-Forwarded-For</code> suministrada en la petición sin validar si proviene de un proxy inverso de confianza.</li>
+                        <li><strong>Evidencia Técnica:</strong> Cabeceras HTTP: <code>X-INTERAFAS-Boundary: crossed</code> y <code>X-INTERAFAS-Validation: UPSLP_CNOIV-BEYOND-THE-WEB-16</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Evasión crítica de la frontera lógica entre el entorno corporativo/web (IT) y la consola de operaciones industriales (OT).</li>
+                        <li><strong>Mitigación Específica:</strong> Descartar cabeceras de reenvío no autenticadas, evaluar la dirección IP real de transporte (<code>REMOTE_ADDR</code>) e implementar segmentación de red en capas 3 y 4 con listas de control de acceso y firewall industrial.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto16.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-16.1 y PR02-16.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 17 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 17: Telemetría Operacional Expuesta sin Sesión Autenticada (<code>EYES-ON-THE-PLANT</code>)</h4>
+                        <span class="sev-badge sev-alta">Severidad: Alta</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> El endpoint <code>/operations/telemetry.php</code> únicamente verifica la condición de red (<code>require_operational_network(true)</code>) y omite exigir una sesión activa de operador (<code>require_operational_auth()</code>), devolviendo el estado completo de la planta aun sin autenticación.</li>
+                        <li><strong>Evidencia Técnica:</strong> Cabeceras HTTP: <code>X-INTERAFAS-Monitoring-Authorization: network-only</code>, <code>X-INTERAFAS-Operational-Session: missing</code> y <code>X-INTERAFAS-Validation: UPSLP_CNOIV-EYES-ON-THE-PLANT-17</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Exposición no autorizada en tiempo real de presiones, caudales, niveles de tanque, estados de bombas/válvulas y alarmas del sistema hidráulico.</li>
+                        <li><strong>Mitigación Específica:</strong> Exigir validación obligatoria de sesión autenticada y autorizada en todos los endpoints de telemetría antes de consultar el simulador OT.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto17.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-17.1 y PR02-17.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 18 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 18: Validación Defectuosa de Paquete de Actualización (<code>TRUST-THE-PACKAGE</code>)</h4>
+                        <span class="sev-badge sev-critica">Severidad: Crítica</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> El manifiesto <code>/operations/updates/manifest.php</code> expone metadatos de soporte y el instalador <code>/operations/updates/install.php</code> valida los paquetes únicamente comprobando que el hash SHA-256 coincida con el cuerpo enviado, sin verificar una firma criptográfica digital de origen.</li>
+                        <li><strong>Evidencia Técnica:</strong> Cabeceras HTTP: <code>X-INTERAFAS-Firmware-Verification: checksum-only</code>, <code>X-INTERAFAS-Signature-Verification: not-performed</code> y <code>X-INTERAFAS-Validation: UPSLP_CNOIV-TRUST-THE-PACKAGE-18</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Compromiso de integridad que permite inyectar configuraciones de diagnóstico (modo <code>SERVICE</code>) en el gateway <code>RTU-GW-07</code>.</li>
+                        <li><strong>Mitigación Específica:</strong> Implementar firmado digital criptográfico asimétrico (p. ej., Ed25519 o RSA-PSS) para todos los paquetes de actualización y eliminar referencias de credenciales en manifiestos.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto18.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-18.1 y PR02-18.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 19 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 19: Exceso de Privilegios en Contexto de Dependencias OT (<code>CHAIN-REACTION</code>)</h4>
+                        <span class="sev-badge sev-critica">Severidad: Crítica</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> En <code>/operations/asset-context.php</code>, el rol <code>maintenance</code> carece de límites de alcance en el servidor (<code>server_enforced_dependency_boundary: false</code>), lo que permite consultar y recorrer los 6 niveles de la cadena de dependencias operacionales más allá del gateway asignado (<code>RTU-GW-07 → PLC-SL-01 → P-SL-101 → HDR-SL-01 → V-SL-201 → ZONE-SL-A</code>).</li>
+                        <li><strong>Evidencia Técnica:</strong> Cabeceras HTTP: <code>X-INTERAFAS-Dependency-Chain: complete</code>, <code>X-INTERAFAS-Authorization-Scope: exceeded</code> y <code>X-INTERAFAS-Validation: UPSLP_CNOIV-CHAIN-REACTION-19</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Violación del principio de mínimo privilegio (ISO/IEC 27001) que expone la topología crítica de control y habilita la gestión avanzada de parámetros del gateway.</li>
+                        <li><strong>Mitigación Específica:</strong> Aplicar control de acceso basado en atributos (ABAC) restringiendo al rol <code>maintenance</code> exclusivamente al diagnóstico de su activo asignado (<code>RTU-GW-07</code>).</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto19.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-19.1 y PR02-19.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+
+                <!-- Reto 20 -->
+                <div class="reto-card">
+                    <div class="reto-header">
+                        <h4>Reto 20: Ausencia de Límites Seguros en Parámetros Operacionales (<code>NOW-YOU-CONTROL</code>)</h4>
+                        <span class="sev-badge sev-critica">Severidad: Crítica</span>
+                    </div>
+                    <ul class="reto-list">
+                        <li><strong>Causa Raíz:</strong> El módulo <code>/operations/firmware.php</code> permite cargar paquetes de configuración modificando el parámetro <code>pressure_setpoint_bar</code> (línea base nominal de <code>4.2</code> bar) sin aplicar validaciones de rango seguro (<em>safety bounds</em>), desencadenando una degradación operativa simulada en cascada hasta <code>CATASTROPHIC STATE</code>.</li>
+                        <li><strong>Evidencia Técnica:</strong> Cabeceras HTTP: <code>X-INTERAFAS-Operational-Impact: catastrophic</code> y <code>X-INTERAFAS-Validation: UPSLP_CNOIV-NOW-YOU-CONTROL-20</code>.</li>
+                        <li><strong>Impacto y Riesgo:</strong> Disponibilidad e Integridad operacionales críticas, demostrando cómo una secuencia de fallas encadenadas desde el entorno web puede impactar el proceso físico simulado.</li>
+                        <li><strong>Mitigación Específica:</strong> Segregar las funciones de mantenimiento respecto a la modificación de parámetros de proceso (requiriendo rol de ingeniería y regla de dos personas) e imponer límites de seguridad inmutables (<em>hardcoded safety interlocks</em> entre <code>4.0–4.5</code> bar) tanto en la aplicación como en el controlador.</li>
+                    </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <img src="img/figuraPR02Reto20.png" alt="Evidencia Paso 1 - 1" style="max-width: 48%; border: 1px solid var(--card-border); border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
+                    </div>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Figuras PR02-20.1 y PR02-20.2: Navegación de producto y localización de la bandera.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. ANÁLISIS INTEGRAL DE LA CADENA DE ATAQUE IT -> OT (PR02-09) -->
+            <section class="pr-section">
+                <h3><i class="fas fa-project-diagram"></i> 5. Análisis Integral de la Cadena de Ataque IT → OT (PR02-09)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem; text-align: justify;">
+                    La progresión de los 20 hallazgos demuestra una <strong>cadena de compromiso transversal (IT → OT)</strong> donde debilidades en el portal público habilitan progresivamente el alcance hacia el plano de supervisión operacional:
+                </p>
+
+                <div class="chain-phase">
+                    <h5><i class="fas fa-search"></i> FASE 1: Reconocimiento y Deuda Técnica Web (Retos 01, 02, 04, 05)</h5>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Exposición de directorios en <code>/revision/</code>, metadatos en <code>build-manifest.php</code>, respaldos <code>.bak</code> y errores detallados de depuración.</p>
+                </div>
+                <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+
+                <div class="chain-phase">
+                    <h5><i class="fas fa-user-lock"></i> FASE 2: Compromiso de Accesos, Entradas y Sesiones Web (Retos 03, 06, 07, 08, 09, 10)</h5>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Explotación de IDOR en expedientes, escalación de rol por cookie, SQLi booleana, Stored XSS, Path Traversal y fijación de sesión sin rotación de ID.</p>
+                </div>
+                <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+
+                <div class="chain-phase">
+                    <h5><i class="fas fa-code-branch"></i> FASE 3: Abuso de APIs y Lógica de Negocio (Retos 11, 12, 13, 14)</h5>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Descubrimiento de Shadow API (<code>service-history.php</code>), acceso BOLA a cuentas ajenas, alteración de montos en pagos y validación contractual inconsistente.</p>
+                </div>
+                <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+
+                <div class="chain-phase" style="border-color: #FF9800;">
+                    <h5 style="color: #FFB74D;"><i class="fas fa-exchange-alt"></i> FASE 4: Cruce de Frontera IT → OT (Retos 15 y 16)</h5>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Fuga de la subred operacional <code>10.40.20.0/24</code> en <code>infrastructure-status.php</code> (Reto 15) que habilita la evasión del gateway <code>/operations/gateway.php</code> mediante la cabecera <code>X-Forwarded-For</code> (Reto 16).</p>
+                </div>
+                <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+
+                <div class="chain-phase" style="border-color: #F44336; background: rgba(244, 67, 54, 0.12);">
+                    <h5 style="color: #E57373;"><i class="fas fa-industry"></i> FASE 5: Compromiso Progresivo del Entorno OT Simulado (Retos 17, 18, 19, 20)</h5>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Lectura de telemetría sin sesión (Reto 17) → Paquete de actualización validado solo por hash para activar modo <code>SERVICE</code> (Reto 18) → Mapeo completo de la cadena de 6 activos OT por exceso de privilegios en el rol <code>maintenance</code> (Reto 19) → Alteración de <code>pressure_setpoint_bar</code> sin límites de seguridad en <code>firmware.php</code> (Reto 20).</p>
+                </div>
+            </section>
+
+            <!-- 6. CONCLUSIONES Y PRIORIZACIÓN DE REMEDIACIÓN (PR02-10) -->
+            <section class="pr-section" style="margin-bottom: 1rem;">
+                <h3><i class="fas fa-check-circle"></i> 6. Conclusiones Generales y Priorización de Remediación (PR02-10)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1rem; text-align: justify;">
+                    El análisis integral de las <strong>20 vulnerabilidades</strong> en <strong>INTERAFAS-LAB</strong> demuestra que la seguridad de una infraestructura crítica no puede depender de controles aislados ni de la oscuridad de sus rutas:
+                </p>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify;">
+                    <li style="margin-bottom: 0.6rem;"><strong>Convergencia IT/OT sin aislamiento real:</strong> La presencia de un puente HTTP directo (<code>operations-bridge</code>) entre el servidor web público y la red operacional, protegido únicamente por cabeceras HTTP manipulables, vulnera los principios de arquitectura de zonas y conductos (ISA/IEC 62443).</li>
+                    <li style="margin-bottom: 0.6rem;"><strong>Necesidad de Defensa en Profundidad y Cero Confianza (<em>Zero Trust</em>):</strong> Cada capa debe autenticar y autorizar de forma independiente las solicitudes, rotar sesiones tras el inicio de sesión, validar la propiedad de los objetos (previniendo IDOR/BOLA) y verificar criptográficamente el origen e integridad de cualquier paquete de configuración.</li>
+                    <li><strong>Prioridad de remediación inmediata (Corto Plazo - 0 a 30 días):</strong>
+                        <ul style="margin-left: 1.2rem; margin-top: 0.4rem;">
+                            <li>Aislar a nivel de red (firewall L3/L4) el segmento operacional y eliminar la confianza en <code>X-Forwarded-For</code> (Retos 15 y 16).</li>
+                            <li>Exigir firma digital en actualizaciones de firmware e imponer límites de seguridad inmutables (<em>safety bounds</em>) sobre <code>pressure_setpoint_bar</code> (Retos 18 y 20).</li>
+                            <li>Restringir el rol <code>maintenance</code> al principio de mínimo privilegio y exigir sesión autenticada en telemetría (Retos 17 y 19).</li>
+                            <li>Corregir la inyección SQL con consultas preparadas, bloquear el Path Traversal y validar en servidor los montos de pago y controles de acceso BOLA/IDOR (Retos 03, 06, 07, 09, 12, 13).</li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+
+            <div style="text-align: center; margin-top: 3rem; border-top: 1px solid var(--card-border); padding-top: 2rem;">
+                <a href="proyectos.html" class="download-btn">
+                    <i class="fas fa-route"></i> Volver al Camino de Proyectos
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
