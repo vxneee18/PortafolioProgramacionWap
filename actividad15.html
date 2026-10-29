@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 15 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        code {
+            background: rgba(157, 78, 221, 0.18);
+            color: #e0aaff;
+            padding: 0.15rem 0.45rem;
+            border-radius: 5px;
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+            font-size: 0.88em;
+        }
+        pre {
+            background: rgba(0, 0, 0, 0.55);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            overflow-x: auto;
+            margin: 0.75rem 0;
+        }
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: #e0aaff;
+        }
+        .qa-box {
+            margin-bottom: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.4rem 1.6rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-purple);
+        }
+        .qa-question {
+            color: var(--text-main);
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            font-size: 1rem;
+        }
+        .qa-answer {
+            color: var(--text-muted);
+            font-size: 0.94rem;
+            margin-bottom: 0.4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html" class="active">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 900px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="actividades.html" style="color: var(--accent-purple); text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Volver a Actividades
+            </a>
+        </div>
+
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Actividad 15: Análisis Forense y Eliminación de Metadatos con ExifTool
+            </h2>
+
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-purple);"><i class="fas fa-bullseye"></i> Objetivo de la actividad</h4>
+                <p style="text-align: justify; color: var(--text-muted);">
+                    Analizar e interpretar los metadatos incrustados en documentos ofimáticos e imágenes digitales utilizando la herramienta <code>ExifTool</code> para identificar autoría, marcas temporales, parámetros técnicos de captura y geolocalización GPS, así como ejecutar el proceso de sanitización y borrado seguro de metadatos.
+                </p>
+            </div>
+
+            <!-- PARTE I -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-file-word"></i> Parte I. Análisis de metadatos del fichero <code>WOA database application form.docx</code>
+                </h3>
+
+                <div class="qa-box">
+                    <p class="qa-question">1. ¿Cómo categorizó el archivo INTERPOL?</p>
+                    <p class="qa-answer"><strong><code>InterpolClassification</code>:</strong> <code>Unclassified</code> (No clasificado).</p>
+                </div>
+
+                <div class="qa-box">
+                    <p class="qa-question">2. ¿Qué template (plantilla) fue utilizado para la elaboración del archivo por parte de INTERPOL?</p>
+                    <p class="qa-answer"><strong><code>Template</code>:</strong> <code>G03 Basic Doc SP.dotx</code>.</p>
+                </div>
+
+                <div class="qa-box">
+                    <p class="qa-question">3. ¿Cuál fue el tiempo total de edición del fichero?</p>
+                    <p class="qa-answer"><strong><code>Total Edit Time</code>:</strong> <code>45 minutes</code></p>
+                </div>
+
+                <div class="qa-box">
+                    <p class="qa-question">4. Identifique la Compañía propietaria del fichero.</p>
+                    <p class="qa-answer"><strong><code>Company</code>:</strong> <code>OIPC - INTERPOL</code>.</p>
+                </div>
+
+                <div class="qa-box">
+                    <p class="qa-question">5. ¿Quién realizó la última modificación del fichero?</p>
+                    <p class="qa-answer"><strong><code>Last Modified By</code>:</strong> <code>Carolyn Lejeune</code>.</p>
+                </div>
+
+                <div class="qa-box">
+                    <p class="qa-question">6. ¿Cuál fue la fecha de creación del fichero en investigación?</p>
+                    <p class="qa-answer"><strong><code>Create Date</code>:</strong> <code>2019:05:03 15:35:00Z</code>.</p>
+                    <p class="qa-answer"><strong><code>Modify Date</code>:</strong> <code>2019:05:03 16:22:00Z</code>.</p>
+                </div>
+
+                <div class="qa-box">
+                    <p class="qa-question">7. De acuerdo al análisis de metadatos del fichero de INTERPOL, identifique el creador del mismo.</p>
+                    <p class="qa-answer"><strong><code>Creator</code>:</strong> <code>Carolyn Lejeune</code>.</p>
+                </div>
+            </div>
+
+            <!-- PARTE II -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-image"></i> Parte II. Análisis de metadatos del fichero <code>XiaomiMiA2Lite.jpg</code>
+                </h3>
+
+                <div class="qa-box">
+                    <p class="qa-question">1. ¿Cuál fue la apertura / ISO utilizada?</p>
+                    <p class="qa-answer"><strong><code>ISO</code>:</strong> <code>100</code></p>
+                </div>
+
+                <div class="qa-box">
+                    <p class="qa-question">2. ¿Cuál es la longitud focal de la cámara con la que fue capturada la imagen?</p>
+                    <p class="qa-answer"><strong><code>Focal Length</code>:</strong> <code>3.8 mm</code>.</p>
+                </div>
+
+                <div class="qa-box">
+                    <p class="qa-question">3. Señale si se utilizó la captura con Flash para obtener la imagen.</p>
+                    <p class="qa-answer"><strong><code>Flash</code>: <code>Off</code>.</p>
+                </div>
+
+                <div class="qa-box">
+                    <p class="qa-question">4. Señale la fecha de creación del archivo.</p>
+                    <p class="qa-answer"><strong><code>Create Date</code> / <code>Date/Time Original</code>:</strong> <code>2020:05:28 18:11:41</code>.</p>
+                    <p class="qa-answer"><strong><code>File Creation Date/Time</code>:</strong> <code>2020:12:27 08:20:12</code>.</p>
+                </div>
+
+                <div class="qa-box">
+                    <p class="qa-question">5. Identifique los datos de ubicación GPS y señale el lugar exacto dónde la fotografía fue tomada.</p>
+                    <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.8rem;">
+                        <li><strong>GPS Latitude:</strong> <code>51 deg 15' 12.99" N</code></li>
+                        <li><strong>GPS Longitude:</strong> <code>0 deg 32' 21.93" W</code></li>
+                        <li><strong>GPS Position:</strong> <code>51 deg 15' 12.99" N, 0 deg 32' 21.93" W</code></li>
+                        <li><strong>GPS Altitude:</strong> <code>96.7 m Below Sea Level</code></li>
+                        <li><strong>GPS Date/Time:</strong> <code>2020:05:28 17:11:42Z</code></li>
+                    </ul>
+                </div>
+
+                <div class="qa-box">
+                    <p class="qa-question">6. Elimine todos los metadatos de la muestra que se analiza.</p>
+                    <p class="qa-answer"> Se ejecutó el comando para eliminar todas las etiquetas EXIF/GPS del archivo de muestra:</p>
+                    <pre><code>exiftool.exe -all= "infocrim\XiaomiMiA2Lite.jpg"</code></pre>
+                    <p class="qa-answer">Este comando remueve la totalidad de los metadatos incrustados, mostrando la confirmación <code>1 image files updated</code> y generando automáticamente un respaldo del archivo original (<code>XiaomiMiA2Lite.jpg_original</code>).</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 3rem;">
+                <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Reporte Oficial</h4>
+                <a href="reportes/GonzalezEspinozaKarlaVanessa-ACT15.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i> Descargar Reporte (PDF)
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
