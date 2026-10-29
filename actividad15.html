@@ -178,6 +178,12 @@
                         <li><strong>GPS Altitude:</strong> <code>96.7 m Below Sea Level</code></li>
                         <li><strong>GPS Date/Time:</strong> <code>2020:05:28 17:11:42Z</code></li>
                     </ul>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <figure style="max-width: 48%; margin: 0;">
+                            <img src="img/lugarExacto.png" alt="Acceso Root" style="width: 100%; border: 1px solid var(--card-border); border-radius: 5px;" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjE1MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPltJbnNlcnRhIHR1IGltYWdlbiBhZXXDrV08L3RleHQ+PC9zdmc+'">
+                            <figcaption style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 0.5rem; font-style: italic;">Figura 1: Lugar exacto donde se tomó la fotografía.</figcaption>
+                        </figure>
+                    </div>
                 </div>
 
                 <div class="qa-box">
@@ -185,6 +191,12 @@
                     <p class="qa-answer"> Se ejecutó el comando para eliminar todas las etiquetas EXIF/GPS del archivo de muestra:</p>
                     <pre><code>exiftool.exe -all= "infocrim\XiaomiMiA2Lite.jpg"</code></pre>
                     <p class="qa-answer">Este comando remueve la totalidad de los metadatos incrustados, mostrando la confirmación <code>1 image files updated</code> y generando automáticamente un respaldo del archivo original (<code>XiaomiMiA2Lite.jpg_original</code>).</p>
+                    <div style="text-align: center; margin: 1.5rem 0; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <figure style="max-width: 48%; margin: 0;">
+                            <img src="img/docMetadatos.png" alt="Acceso Root" style="width: 100%; border: 1px solid var(--card-border); border-radius: 5px;" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjE1MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzMzMyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPltJbnNlcnRhIHR1IGltYWdlbiBhZXXDrV08L3RleHQ+PC9zdmc+'">
+                            <figcaption style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 0.5rem; font-style: italic;">Figura 2: Documento sin metadatos.</figcaption>
+                        </figure>
+                    </div>
                 </div>
             </div>
 
