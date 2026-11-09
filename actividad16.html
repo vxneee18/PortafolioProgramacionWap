@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 16 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        code {
+            background: rgba(157, 78, 221, 0.18);
+            color: #e0aaff;
+            padding: 0.15rem 0.45rem;
+            border-radius: 5px;
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+            font-size: 0.88em;
+        }
+        pre {
+            background: rgba(0, 0, 0, 0.55);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: #e0aaff;
+        }
+        .step-box {
+            margin-bottom: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-purple);
+        }
+        .step-box p {
+            text-align: justify;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+        .step-box p strong {
+            color: var(--text-main);
+        }
+        .fig-container {
+            text-align: center;
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .fig-container figure {
+            max-width: 75%;
+            margin: 0 auto;
+        }
+        .fig-container img {
+            width: 100%;
+            border: 1px solid var(--card-border);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .fig-container figcaption {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html" class="active">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 900px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="actividades.html" style="color: var(--accent-purple); text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Volver a Actividades
+            </a>
+        </div>
+
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Actividad 16: La Verdad en los Bits — Adquisición Forense con FTK Imager
+            </h2>
+
+            <!-- INTRODUCCIÓN -->
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple); margin-bottom: 0.8rem;"><i class="fas fa-book-open"></i> Introducción</h4>
+                <p style="text-align: justify; color: var(--text-muted);">
+                    El análisis forense digital comprende el conjunto de metodologías y procedimientos técnicos orientados a identificar, adquirir, preservar, analizar y presentar evidencia digital de manera que mantenga su valor probatorio ante un marco legal o institucional. Cuando ocurre un incidente de seguridad —definido como cualquier evento que vulnera las políticas de seguridad de un sistema de información—, el especialista forense debe intervenir garantizando en todo momento que los datos originales no sufran alteración alguna.
+                </p>
+            </div>
+
+            <!-- PARTE 1 -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-hdd"></i> Parte 1: Procedimiento de Adquisición Forense
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1.5rem;">
+                    En atención al requerimiento del Laboratorio de Informática Forense (LIF) de la UPSLP para el caso <code>InfoCrim-01_21.11.2023</code> (análisis de incidente de fraude bancario), se realizó la adquisición forense de una unidad de memoria USB empleando el software <code>AccessData FTK Imager</code>.
+                </p>
+
+                <!-- Paso 1 -->
+                <div class="step-box">
+                    <p><strong>1. Apertura de AccessData FTK Imager:</strong> El programa se instaló y ejecutó con permisos de Administrador en el equipo local de cómputo. Al abrir la aplicación se verificó el despliegue de su ventana principal antes de conectar el medio de almacenamiento.</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura16.1.png" alt="Figura 1. Interfaz principal de AccessData" onerror="this.style.display='none';">
+                            <figcaption>Figura 1. Interfaz principal de AccessData.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="step-box">
+                    <p><strong>2. Conexión del medio de evidencia:</strong> Se conectó la memoria USB de evidencia al puerto del ordenador sin abrir ni explorar sus archivos en Windows. Posteriormente, desde la barra de menú superior se seleccionó <code>File -&gt; Create Disk Image...</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura16.2.png" alt="Figura 2. Acceso a la función Create Disk Image" onerror="this.style.display='none';">
+                            <figcaption>Figura 2. Acceso a la función Create Disk Image.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="step-box">
+                    <p><strong>3. Selección de la unidad física:</strong> En la ventana <code>Select Source</code> se seleccionó la opción <code>Physical Drive</code> y se pulsó <code>Siguiente</code>. Se eligió <code>Physical Drive</code> porque una adquisición forense bit a bit requiere clonar el dispositivo físico completo, incluyendo la tabla de particiones, el espacio no asignado y los posibles archivos eliminados.</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura16.3.png" alt="Figura 3. Selección del origen como unidad física" onerror="this.style.display='none';">
+                            <figcaption>Figura 3. Selección del origen como unidad física.</figcaption>
+                        </figure>
+                    </div>
+                    <p>En el cuadro desplegable <code>Source Drive Selection</code> se identificó la memoria USB conectada (<code>\\.\PHYSICALDRIVE1 - KINGSTON DataTraveler SE1 USB Device</code>).</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura16.4.png" alt="Figura 4. Elección de la memoria USB en el selector de unidades físicas" onerror="this.style.display='none';">
+                            <figcaption>Figura 4. Elección de la memoria USB en el selector de unidades físicas.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Paso 4 -->
+                <div class="step-box">
+                    <p><strong>4. Configuración del formato Raw:</strong> Dentro de la ventana <code>Create Image</code> se pulsó el botón <code>Add...</code> y en la lista <code>Select Image Type</code> se seleccionó el formato <code>Raw (dd)</code>, el cual genera una copia cruda sector por sector de lectura universal sin aplicar compresión ni encabezados propietarios.</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura16.5.png" alt="Figura 5. Elección del formato crudo universal Raw (dd)" onerror="this.style.display='none';">
+                            <figcaption>Figura 5. Elección del formato crudo universal Raw (dd).</figcaption>
+                        </figure>
+                    </div>
+                    <p>Al avanzar a la ventana <code>Evidence Item Information</code>, se registraron los metadatos oficiales del caso para documentar la cadena de custodia (Case Number: <code>InfoCrim-01_21.11.2023</code>, Evidence Number: <code>00 (Original Adq)</code>, Unique Description: <code>CNO IV - análisis de incidente de fraude bancario</code>, Examiner: <code>Gonzalez Espinoza Karla Vanessa</code>, Notes: <code>Adquisición realizada en LIF de la Upslp</code>):</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura16.6.png" alt="Figura 6. Captura de metadatos del caso y del examinador" onerror="this.style.display='none';">
+                            <figcaption>Figura 6. Captura de metadatos del caso y del examinador.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Paso 5 -->
+                <div class="step-box">
+                    <p><strong>5. Configuración del directorio destino y fragmentación:</strong> En la ventana <code>Select Image Destination</code> se seleccionó mediante <code>Browse</code> la carpeta <code>InfoCrim13</code> creada en el Escritorio del equipo local. En el campo <code>Image Filename (Excluding Extension)</code> se ingresó el identificador <code>infocrim_GEKV</code> con un tamaño de fragmento de <code>1500 MB</code> y compresión <code>0</code>.</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura16.7.png" alt="Figura 7. Definición de la ruta de almacenamiento en InfoCrim13" onerror="this.style.display='none';">
+                            <figcaption>Figura 7. Definición de la ruta de almacenamiento en InfoCrim13.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Paso 6 -->
+                <div class="step-box">
+                    <p><strong>6. Ejecución de la adquisición:</strong> Antes de iniciar el copiado en la ventana <code>Create Image</code>, se confirmó que la casilla <code>Verify images after they are created</code> estuviera activa para que FTK Imager calculara y confrontara automáticamente las firmas <code>MD5</code> y <code>SHA-1</code> al concluir la lectura.</p>
+                    <div class="fig-container">
+                        <figure style="max-width: 48%;">
+                            <img src="img/figura16.8.png" alt="Figura 8. Inicio de la adquisición forense" onerror="this.style.display='none';">
+                            <figcaption>Figura 8. Inicio de la adquisición forense con la opción de verificación activada.</figcaption>
+                        </figure>
+                        <figure style="max-width: 48%;">
+                            <img src="img/figura16.9.png" alt="Figura 9. Conclusión del proceso de creación de la imagen forense" onerror="this.style.display='none';">
+                            <figcaption>Figura 9. Conclusión del proceso de creación de la imagen forense y tiempo transcurrido.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARTE 2 -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-question-circle"></i> Parte 2: Cuestionario Técnico de Formatos Forenses
+                </h3>
+
+                <div class="step-box">
+                    <p><strong>1. ¿Qué tipo de formato se refiere el Raw (dd)?</strong></p>
+                    <p>El formato <code>Raw (dd)</code>, también conocido como imagen cruda o <em>bit-stream image</em>, es una copia exacta sector por sector (bit a bit) del dispositivo de almacenamiento sin ningún tipo de compresión, cifrado ni encabezados propietarios integrados en el archivo. Su nombre proviene de la herramienta tradicional <code>dd</code> (<em>data definition / disk dump</em>) de sistemas Unix/Linux. Su principal cualidad es que es un formato de lectura universal compatible con prácticamente cualquier herramienta de análisis forense. Dado que no almacena metadatos internos ni firmas criptográficas dentro del propio archivo binario, ocupa exactamente el mismo tamaño que la capacidad física de la unidad origen y guarda los datos del caso y los hashes en un archivo de texto (<code>.txt</code>) separado (Carrier, 2005; Nelson et al., 2019).</p>
+                </div>
+
+                <div class="step-box">
+                    <p><strong>2. ¿Qué tipo de formato se refiere el E01?</strong></p>
+                    <p>El formato <code>E01</code> corresponde al estándar <em>Expert Witness Compression Format (EWF)</em>, desarrollado originalmente por Guidance Software para su software EnCase. Se trata de un formato contenedor especializado para informática forense que encapsula la copia bit a bit del medio junto con un encabezado interno (<em>header</em>) donde se guardan los metadatos del caso (número de caso, número de evidencia, nombre del examinador, fecha y notas). A diferencia del formato Raw, el formato <code>E01</code> permite comprimir los bloques de datos (reduciendo notablemente el tamaño de la imagen cuando existen sectores vacíos) e integra sumas de verificación de redundancia cíclica (<code>CRC</code>) por cada bloque de 64 sectores (<code>32 KB</code>), además del hash <code>MD5/SHA-1</code> en el pie del archivo (<em>footer</em>), garantizando un control de integridad interno (AccessData, 2020; Johansen, 2020).</p>
+                </div>
+
+                <div class="step-box">
+                    <p><strong>3. ¿Cuál es la diferencia entre un formato SMART y un formato E01?</strong></p>
+                    <p>Aunque tanto <code>SMART</code> como <code>E01</code> se basan en la especificación original <em>Expert Witness Format (EWF)</em> y comparten capacidades de compresión, fragmentación y sumas de verificación <code>CRC</code> internas, presentan diferencias clave en su origen, estructura y vigencia:</p>
+                    <ul style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify;">
+                        <li style="margin-bottom: 0.5rem;"><strong>Origen y extensión:</strong> El formato <code>SMART</code> (que genera archivos con extensión <code>.s01</code>, <code>.s02</code>, etc.) fue creado por ASR Data para su suite forense SMART enfocada en sistemas Linux, mientras que el formato <code>E01</code> (<code>.E01</code>, <code>.E02</code>, etc.) fue diseñado por Guidance Software para EnCase.</li>
+                        <li><strong>Metadatos e interoperabilidad:</strong> El formato <code>SMART</code> almacena información de encabezado más básica y hoy se considera un formato legado (antiguo) con soporte reducido en herramientas modernas. En cambio, el formato <code>E01</code> posee una estructura de metadatos estandarizada y completa, consolidándose actualmente como el estándar de facto a nivel internacional en los laboratorios de informática forense (AccessData, 2020; Metz, 2014; Nelson et al., 2019).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PARTE 3 -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-fingerprint"></i> Parte 3: Verificación de Integridad y Resultados de la Adquisición
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1.5rem;">
+                    Al concluir la adquisición y la verificación criptográfica en <code>FTK Imager</code> se obtuvieron los siguientes resultados finales (presentados en formato de texto y respaldados con sus capturas de pantalla):
+                </p>
+
+                <div class="step-box">
+                    <div class="fig-container">
+                        <figure style="max-width: 48%;">
+                            <img src="img/figura16.10.png" alt="Figura 10. Resultados finales de verificación de integridad" onerror="this.style.display='none';">
+                            <figcaption>Figura 10. Resultados finales de verificación de integridad.</figcaption>
+                        </figure>
+                        <figure style="max-width: 48%;">
+                            <img src="img/figura16.11.png" alt="Figura 11. Archivos generados en el directorio InfoCrim13" onerror="this.style.display='none';">
+                            <figcaption>Figura 11. Archivos generados en el directorio InfoCrim13.</figcaption>
+                        </figure>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><strong>Contenido del archivo de auditoría (<code>infocrim_GEKV.001.txt</code>):</strong></p>
+                    <pre><code>Created By AccessData® FTK® Imager 4.3.1.1
+
+Case Information: 
+Acquired using: ADI4.3.1.1
+Case Number: InfoCrim-01_21.11.2023
+Evidence Number: 00 (Original Adq)
+Unique description: CNO IV - análisis de incidente de fraude bancario
+Examiner: Gonzalez Espinoza Karla Vanessa
+Notes: Adquisición realizada en LIF de la Upslp
+
+--------------------------------------------------------------
+
+Information for C:\Users\vanes\OneDrive\Documentos\Escritorio\InfoCrim13\infocrim_GEKV:
+
+Physical Evidentiary Item (Source) Information:
+[Device Info]
+ Source Type: Physical
+[Drive Geometry]
+ Cylinders: 946
+ Tracks per Cylinder: 255
+ Sectors per Track: 63
+ Bytes per Sector: 512
+ Sector Count: 15,204,352
+[Physical Drive Information]
+ Drive Model: KINGSTON DataTraveler SE1 USB Device
+ Drive Serial Number: 0018F30C97F6AC91D1C10120
+ Drive Interface Type: USB
+ Removable drive: True
+ Source data size: 7424 MB
+ Sector count:   15204352
+[Computed Hashes]
+ MD5 checksum:    9f3ad2762eed3ed4f79422dab5bd8f85
+ SHA1 checksum:   5e967dff72a680c02081633e6eeadbc2379f40a9
+
+Image Information:
+ Acquisition started:   Sun Nov  8 20:28:06 2026
+ Acquisition finished:  Sun Nov  8 20:35:32 2026
+ Segment list:
+  C:\Users\vanes\OneDrive\Documentos\Escritorio\InfoCrim13\infocrim_GEKV.001
+  C:\Users\vanes\OneDrive\Documentos\Escritorio\InfoCrim13\infocrim_GEKV.002
+  C:\Users\vanes\OneDrive\Documentos\Escritorio\InfoCrim13\infocrim_GEKV.003
+  C:\Users\vanes\OneDrive\Documentos\Escritorio\InfoCrim13\infocrim_GEKV.004
+  C:\Users\vanes\OneDrive\Documentos\Escritorio\InfoCrim13\infocrim_GEKV.005
+
+Image Verification Results:
+ Verification started:  Sun Nov  8 20:35:34 2026
+ Verification finished: Sun Nov  8 20:35:50 2026
+ MD5 checksum:    9f3ad2762eed3ed4f79422dab5bd8f85 : verified
+ SHA1 checksum:   5e967dff72a680c02081633e6eeadbc2379f40a9 : verified</code></pre>
+
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura16.12.png" alt="Figura 12. Contenido del archivo de texto" onerror="this.style.display='none';">
+                            <figcaption>Figura 12. Contenido del archivo de texto.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARTE 4 -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-clipboard-check"></i> Parte 4: Informe Ejecutivo y Líneas de Investigación
+                </h3>
+
+                <div class="step-box">
+                    <p><strong>1. Descripción ejecutiva del proceso y resultados</strong></p>
+                    <p>Como parte del protocolo de respuesta a incidentes del Laboratorio de Informática Forense (LIF) de la UPSLP para el caso <code>InfoCrim-01_21.11.2023</code>, relativo a un incidente de fraude bancario, se efectuó la adquisición forense física (bit a bit) de la unidad de almacenamiento USB identificada como <code>Evidencia 00</code>. El procedimiento se ejecutó utilizando <code>AccessData FTK Imager</code>, configurando una imagen en formato crudo universal <code>Raw (dd)</code> segmentada en bloques de <code>1500 MB</code> dentro del directorio <code>InfoCrim13</code>.</p>
+                    <p>El copiado abarcó la totalidad de los sectores físicos de la memoria USB sin presentar bloques dañados. Al término de la captura, se verificó la integridad matemática de la imagen mediante los algoritmos criptográficos <code>MD5</code> y <code>SHA-1</code>, obteniendo una coincidencia exacta (<code>Match</code>) entre los datos leídos del dispositivo origen y los fragmentos generados. Toda la trazabilidad técnica (geometría de la unidad, número de serie, marcas de tiempo y firmas hash) quedó asentada en el archivo de auditoría <code>infocrim_GEKV.001.txt</code> que se anexa a esta entrega.</p>
+                </div>
+
+                <div class="step-box">
+                    <p><strong>2. Análisis crítico y relación con el contexto de la investigación</strong></p>
+                    <p>En una investigación de fraude bancario, contar con una adquisición física (<code>Physical Drive</code>) en lugar de una simple copia lógica de archivos resulta determinante. Los involucrados en ilícitos financieros suelen eliminar estados de cuenta, registros de transferencias, hojas de cálculo o comunicaciones comprometedoras antes de entregar o abandonar un dispositivo. Al haber copiado bit a bit todos los sectores de la unidad USB, la imagen obtenida preserva intacto el espacio no asignado (<em>unallocated space</em>) y el espacio desperdiciado de clúster (<em>slack space</em>), permitiendo recuperar evidencia eliminada sin poner en riesgo la muestra original. Asimismo, la coincidencia de los hashes <code>MD5</code> y <code>SHA-1</code> brinda certeza técnica y legal de que la evidencia recolectada en el LIF no fue alterada.</p>
+                </div>
+
+                <div class="step-box">
+                    <p><strong>3. Propuesta de líneas de investigación a seguir</strong></p>
+                    <ol style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify;">
+                        <li style="margin-bottom: 0.6rem;"><strong>Recuperación de evidencia eliminada (<em>File Carving</em>):</strong> Generar una copia de trabajo de los segmentos <code>.001</code> y montarla en modo solo lectura dentro de una suite de análisis forense (como <code>Autopsy</code> o <code>FTK</code>) para rastrear y reconstruir documentos financieros, archivos PDF, bases de datos o libros de Excel borrados en el espacio no asignado.</li>
+                        <li style="margin-bottom: 0.6rem;"><strong>Inspección de metadatos y marcas de tiempo (<code>MACB</code>):</strong> Analizar las fechas de Modificación, Acceso y Creación del sistema de archivos, así como los metadatos internos de autoría en documentos ofimáticos, para identificar usuarios clave, nombres de equipos involucrados y establecer una línea de tiempo precisa de las operaciones del fraude.</li>
+                        <li><strong>Detección de ocultamiento de información:</strong> Verificar firmas de encabezados de archivos (<em>magic numbers</em>) frente a sus extensiones para detectar si se cambiaron extensiones deliberadamente o si existen contenedores cifrados o particiones ocultas dentro de la memoria USB.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- REFERENCIAS -->
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple); margin-bottom: 1rem;"><i class="fas fa-bookmark"></i> Referencias</h4>
+                <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; text-align: justify;">
+                    <li style="margin-bottom: 0.5rem;">AccessData. (2020). <em>FTK Imager user guide (Versión 4.5)</em>. Exterro. https://www.exterro.com/ftk-imager</li>
+                    <li style="margin-bottom: 0.5rem;">Carrier, B. (2005). <em>File system forensic analysis</em>. Addison-Wesley Professional.</li>
+                    <li style="margin-bottom: 0.5rem;">Johansen, G. (2020). <em>Digital forensics and incident response: Incident response techniques and procedures to respond to modern cyber threats</em> (2.ª ed.). Packt Publishing.</li>
+                    <li style="margin-bottom: 0.5rem;">Kent, K., Chevalier, S., Grance, T., &amp; Dang, H. (2006). <em>Guide to integrating forensic techniques into incident response (NIST Special Publication 800-86)</em>. National Institute of Standards and Technology. https://doi.org/10.6028/NIST.SP.800-86</li>
+                    <li>Nelson, B., Phillips, A., &amp; Steuart, C. (2019). <em>Guide to computer forensics and investigations</em> (6.ª ed.). Cengage Learning.</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 3rem;">
+                <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Reporte Oficial</h4>
+                <a href="reportes/GonzalezEspinozaKarlaVanessa-ACT16.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i> Descargar Reporte (PDF)
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
