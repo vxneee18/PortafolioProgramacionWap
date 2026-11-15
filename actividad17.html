@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 17 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        code {
+            background: rgba(157, 78, 221, 0.18);
+            color: #e0aaff;
+            padding: 0.15rem 0.45rem;
+            border-radius: 5px;
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+            font-size: 0.88em;
+        }
+        pre {
+            background: rgba(0, 0, 0, 0.55);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 8px;
+            padding: 0.85rem 1.15rem;
+            overflow-x: auto;
+            margin: 0.75rem 0;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: #e0aaff;
+        }
+        .step-box {
+            margin-bottom: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-purple);
+        }
+        .step-box p {
+            text-align: justify;
+            color: var(--text-muted);
+            margin-bottom: 0.65rem;
+        }
+        .step-box p strong {
+            color: var(--text-main);
+        }
+        .fig-container {
+            text-align: center;
+            margin: 1.25rem 0 0.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .fig-container figure {
+            max-width: 85%;
+            margin: 0 auto;
+        }
+        .fig-container img {
+            width: 100%;
+            border: 1px solid var(--card-border);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .fig-container figcaption {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        .results-table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .results-table th, .results-table td {
+            padding: 0.9rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(123, 44, 191, 0.25);
+            vertical-align: top;
+        }
+        .results-table th {
+            background: rgba(90, 24, 154, 0.45);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+        .results-table tr:hover {
+            background: rgba(123, 44, 191, 0.12);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html" class="active">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 920px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="actividades.html" style="color: var(--accent-purple); text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Volver a Actividades
+            </a>
+        </div>
+
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Actividad 17: La Memoria del Crimen — Análisis Forense de Memoria Volátil con Volatility
+            </h2>
+
+            <!-- INTRODUCCIÓN -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-memory"></i> Introducción
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1rem;">
+                    El presente informe ejecutivo documenta el análisis forense realizado sobre la muestra de memoria volátil (<code>OtterCTF.vmem</code>, de <code>2 GB</code> / <code>2,147,483,648 bytes</code>) obtenida por elementos especializados de la FGM a partir del ordenador de un presunto cibercriminal vinculado con actividades de ingeniería social, distribución de material ilícito mediante redes P2P (Torrent), operación de servidores Lunar y extorsión mediante ransomware y criptomonedas.
+                </p>
+                <p style="text-align: justify; color: var(--text-muted);">
+                    <strong>Importancia y fundamento teórico del análisis de memoria volátil (RAM):</strong> De acuerdo con el principio de Orden de Volatilidad (<code>RFC 3227</code>), la memoria RAM constituye una de las fuentes de evidencia digital más críticas y efímeras en una investigación de cibercrimen. A diferencia del almacenamiento en disco duro, la memoria RAM conserva el estado dinámico del sistema en vivo al momento exacto de su aseguramiento: estructuras del kernel (<code>KDBG</code>), procesos en ejecución (<code>_EPROCESS</code>), sockets y conexiones de red activas o recientemente cerradas, colmenas del Registro cargadas en memoria (<code>CMHIVE</code>), secretos de autenticación en texto claro (<code>LSASS</code>) y artefactos de navegación web que de otro modo se perderían al apagar el equipo.
+                </p>
+            </div>
+
+            <!-- METODOLOGÍA -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-sitemap"></i> Metodología
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1rem;">
+                    El análisis se llevó a cabo respetando la integridad de la muestra original y aplicando una metodología secuencial de seis fases mediante <code>Volatility Framework 2.6</code>:
+                </p>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify;">
+                    <li style="margin-bottom: 0.6rem;"><strong>Reconstrucción de la evidencia fragmentada:</strong> Los siete volúmenes comprimidos (<code>OtterCTF.zip.001</code> a <code>OtterCTF.zip.007</code>) fueron concatenados y extraídos para obtener la imagen forense íntegra <code>OtterCTF.vmem</code>.</li>
+                    <li style="margin-bottom: 0.6rem;"><strong>Identificación del perfil y línea de tiempo (<code>imageinfo</code>):</strong> Se realizó un barrido del bloque de depuración del kernel (<em>Kernel Debugger Block</em> - <code>KDBG</code> en <code>0xf80002c430a0L</code>) y de la estructura <code>KUSER_SHARED_DATA</code>, determinando la arquitectura del sistema operativo (<code>Win7SP1x64</code>) y la marca temporal exacta de adquisición.</li>
+                    <li style="margin-bottom: 0.6rem;"><strong>Extracción de credenciales y análisis del Registro (<code>hivelist</code>, <code>hashdump</code>, <code>lsadump</code>, <code>printkey</code>):</strong> Se localizaron en memoria las direcciones virtuales de las colmenas <code>SAM</code>, <code>SYSTEM</code> y <code>SECURITY</code>. A partir de ellas se extrajeron los hashes NTLM de las cuentas locales, el secreto LSA <code>DefaultPassword</code> almacenado en texto claro durante la sesión activa, y la llave <code>ControlSet001\Control\ComputerName\ComputerName</code> para identificar el nombre del equipo.</li>
+                    <li style="margin-bottom: 0.6rem;"><strong>Análisis de comunicaciones de red (<code>netscan</code>):</strong> Se escanearon los objetos de red <code>TCPv4/UDPv4</code> en memoria física para identificar el direccionamiento IP privado del host comprometido, los puertos en escucha y las conexiones hacia servidores externos vinculados con las aplicaciones en ejecución.</li>
+                    <li style="margin-bottom: 0.6rem;"><strong>Inspección de procesos y líneas de comando (<code>pslist</code>, <code>pstree</code>, <code>cmdline</code>):</strong> Se reconstruyó el árbol jerárquico de procesos activos e históricos para identificar qué software fue iniciado por el usuario (<code>explorer.exe</code>), detectando clientes P2P, clientes de servidores externos y binarios autoextraíbles sospechosos.</li>
+                    <li><strong>Volcado de memoria de procesos e inspección de artefactos (<code>memdump</code> y análisis de cadenas):</strong> Se extrajo el espacio de direccionamiento completo de los procesos de interés (<code>chrome.exe</code> y <code>vmware-tray.exe</code> con <code>PID 3720</code>) para recuperar artefactos de sesión de correo electrónico y la carga útil (<em>payload</em>) del ransomware junto con la dirección de su monedero Bitcoin.</li>
+                </ol>
+            </div>
+
+            <!-- DOCUMENTACIÓN -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-terminal"></i> Documentación y Evidencia Técnica
+                </h3>
+
+                <!-- Punto 1 -->
+                <div class="step-box">
+                    <p><strong>1. Herramienta y muestra de análisis:</strong> Se utilizó la herramienta <code>Volatility</code> (<code>https://github.com/volatilityfoundation/volatility</code>) ejecutada en Windows sobre la imagen forense <code>OtterCTF.vmem</code>.</p>
+                </div>
+
+                <!-- Punto 2 -->
+                <div class="step-box">
+                    <p><strong>2. Identifique la marca de tiempo local para el volcado de memoria.</strong></p>
+                    <p><strong>Comando:</strong> <code>volatility.exe -f OtterCTF.vmem imageinfo</code></p>
+                    <p><strong>Resultado:</strong> <code>Image local date and time : 2018-08-04 22:34:22 +0300</code></p>
+                    <p><strong>¿Cuál es su análisis respecto al resultado obtenido en “Image local date and time”?</strong><br>
+                    Se indica el tiempo exacto en que se realizó la adquisición forense en vivo de la memoria RAM, incluyendo la fecha, hora y zona horaria (<code>UTC+0300</code>) de la ubicación del equipo.</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura17.1.png" alt="Figura 1: Marca de tiempo local" onerror="this.style.display='none';">
+                            <figcaption>Figura 1: Marca de tiempo local.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 3 -->
+                <div class="step-box">
+                    <p><strong>3. Identifique el Sistema Operativo y arquitectura que el cibercriminal ha utilizado.</strong></p>
+                    <p><strong>Comando:</strong> <code>volatility.exe -f OtterCTF.vmem imageinfo</code></p>
+                    <p><strong>Respuesta:</strong> Sistema Operativo <code>Windows 7 Service Pack 1</code> con arquitectura de <code>64 bits</code> (perfil sugerido: <code>Win7SP1x64</code>).</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura17.2.png" alt="Figura 2: Sistema Operativo y arquitectura cibercriminal" onerror="this.style.display='none';">
+                            <figcaption>Figura 2: Sistema Operativo y arquitectura cibercriminal.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 4 -->
+                <div class="step-box">
+                    <p><strong>4. ¿Cuál es la contraseña del perfil del cibercriminal quien se presume utilizaba el ordenador pues el inicio de sesión se encontraba visible cuando el sistema en vivo estaba en ejecución?</strong></p>
+                    <p><strong>Comandos:</strong></p>
+                    <pre><code>volatility.exe -f OtterCTF.vmem --profile=Win7SP1x64 hashdump
+volatility.exe -f OtterCTF.vmem --profile=Win7SP1x64 lsadump</code></pre>
+                    <p><strong>Respuesta:</strong><br>
+                    <strong>Usuario del perfil activo:</strong> <code>Rick</code><br>
+                    <strong>Contraseña del perfil:</strong> <code>MortyIsReallyAnOtter</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura17.3.png" alt="Figura 3: Hashes de usuario (hashdump)" onerror="this.style.display='none';">
+                            <img src="img/figura17.4.png" alt="Figura 4: Secreto LSA (lsadump)" style="margin-top: 0.75rem;" onerror="this.style.display='none';">
+                            <figcaption>Figura 3 y 4: Perfil cibercriminal y contraseña en texto claro mediante hashdump y lsadump.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 5 -->
+                <div class="step-box">
+                    <p><strong>5. Identifique el direccionamiento IP que fue utilizado por el cibercriminal al momento de atacar el sistema local.</strong></p>
+                    <p><strong>Comando:</strong> <code>volatility.exe -f OtterCTF.vmem --profile=Win7SP1x64 netscan</code></p>
+                    <p><strong>Respuesta:</strong> La dirección IP local es <code>192.168.202.131</code>.</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura17.5.png" alt="Figura 5: Dirección IP utilizada por el cibercriminal" onerror="this.style.display='none';">
+                            <figcaption>Figura 5: Dirección IP utilizada por el cibercriminal.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 6 -->
+                <div class="step-box">
+                    <p><strong>6. Visualice las llaves del Registro del Sistema disponibles.</strong></p>
+                    <p><strong>¿Por qué es de utilidad conocer el Registro del Sistema del dispositivo comprometido?</strong><br>
+                    Porque Windows almacena en memoria información crítica para la investigación forense: la identidad del equipo, zona horaria, interfaces de red e historial de conexiones, cuentas de usuario y credenciales cifradas.</p>
+                    <p><strong>Comando:</strong> <code>volatility.exe -f OtterCTF.vmem --profile=Win7SP1x64 hivelist</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura17.6.png" alt="Figura 6: Llaves de registro del sistema" onerror="this.style.display='none';">
+                            <figcaption>Figura 6: Llaves de registro del sistema.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 7 -->
+                <div class="step-box">
+                    <p><strong>7. Identifique el nombre del ordenador del cibercriminal.</strong></p>
+                    <p><strong>Comando:</strong> <code>volatility.exe -f OtterCTF.vmem --profile=Win7SP1x64 printkey -K "ControlSet001\Control\ComputerName\ComputerName"</code></p>
+                    <p><strong>Respuesta:</strong> <code>WIN-LO6FAF3DTFE</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura17.7.png" alt="Figura 7: Nombre del ordenador del cibercriminal" onerror="this.style.display='none';">
+                            <figcaption>Figura 7: Nombre del ordenador del cibercriminal.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 8 -->
+                <div class="step-box">
+                    <p><strong>8. Identifique tres procesos que considere importantes de los cuales el cibercriminal haya iniciado la ejecución del software.</strong></p>
+                    <p><strong>Comando:</strong> <code>volatility.exe -f OtterCTF.vmem --profile=Win7SP1x64 cmdline</code></p>
+
+                    <p style="margin-top: 1rem;"><strong>Proceso A (<code>BitTorrent.exe</code> — PID <code>2836</code>):</strong><br>
+                    <strong>¿Por qué considera que es importante?</strong> Porque los hechos del caso indican que se busca identificar los servicios Torrent que el cibercriminal utiliza para distribuir/enviar videos y archivos (<code>"C:\Users\Rick\AppData\Roaming\BitTorrent\BitTorrent.exe" /MINIMIZED</code>).</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura17.8.png" alt="Figura 8: Proceso A BitTorrent.exe" onerror="this.style.display='none';">
+                            <figcaption>Figura 8: Proceso A BitTorrent.exe.</figcaption>
+                        </figure>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><strong>Proceso B (<code>LunarMS.exe</code> — PID <code>708</code>):</strong><br>
+                    <strong>¿Por qué considera que es importante?</strong> Porque el cuerpo de inteligencia CNDI señaló la existencia de los servidores Lunar utilizados por el sospechoso para sus actividades ilícitas (<code>"C:\Nexon\MapleStory\LunarMS.exe"</code>).</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura17.9.png" alt="Figura 9: Proceso B LunarMS.exe" onerror="this.style.display='none';">
+                            <figcaption>Figura 9: Proceso B LunarMS.exe.</figcaption>
+                        </figure>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><strong>Proceso C (<code>Rick And Morty season 1 download.exe</code> — PID <code>3820</code>):</strong><br>
+                    <strong>¿Por qué considera que es importante?</strong> Porque el usuario ejecutó un supuesto descargador de la serie descargado vía BitTorrent (<code>"C:\Torrents\Rick And Morty season 1 download.exe"</code>) que en realidad es un archivo autoextraíble que descomprimió y lanzó en segundo plano el proceso malicioso hijo (<code>vmware-tray.exe</code> con PID <code>3720</code>).</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura17.10.png" alt="Figura 10: Proceso C Rick And Morty download.exe" onerror="this.style.display='none';">
+                            <figcaption>Figura 10: Proceso C Rick And Morty season 1 download.exe.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 9 -->
+                <div class="step-box">
+                    <p><strong>9. Identifique el direccionamiento IP que conecta al servidor malicioso.</strong></p>
+                    <p><strong>Comando:</strong> <code>volatility.exe -f OtterCTF.vmem --profile=Win7SP1x64 netscan</code></p>
+                    <p><strong>Dirección IP (<code>LunarMS.exe</code>):</strong> <code>77.102.199.102</code></p>
+                    <p><strong>¿Cuál fue el puerto que utilizó además de la dirección IP?</strong><br>
+                    Puerto remoto del servidor: <code>7575</code></p>
+                    <p><strong>¿Cuál es la ubicación posible del atacante (<code>https://www.geolocation.com/es</code>)?</strong><br>
+                    La dirección IP pública <code>77.102.199.102</code> pertenece a <strong>Rusia</strong>, específicamente en la región de <strong>San Petersburgo</strong>.</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura17.11.png" alt="Figura 11: Dirección IP del servidor malicioso" onerror="this.style.display='none';">
+                            <figcaption>Figura 11: Dirección IP del servidor malicioso.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 10 -->
+                <div class="step-box">
+                    <p><strong>10. Identifique los correos electrónicos que el cibercriminal utilizó para llevar a cabo los ataques de ingeniería social.</strong></p>
+                    <p><strong>¿Cuáles fueron los correos empleados?</strong><br>
+                    <code>rickopicko@mail.com</code> (y referencia asociada <code>rickypinky@mail.com</code>)</p>
+                    <p><strong>¿Desde qué plataforma y navegador fueron abiertos estos correos electrónicos?</strong><br>
+                    <strong>Plataforma de correo:</strong> <code>Mail.com</code><br>
+                    <strong>Navegador web:</strong> <code>Google Chrome versión 68.0</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura17.12.png" alt="Figura 12: Correos electrónicos" onerror="this.style.display='none';">
+                            <figcaption>Figura 12: Correos electrónicos extraídos de artefactos de sesión en memoria.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 11 -->
+                <div class="step-box">
+                    <p><strong>11. Después de un análisis exhaustivo, se obtuvo un indicio de interés: se trata del proceso <code>3720</code>, el cual fue ejecutado en el ordenador vulnerado. Dicho proceso indica una ejecución falsa de un programa, sin embargo, oculta un mensaje malicioso. Identifique la cartera del monedero cripto a donde presuntamente son enviados los recursos del rescate.</strong></p>
+                    <p><strong>Comandos:</strong></p>
+                    <pre><code>volatility.exe -f OtterCTF.vmem --profile=Win7SP1x64 cmdline -p 3820,3720
+volatility.exe -f OtterCTF.vmem --profile=Win7SP1x64 memdump -p 3720 -D dumps</code></pre>
+                    <p><strong>¿Cuál es la cartera de criptomoneda?</strong><br>
+                    <code>1MmpEmebJkqXG8nQv4cjJSmxZQFVmFo63M</code></p>
+                    <p><strong>¿Dicha cartera se encuentra reportada en listas negras de BTC black (<code>https://btcblack.it/index.cgi/verify</code>)?</strong><br>
+                    En verificadores de listas negras de abuso y fraude de Bitcoin, se identifica que es una dirección empleada en este escenario de ransomware (exigiendo un rescate de <code>0.16 BTC</code>).</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura17.13.png" alt="Figura 13: Cartera monedero" onerror="this.style.display='none';">
+                            <figcaption>Figura 13: Extracción de memoria del proceso 3720 (vmware-tray.exe) y cartera monedero.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESULTADOS -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-table"></i> Resumen de Resultados
+                </h3>
+                <div class="results-table-wrapper">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Categoría / Indicio</th>
+                                <th>Plugin / Método Utilizado</th>
+                                <th>Resultado Obtenido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Marca de tiempo (UTC / Local)</strong></td>
+                                <td><code>imageinfo</code></td>
+                                <td><code>2018-08-04 19:34:22 UTC</code> / <code>2018-08-04 22:34:22 +0300</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sistema Operativo y Arquitectura</strong></td>
+                                <td><code>imageinfo</code></td>
+                                <td>Windows 7 Service Pack 1 (64 bits / <code>Win7SP1x64</code>)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nombre del Ordenador</strong></td>
+                                <td><code>printkey</code></td>
+                                <td><code>WIN-LO6FAF3DTFE</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Perfil de Usuario y Contraseña</strong></td>
+                                <td><code>hashdump</code> / <code>lsadump</code></td>
+                                <td>Usuario: <code>Rick</code> (UID 1000) / Contraseña: <code>MortyIsReallyAnOtter</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dirección IP Local del Host</strong></td>
+                                <td><code>netscan</code></td>
+                                <td><code>192.168.202.131</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Procesos Clave Identificados</strong></td>
+                                <td><code>cmdline</code> / <code>pstree</code></td>
+                                <td>
+                                    1. <code>BitTorrent.exe</code> (PID <code>2836</code>)<br>
+                                    2. <code>LunarMS.exe</code> (PID <code>708</code>)<br>
+                                    3. <code>Rick And Morty</code> (PID <code>3820</code>) &rarr; <code>vmware-tray.exe</code> (PID <code>3720</code>)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Servidor Malicioso y Puerto</strong></td>
+                                <td><code>netscan</code></td>
+                                <td>IP Remota: <code>77.102.199.102</code> / Puerto TCP: <code>7575</code> (<code>LunarMS.exe</code>)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Geolocalización de la IP Externa</strong></td>
+                                <td>Geolocation (<code>77.102.199.102</code>)</td>
+                                <td>San Petersburgo, Federación Rusa (Huso horario UTC+3)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Correos Electrónicos y Plataforma</strong></td>
+                                <td>Análisis de memoria (<code>chrome.exe</code>)</td>
+                                <td><code>rickopicko@mail.com</code> (y <code>rickypinky@mail.com</code>) abiertos en Mail.com desde Google Chrome v68.0 (Windows)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Monedero Cripto (Ransomware PID 3720)</strong></td>
+                                <td><code>memdump -p 3720</code> + Strings</td>
+                                <td>Cartera BTC: <code>1MmpEmebJkqXG8nQv4cjJSmxZQFVmFo63M</code> (Monto exigido: <code>0.16 BTC</code>)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ANÁLISIS FORENSE -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-search-plus"></i> Análisis Forense
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1.2rem;">
+                    Al relacionar los hallazgos técnicos extraídos de la memoria RAM con las hipótesis de inteligencia de la FGM, SEDENE y CNDI, se confirman los siguientes vínculos probatorios:
+                </p>
+
+                <div class="step-box">
+                    <p><strong>1. Confirmación de identidad del sujeto ("Rick" / "Morty") y evidencia <code>EV456FGM</code>:</strong></p>
+                    <p>En el canal de Telegram investigado figuraban los alias <em>"Ricky"</em> y <em>"Morty"</em>. El análisis del sistema demostró que la cuenta principal activa en el equipo corresponde al usuario <code>Rick</code>, cuya contraseña en texto claro recuperada mediante <code>lsadump</code> es <code>MortyIsReallyAnOtter</code>. Asimismo, en la memoria del navegador Google Chrome v68.0 se localizó la sesión activa en la plataforma Mail.com bajo la cuenta <code>rickopicko@mail.com</code> (con metadatos de perfil a nombre de "Rick", sexo masculino, 26 años), confirmando la hipótesis de la evidencia <code>EV456FGM</code> sobre el uso de correos electrónicos desde dicho equipo para ejecutar campañas de ingeniería social.</p>
+                </div>
+
+                <div class="step-box">
+                    <p><strong>2. Vinculación con los informes de inteligencia de SEDENE (<code>FAF3</code>), CNDI (<code>TFE</code>) y evidencia <code>EV455FGM</code>:</strong></p>
+                    <p>La consulta a la colmena <code>SYSTEM</code> del Registro reveló que el nombre del ordenador es <code>WIN-LO6FAF3DTFE</code>. Este identificador integra de manera exacta las iniciales <code>FAF3</code> aportadas por SEDENE y las iniciales <code>TFE</code> aportadas por el CNDI (<code>WIN-LO6 + FAF3 + D + TFE</code>). Aunado al direccionamiento IP local <code>192.168.202.131</code> y al sistema operativo <code>Windows 7 SP1 x64</code>, se establece una correlación positiva e inequívoca con la evidencia <code>EV455FGM</code>.</p>
+                </div>
+
+                <div class="step-box">
+                    <p><strong>3. Operación de servidores Lunar (<code>LunarMS.exe</code>) y correlación geográfica:</strong></p>
+                    <p>Se comprobó la ejecución activa del binario <code>"C:\Nexon\MapleStory\LunarMS.exe"</code> (PID <code>708</code>), corroborando la inteligencia del CNDI respecto al uso de servidores Lunar. Mediante <code>netscan</code> se identificó que dicho proceso estableció comunicación TCP desde <code>192.168.202.131:49530</code> hacia el servidor externo <code>77.102.199.102</code> en el puerto <code>7575</code>. La geolocalización de esta IP ubica al servidor en San Petersburgo, Rusia, cuya zona horaria (<code>UTC+3</code>) concuerda con el desfase horario <code>+0300</code> registrado en el reloj local del volcado de memoria (<code>2018-08-04 22:34:22 +0300</code>), así como con los metadatos regionales (<code>IL / IDT UTC+3</code>) observados en la sesión del navegador.</p>
+                </div>
+
+                <div class="step-box">
+                    <p><strong>4. Uso de servicios BitTorrent y análisis del proceso malicioso <code>3720</code> (<code>vmware-tray.exe</code>):</strong></p>
+                    <p>Se identificó el cliente <code>BitTorrent.exe</code> (PID <code>2836</code>) ejecutándose en modo minimizado (<code>"C:\Users\Rick\AppData\Roaming\BitTorrent\BitTorrent.exe" /MINIMIZED</code>), confirmando el empleo de redes P2P Torrent. A través de este servicio se descargó en <code>C:\Torrents\</code> el ejecutable <code>"Rick And Morty season 1 download.exe"</code> (PID <code>3820</code>). Al analizar la jerarquía de procesos y sus argumentos (<code>cmdline</code>), se descubrió que el proceso <code>3820</code> descomprimió en una carpeta temporal un supuesto componente de VMware: <code>"C:\Users\Rick\AppData\Local\Temp\RarSFX0\vmware-tray.exe"</code> (PID <code>3720</code>).</p>
+                    <p>Al volcar la memoria del proceso <code>3720</code> (<code>3720.dmp</code>), se confirmó que se trata de un ransomware camuflado que despliega la nota de extorsión: <em>"Your Files are locked... This is Ransomware. It locks your files until you pay for them... Send 0.16 to the address below"</em>, exigiendo el pago del rescate a la cartera de Bitcoin <code>1MmpEmebJkqXG8nQv4cjJSmxZQFVmFo63M</code>.</p>
+                </div>
+            </div>
+
+            <!-- POSIBLES LÍNEAS DE INVESTIGACIÓN -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-route"></i> Posibles Líneas de Investigación
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1rem;">
+                    Derivado de la evidencia digital obtenida, se proponen las siguientes líneas de investigación para dar continuidad al caso:
+                </p>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify;">
+                    <li style="margin-bottom: 0.7rem;">
+                        <strong>Rastreo financiero en la Blockchain de Bitcoin (<em>Blockchain Forensics</em>):</strong> Realizar un análisis de trazabilidad de transacciones entrantes y salientes sobre la dirección de monedero <code>1MmpEmebJkqXG8nQv4cjJSmxZQFVmFo63M</code> para identificar casas de cambio (<em>exchanges</em>) con políticas KYC (<em>Know Your Customer</em>) donde el cibercriminal o sus cómplices conviertan los fondos del rescate a moneda fiduciaria, así como cruzar movimientos con los pagos de <code>0.0000043 BTC</code> solicitados en el grupo de Telegram <code>"S0_Just_M0v3_Socy"</code>.
+                    </li>
+                    <li style="margin-bottom: 0.7rem;">
+                        <strong>Requerimientos legales a proveedores de servicios (ISP y Correo):</strong>
+                        <ul style="margin-left: 1.2rem; margin-top: 0.3rem;">
+                            <li>Solicitar mediante cooperación jurídica internacional los registros de conexión (logs de acceso, direcciones IP públicas históricas y correos de recuperación) asociados a las cuentas <code>rickopicko@mail.com</code> y <code>rickypinky@mail.com</code> ante el proveedor Mail.com.</li>
+                            <li>Investigar la infraestructura alojada en la dirección IP <code>77.102.199.102</code> (puerto <code>7575</code>) para identificar a otros usuarios o víctimas conectadas al servidor <code>LunarMS</code>.</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 0.7rem;">
+                        <strong>Ingeniería inversa del binario <code>3720</code> (<code>vmware-tray.exe</code>) y recuperación de archivos:</strong> Extraer el ejecutable del proceso <code>3720</code> mediante <code>procdump</code> y realizar un análisis estático y dinámico (descompilación <code>.NET</code>) para extraer la llave simétrica/asimétrica de cifrado en memoria y desencriptar los archivos afectados sin realizar pago alguno.
+                    </li>
+                    <li>
+                        <strong>Análisis de pares (<em>peers</em>) en la red BitTorrent:</strong> Inspeccionar los archivos de configuración y caché de BitTorrent en memoria (<code>resume.dat</code>, <code>dht.dat</code> y las conexiones cerradas del PID <code>2836</code> en <code>netscan</code>) para identificar los hashes de los archivos <code>.torrent</code> compartidos y las direcciones IP de otros miembros de la red delictiva.
+                    </li>
+                </ol>
+            </div>
+
+            <!-- REFERENCIAS -->
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple); margin-bottom: 1rem;"><i class="fas fa-bookmark"></i> Referencias</h4>
+                <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; text-align: justify;">
+                    <li style="margin-bottom: 0.6rem;">
+                        Ligh, M. H., Case, A., Levy, J., &amp; Walters, A. (2014). <em>The Art of Memory Forensics: Detecting Malware and Threats in Windows, Linux, and Mac Memory</em>. Wiley Publishing. ISBN: 978-1-118-82509-9. (Obra técnica de referencia escrita por los creadores de Volatility Framework; fundamenta el análisis de estructuras del kernel <code>KDBG</code>, objetos <code>_EPROCESS</code>, colmenas del registro en RAM y extracción de secretos LSA).
+                    </li>
+                    <li style="margin-bottom: 0.6rem;">
+                        Volatility Foundation. (2016). <em>Volatility Framework - Volatile memory extraction utility framework (Version 2.6)</em> [Documentación técnica y repositorio oficial]. GitHub. https://github.com/volatilityfoundation/volatility/wiki/Command-Reference (Referencia técnica oficial de los plugins empleados en la práctica: <code>imageinfo</code>, <code>hashdump</code>, <code>lsadump</code>, <code>netscan</code>, <code>hivelist</code>, <code>printkey</code>, <code>pstree</code>, <code>cmdline</code> y <code>memdump</code>).
+                    </li>
+                    <li style="margin-bottom: 0.6rem;">
+                        Brezinski, D., &amp; Killalea, T. (2002). <em>Guidelines for Evidence Collection and Archiving (RFC 3227)</em>. Internet Engineering Task Force (IETF). https://datatracker.ietf.org/doc/html/rfc3227 (Estándar técnico internacional que establece el Principio del Orden de Volatilidad —<em>Order of Volatility</em>— en la recolección y análisis de evidencia digital en memoria RAM).
+                    </li>
+                    <li style="margin-bottom: 0.6rem;">
+                        Kent, K., Chevalier, S., Grance, T., &amp; Dang, H. (2006). <em>Guide to Integrating Forensic Techniques into Incident Response (NIST Special Publication 800-86)</em>. National Institute of Standards and Technology (NIST), U.S. Department of Commerce. https://doi.org/10.6028/NIST.SP.800-86 (Guía técnica oficial del NIST sobre metodologías de análisis forense en sistemas operativos, preservación de evidencia volátil, análisis de tráfico de red y correlación de artefactos en incidentes de ciberseguridad).
+                    </li>
+                    <li>
+                        Russinovich, M. E., Solomon, D. A., &amp; Ionescu, A. (2012). <em>Windows Internals, Part 1: Covering Windows Server 2008 R2 and Windows 7</em> (6th ed.). Microsoft Press. ISBN: 978-0-7356-4873-9. (Documentación técnica de arquitectura de Windows 7 x64 que describe la administración de memoria paginada <code>WindowsAMD64PagedMemory</code>, el subsistema <code>LSASS</code>, la jerarquía de procesos y la estructura interna del Registro de Windows).
+                    </li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 3rem;">
+                <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Reporte Oficial</h4>
+                <a href="reportes/GonzalezEspinozaKarlaVanessa-ACT17.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i> Descargar Reporte (PDF)
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
