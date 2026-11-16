@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 18 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        code {
+            background: rgba(157, 78, 221, 0.18);
+            color: #e0aaff;
+            padding: 0.15rem 0.45rem;
+            border-radius: 5px;
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+            font-size: 0.88em;
+            word-break: break-all;
+        }
+        .step-box {
+            margin-bottom: 1.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-purple);
+        }
+        .step-box p {
+            text-align: justify;
+            color: var(--text-muted);
+            margin-bottom: 0.65rem;
+        }
+        .step-box p strong {
+            color: var(--text-main);
+        }
+        .fig-container {
+            text-align: center;
+            margin: 1.25rem 0 0.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .fig-container figure {
+            max-width: 85%;
+            margin: 0 auto;
+        }
+        .fig-container img {
+            width: 100%;
+            border: 1px solid var(--card-border);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .fig-container figcaption {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html" class="active">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 920px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="actividades.html" style="color: var(--accent-purple); text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Volver a Actividades
+            </a>
+        </div>
+
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Actividad 18: La Huella Digital de un Cibercriminal — Análisis Forense con Autopsy
+            </h2>
+
+            <!-- INTRODUCCIÓN -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-fingerprint"></i> Introducción
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1rem;">
+                    El presente informe ejecutivo documenta el análisis forense realizado sobre la imagen de disco dividida en ocho volúmenes, correspondiente al caso de entrenamiento forense digital utilizado por los agentes de la Agencia Nacional de Seguridad (<em>NSA Cybersecurity</em>) y el Instituto Nacional de Estándares y Tecnología (<code>NIST CFReDS — Hacking Case</code>).
+                </p>
+                <p style="text-align: justify; color: var(--text-muted);">
+                    El <code>20/09/04</code>, una computadora portátil <strong>Dell CPi</strong> fue encontrada abandonada junto con una tarjeta PCMCIA inalámbrica y una antena externa <code>802.11b</code> casera. Se sospecha que esta computadora fue utilizada con fines de piratería e intercepción de tráfico de red (<em>sniffing</em>) en puntos de acceso públicos (como Starbucks y hotspots de T-Mobile) para obtener números de tarjetas de crédito, nombres de usuario y contraseñas por parte del sospechoso <strong>Greg Schardt</strong>, quien utiliza el apodo en línea de <code>"Mr. Evil"</code>. En cumplimiento de la norma <code>ISO/IEC 27037</code>, todo análisis pericial exige verificar las firmas hash (<code>MD5</code> y <code>SHA-1</code>) y documentar cada actuación en la cadena de custodia para preservar la validez jurídica de la prueba.
+                </p>
+            </div>
+
+            <!-- METODOLOGÍA -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-sitemap"></i> Metodología
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1rem;">
+                    El análisis se llevó a cabo respetando la integridad de la muestra original y aplicando una metodología estructurada de seis fases mediante la herramienta <code>Autopsy Digital Forensics Platform</code>:
+                </p>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify;">
+                    <li style="margin-bottom: 0.6rem;"><strong>Reunión de la evidencia fragmentada:</strong> Se descargaron en un mismo directorio los 08 ficheros que componen la imagen cruda segmentada (<code>SCHARDT.001</code> a <code>SCHARDT.008</code>) desde el portal oficial del NIST CFReDS.</li>
+                    <li style="margin-bottom: 0.6rem;"><strong>Creación y configuración del caso (<code>INV01UPSLP</code>):</strong> Se inicializó el proyecto con el nombre <code>INV01UPSLP</code> (Número: <code>01</code>), registrando las credenciales del examinador, la nota <em>"Fraude (carding) Greg Schardt"</em> y la organización Universidad Politécnica de San Luis Potosí (CNO IV – Seguridad Informática).</li>
+                    <li style="margin-bottom: 0.6rem;"><strong>Importación del origen de datos (<code>Disk Image or VM File</code>):</strong> Se seleccionó la generación del nombre de host basada en el origen de datos y se importó el volumen inicial <code>SCHARDT.001</code> en la zona horaria <code>(GMT-6:00) America/Mexico_City</code> con tamaño de sector en autodetección.</li>
+                    <li style="margin-bottom: 0.6rem;"><strong>Ejecución de módulos de búsqueda e ingesta (<em>Ingest Modules</em>) y filtros:</strong> Se activaron todos los módulos disponibles (<code>Recent Activity</code>, <code>Hash Lookup</code>, <code>File Type Identification</code>, <code>Extension Mismatch Detector</code>, <code>Embedded File Extractor</code>, <code>Picture Analyzer</code>, <code>Keyword Search</code>, <code>Email Parser</code>) sobre todos los archivos, directorios y espacio no asignado.</li>
+                    <li style="margin-bottom: 0.6rem;"><strong>Verificación criptográfica de integridad (<code>MD5</code> y <code>SHA-1</code>):</strong> Se confrontaron los valores hash de adquisición frente a los de verificación del contenedor para descartar alteraciones.</li>
+                    <li><strong>Análisis de colmenas del Registro (<code>SOFTWARE</code>, <code>SYSTEM</code> y <code>SAM</code>):</strong> Se extrajeron los artefactos de configuración del sistema operativo, zona horaria, propietario registrado, última fecha de apagado y cuentas locales para vincular la computadora al sospechoso.</li>
+                </ol>
+            </div>
+
+            <!-- DOCUMENTACIÓN -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-laptop-code"></i> Documentación y Análisis en Autopsy
+                </h3>
+
+                <!-- Puntos 1, 2 y 3 -->
+                <div class="step-box">
+                    <p><strong>1. Configuración del proyecto <code>INV01UPSLP</code> y selección del tipo de origen de datos:</strong><br>
+                    Una vez creado el caso en Autopsy con los datos de la Universidad Politécnica de San Luis Potosí (CNO IV – Seguridad Informática), se seleccionó <code>"Generate new host name based on data source name"</code> y en la ventana <code>Select Data Source Type</code> se eligió <code>Disk Image or VM File</code>.</p>
+
+                    <p style="margin-top: 1rem;"><strong>2. ¿A qué se refiere el tipo de origen “Logical Files”?</strong><br>
+                    Se refiere a la importación de archivos o directorios individuales a nivel lógico del sistema de archivos (como documentos, carpetas específicas o archivos copiados previamente). A diferencia de una imagen de disco, <code>Logical Files</code> solo analiza los ficheros seleccionados y no incluye la tabla de particiones, archivos eliminados a nivel de sector ni el espacio no asignado (<em>unallocated space</em>).</p>
+
+                    <p style="margin-top: 1rem;"><strong>3. ¿A qué se refiere el tipo de origen “Local Disk”?</strong><br>
+                    Se refiere al análisis directo de una unidad física de almacenamiento o partición conectada localmente al equipo donde se ejecuta Autopsy (por ejemplo, una memoria USB o un disco externo conectado mediante bloqueador de escritura), analizando sus sectores en vivo sin haber creado un archivo de imagen intermedio.</p>
+
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura18.1.png" alt="Figura 1: Selección del tipo de origen" onerror="this.style.display='none';">
+                            <figcaption>Figura 1: Selección del tipo de origen.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Puntos 4 y 5 -->
+                <div class="step-box">
+                    <p><strong>4. Selección de la ubicación de los ficheros de evidencia (<code>SCHARDT.001</code>):</strong><br>
+                    En la ventana <code>Select Data Source</code> se seleccionó el archivo <code>SCHARDT.001</code> dentro de la carpeta de evidencia para que Autopsy reconstruya los 08 fragmentos consecutivos.</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura18.2.png" alt="Figura 2: Selección de ruta" onerror="this.style.display='none';">
+                            <figcaption>Figura 2: Selección de ruta.</figcaption>
+                        </figure>
+                    </div>
+
+                    <p style="margin-top: 1rem;"><strong>5. Selección de módulos de búsqueda e ingesta (<code>Configure Ingest</code>):</strong><br>
+                    Posteriormente se marcaron todos los módulos de búsqueda disponibles en Autopsy aplicados sobre <code>All Files, Directories, and Unallocated Space</code> y se finalizó el proceso de importación de la evidencia.</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura18.3.png" alt="Figura 3: Configuración de todos los módulos" onerror="this.style.display='none';">
+                            <figcaption>Figura 3: Configuración de todos los módulos.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 6 -->
+                <div class="step-box">
+                    <p><strong>6. ¿Cuál es el hash de la imagen? ¿Coinciden el hash de adquisición y verificación?</strong></p>
+                    <p><strong>Ruta / Comandos:</strong> <code>Data Sources -&gt; SCHARDT.001 -&gt; Properties / Container Verification</code></p>
+                    <ul style="margin-left: 1.5rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                        <li><strong>Hash MD5:</strong> <code>aee4fcd9301c03b3b054623ca261959a</code></li>
+                        <li><strong>Hash SHA-1:</strong> <code>da2fe30fe21711edf42310873af475859a68f300</code></li>
+                    </ul>
+                    <p><strong>¿Coinciden el hash de adquisición y verificación?:</strong> <strong>Sí.</strong> El hash <code>MD5</code> y el hash <code>SHA-1</code> calculados sobre la totalidad de los 08 segmentos son idénticos a las firmas oficiales de adquisición del NIST CFReDS (<code>VERIFIED - 0 Bad Sectors (Integrity Intact)</code>).</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura18.4.png" alt="Figura 4: Verificación de firmas MD5 y SHA-1" onerror="this.style.display='none';">
+                            <figcaption>Figura 4: Verificación de firmas MD5 y SHA-1.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Puntos 7, 8 y 9 -->
+                <div class="step-box">
+                    <p><strong>7. ¿Qué sistema operativo se utilizó en la computadora?</strong><br>
+                    <strong>Llave de Registro:</strong> <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName</code><br>
+                    Se utilizó el sistema operativo <strong>Microsoft Windows XP</strong> (Versión <code>5.1</code>, Compilación <code>2600.xpclient.010817-1148</code>, Service Pack 1, arquitectura de 32 bits Uniprocessor Free, directorio raíz <code>C:\WINDOWS</code>).</p>
+
+                    <p style="margin-top: 1rem;"><strong>8. ¿Cuándo fue la fecha de instalación?</strong><br>
+                    <strong>Llave de Registro:</strong> <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\InstallDate</code><br>
+                    <strong>Fecha y hora en UTC:</strong> 19 de agosto de 2004 a las 22:48:27 UTC (<code>2004-08-19 22:48:27 UTC</code>).<br>
+                    <strong>Fecha y hora local del sistema (CDT / UTC-5):</strong> 19 de agosto de 2004 a las 17:48:27 (<code>5:48:27 PM CDT</code>).<br>
+                    <strong>Valor Unix Epoch registrado en DWORD:</strong> <code>1092955707</code> (<code>0x41252e3b</code>).</p>
+
+                    <p style="margin-top: 1rem;"><strong>9. ¿Quién es el propietario registrado?</strong><br>
+                    <strong>Llave de Registro:</strong> <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\RegisteredOwner</code><br>
+                    El propietario registrado en el sistema es <strong><code>Greg Schardt</code></strong>. Este hallazgo constituye una prueba directa que vincula la computadora portátil Dell CPi abandonada con el sospechoso investigado.</p>
+
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura18.5.png" alt="Figura 5: Identificación del Sistema" onerror="this.style.display='none';">
+                            <figcaption>Figura 5: Identificación del Sistema.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Puntos 10, 11, 12 y 13 -->
+                <div class="step-box">
+                    <p><strong>10. ¿Cuál es la configuración de zona horaria?</strong><br>
+                    <strong>Llave de Registro:</strong> <code>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\TimeZoneInformation</code><br>
+                    La configuración de zona horaria corresponde a <strong>Central Standard Time (<code>CST / UTC-6</code>)</strong>, operando con horario de verano activo <strong>Central Daylight Time (<code>CDT / UTC-5</code>)</strong> (<code>Bias = 360 minutos</code>, <code>DaylightBias = -60 minutos</code>, <code>ActiveTimeBias = 300 minutos</code>).</p>
+
+                    <p style="margin-top: 1rem;"><strong>11. ¿Cuál es el nombre de la cuenta de la computadora?</strong><br>
+                    <strong>Llave de Registro:</strong> <code>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\ComputerName\ComputerName</code><br>
+                    El nombre de la cuenta de la computadora es <code>N-1A9ODN6ZXK4LQ</code>.</p>
+
+                    <p style="margin-top: 1rem;"><strong>12. ¿Cuál es el nombre de dominio principal?</strong><br>
+                    <strong>Llave de Registro:</strong> <code>SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\DefaultDomainName</code><br>
+                    El equipo opera bajo el grupo de trabajo <code>WORKGROUP</code> y su nombre de dominio principal de inicio de sesión local es <code>N-1A9ODN6ZXK4LQ</code>.</p>
+
+                    <p style="margin-top: 1rem;"><strong>13. ¿Cuándo fue la última fecha/hora registrada en que se apagó la computadora?</strong><br>
+                    <strong>Llave de Registro:</strong> <code>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Windows\ShutdownTime</code><br>
+                    <strong>Fecha y hora en UTC:</strong> 27 de agosto de 2004 a las 15:46:33 UTC (<code>2004-08-27 15:46:33 UTC</code>).<br>
+                    <strong>Fecha y hora local del sistema (CDT / UTC-5):</strong> 27 de agosto de 2004 a las 10:46:33 AM (<code>CDT</code>).</p>
+
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura18.6.png" alt="Figura 6: Datos del sistema" onerror="this.style.display='none';">
+                            <figcaption>Figura 6: Datos del sistema.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 14 -->
+                <div class="step-box">
+                    <p><strong>14. ¿Cuántas cuentas están registradas (número total)?</strong></p>
+                    <p><strong>Llave de Registro:</strong> <code>HKEY_LOCAL_MACHINE\SAM\SAM\Domains\Account\Users\Names</code></p>
+                    <p>Están registradas un total de <strong>5 cuentas de usuario</strong> en la colmena <code>SAM</code>:</p>
+                    <ul style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify; margin-bottom: 1rem;">
+                        <li style="margin-bottom: 0.4rem;"><code>Administrator</code> (<code>RID 500 / 0x1F4</code>): Cuenta integrada para la administración del equipo.</li>
+                        <li style="margin-bottom: 0.4rem;"><code>Guest</code> (<code>RID 501 / 0x1F5</code>): Cuenta integrada para acceso de invitados.</li>
+                        <li style="margin-bottom: 0.4rem;"><code>HelpAssistant</code> (<code>RID 1000 / 0x3E8</code>): Cuenta de Asistencia Remota de Windows.</li>
+                        <li style="margin-bottom: 0.4rem;"><code>SUPPORT_388945a0</code> (<code>RID 1002 / 0x3EA</code>): Cuenta de servicio de Ayuda y soporte técnico.</li>
+                        <li><code>Mr. Evil</code> (<code>RID 1003 / 0x3EB</code>): Cuenta personalizada creada por el sospechoso Greg Schardt el <code>19/08/2004 23:03:54 UTC</code> y configurada con inicio automático en <code>Winlogon</code>.</li>
+                    </ul>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura18.7.png" alt="Figura 7: Total de cuentas de usuario" onerror="this.style.display='none';">
+                            <figcaption>Figura 7: Total de cuentas de usuario.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANÁLISIS FORENSE -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-search-plus"></i> Análisis Forense
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1.2rem;">
+                    Al relacionar los hallazgos técnicos extraídos de la imagen forense en Autopsy con el contexto de la investigación de la NSA/NIST sobre la portátil Dell CPi (número de serie <code>VLQLW</code>), se confirman los siguientes vínculos probatorios:
+                </p>
+
+                <div class="step-box">
+                    <p><strong>1. Vinculación directa de identidad entre Greg Schardt y el alias <code>"Mr. Evil"</code>:</strong></p>
+                    <p>El requerimiento central del caso establecía la necesidad de vincular la computadora portátil abandonada con el sospechoso Greg Schardt, conocido bajo el apodo en línea de <code>"Mr. Evil"</code>. El análisis de la colmena <code>SOFTWARE</code> (<code>Microsoft\Windows NT\CurrentVersion</code>) demostró que el sistema fue registrado a nombre de <strong>Greg Schardt</strong> en el campo <code>RegisteredOwner</code>. Al correlacionar este hallazgo con la colmena <code>SAM</code> y con la llave de inicio de sesión <code>Winlogon</code>, se comprobó que la única cuenta de usuario activa creada por el propietario el mismo día de la instalación (<code>2004-08-19 23:03:54 UTC</code>) y configurada para iniciar sesión automáticamente (<code>DefaultUserName</code>) es <code>Mr. Evil</code> (<code>RID 1003 / 0x3EB</code>). Esta correlación demuestra de forma inequívoca que Greg Schardt y "Mr. Evil" son la misma persona y que él operaba el equipo.</p>
+                </div>
+
+                <div class="step-box">
+                    <p><strong>2. Identificación de software de piratería, reconocimiento inalámbrico y ocultamiento:</strong></p>
+                    <p>El análisis de las llaves de aplicaciones instaladas en la colmena <code>SOFTWARE</code> y de los directorios del perfil <code>C:\Documents and Settings\Mr. Evil\</code> confirmó la presencia y uso de herramientas especializadas para interceptar tráfico en hotspots públicos:</p>
+                    <ul style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify;">
+                        <li style="margin-bottom: 0.5rem;"><strong><code>Look@LAN</code> (ejecutado el <code>2004-08-25 16:03:24 UTC</code>):</strong> Escáner de topología de red empleado para identificar otros equipos conectados a los puntos de acceso inalámbricos de Starbucks y T-Mobile.</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Librería de captura de paquetes <code>WinPcap</code> (Politecnico di Torino, instalada el <code>27/08/2004</code>) y sniffer <code>Ethereal / Cain</code>:</strong> Herramientas utilizadas junto con la tarjeta PCMCIA y la antena <code>802.11b</code> para capturar paquetes de red en tránsito y extraer credenciales y tarjetas de crédito en texto claro.</li>
+                        <li><strong><code>Anonymizer Plugin</code> y <code>Anonymizer Bar</code> (instalados el <code>2004-08-20 15:05:09 UTC</code>):</strong> Software de enmascaramiento de IP empleado para ocultar su rastro al realizar fraudes en línea.</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <p><strong>3. Correlación de la línea de tiempo del incidente:</strong></p>
+                    <p>El equipo fue formateado e instalado con Windows XP el <strong>19 de agosto de 2004</strong> (<code>22:48:27 UTC</code>), configurado con las herramientas de intrusión entre el <strong>20 y el 27 de agosto</strong> en la zona horaria Central (<code>CDT / UTC-5</code>), y apagado por última vez de manera normal el <strong>27 de agosto de 2004</strong> a las <code>15:46:33 UTC</code> (<code>10:46:33 AM CDT</code>), previo a ser abandonado el <strong>20 de septiembre de 2004</strong>.</p>
+                </div>
+            </div>
+
+            <!-- POSIBLES LÍNEAS DE INVESTIGACIÓN -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-route"></i> Posibles Líneas de Investigación
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1rem;">
+                    Derivado de la evidencia digital obtenida, se proponen las siguientes líneas de investigación forense a seguir:
+                </p>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify;">
+                    <li style="margin-bottom: 0.7rem;">
+                        <strong>Análisis de capturas de tráfico de red (<code>.pcap</code> / <code>.cap</code>):</strong> Extraer e inspeccionar los archivos de captura generados con <code>Ethereal / WinPcap</code> dentro de la cuenta <code>Mr. Evil</code> para identificar las direcciones MAC/IP de los puntos de acceso atacados y las víctimas afectadas.
+                    </li>
+                    <li style="margin-bottom: 0.7rem;">
+                        <strong>Uso de filtros <code>Keyword Search</code> para cuantificar el fraude (<em>carding</em>):</strong> Aplicar búsquedas por expresiones regulares en Autopsy sobre documentos de texto, correos electrónicos e historial web para localizar listas de números de tarjetas de crédito, fechas de expiración y códigos CVV sustraídos.
+                    </li>
+                    <li>
+                        <strong>Recuperación de evidencia eliminada en espacio no asignado (<em>File Carving</em>):</strong> Inspeccionar la Papelera de Reciclaje (<code>RECYCLER</code> del SID terminado en <code>-1003</code>) y el espacio no asignado de la partición <code>NTFS</code> para recuperar archivos borrados deliberadamente antes del abandono de la portátil.
+                    </li>
+                </ol>
+            </div>
+
+            <!-- REFERENCIAS -->
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple); margin-bottom: 1rem;"><i class="fas fa-bookmark"></i> Referencias</h4>
+                <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; text-align: justify;">
+                    <li style="margin-bottom: 0.5rem;">Basis Technology. (2024). <em>Autopsy user documentation: Data sources, ingest modules, and registry analysis (Versión 4.21)</em>. The Sleuth Kit &amp; Autopsy Official Documentation. https://sleuthkit.org/autopsy/docs/user-docs/4.21.0/</li>
+                    <li style="margin-bottom: 0.5rem;">Carrier, B. (2005). <em>File system forensic analysis</em>. Addison-Wesley Professional.</li>
+                    <li style="margin-bottom: 0.5rem;">Carvey, H. (2016). <em>Windows registry forensics: Advanced digital forensic analysis of the Windows registry</em> (2.ª ed.). Syngress.</li>
+                    <li style="margin-bottom: 0.5rem;">International Organization for Standardization. (2012). <em>Information technology — Security techniques — Guidelines for identification, collection, acquisition and preservation of digital evidence (ISO/IEC Standard No. 27037:2012)</em>.</li>
+                    <li style="margin-bottom: 0.5rem;">National Institute of Standards and Technology. (2015). <em>The CFReDS project: Hacking case (Greg Schardt / Mr. Evil forensic image dataset)</em> [Conjunto de datos]. Computer Forensic Reference Data Sets. https://cfreds-archive.nist.gov/Hacking_Case.html</li>
+                    <li>Shekhar, S. (2020). <em>CFReDS project: Hacking case challenge writeup</em>. Medium. https://medium.com/@sshekhar01/cfreds-project-hacking-case-challenge-writeup-6a52883eac0b</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 3rem;">
+                <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Reporte Oficial</h4>
+                <a href="reportes/GonzalezEspinozaKarlaVanessa-ACT18.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i> Descargar Reporte (PDF)
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
