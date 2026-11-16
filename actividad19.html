@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 19 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        code {
+            background: rgba(157, 78, 221, 0.18);
+            color: #e0aaff;
+            padding: 0.15rem 0.45rem;
+            border-radius: 5px;
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+            font-size: 0.88em;
+        }
+        .step-box {
+            margin-bottom: 1.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-purple);
+        }
+        .step-box p {
+            text-align: justify;
+            color: var(--text-muted);
+            margin-bottom: 0.65rem;
+        }
+        .step-box p strong {
+            color: var(--text-main);
+        }
+        .fig-container {
+            text-align: center;
+            margin: 1.25rem 0 0.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .fig-container figure {
+            max-width: 85%;
+            margin: 0 auto;
+        }
+        .fig-container img {
+            width: 100%;
+            border: 1px solid var(--card-border);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .fig-container figcaption {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        .results-table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .results-table th, .results-table td {
+            padding: 0.85rem 0.9rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(123, 44, 191, 0.25);
+            vertical-align: top;
+        }
+        .results-table th {
+            background: rgba(90, 24, 154, 0.45);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+        .results-table tr:hover {
+            background: rgba(123, 44, 191, 0.12);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html" class="active">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 960px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="actividades.html" style="color: var(--accent-purple); text-decoration: none;">
+                <i class="fas fa-arrow-left"></i> Volver a Actividades
+            </a>
+        </div>
+
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Actividad 19: Los Primeros Minutos Cuentan — Recolección Forense de Evidencia Volátil en Vivo
+            </h2>
+
+            <!-- INTRODUCCIÓN -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-stopwatch"></i> Introducción
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1rem;">
+                    En la respuesta a incidentes de ciberseguridad (<em>Incident Response</em>), los primeros minutos posteriores a la detección de un compromiso son determinantes. Cuando un investigador forense actúa como primer respondiente frente a un sistema encendido (sistema en caliente), apagar el equipo de forma abrupta provoca la pérdida irreversible de toda la evidencia volátil almacenada en memoria RAM y en las tablas dinámicas del kernel.
+                </p>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 0.8rem;">
+                    Siguiendo el Principio del Orden de Volatilidad establecido en el estándar <code>IETF RFC 3227</code> y la guía <code>ISO/IEC 27037</code>, la recolección de evidencia debe ejecutarse desde los datos más efímeros hacia los más persistentes:
+                </p>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify;">
+                    <li style="margin-bottom: 0.5rem;">Reloj del sistema, procesos en ejecución, servicios activos y sesiones de usuario iniciadas.</li>
+                    <li style="margin-bottom: 0.5rem;">Estado de las interfaces de red, conexiones TCP/UDP abiertas, puertos asociados a binarios, caché DNS, tabla ARP y tablas NetBIOS.</li>
+                    <li style="margin-bottom: 0.5rem;">Historial de comandos en consola, unidades de red mapeadas y recursos compartidos.</li>
+                    <li>Configuración general del sistema, tareas programadas, registros de eventos (<code>.evtx</code>), archivo <code>hosts</code> y metadatos temporales del sistema de archivos (<em>timestamps</em> de creación).</li>
+                </ol>
+            </div>
+
+            <!-- DOCUMENTACIÓN -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-terminal"></i> Documentación del Triage en Vivo
+                </h3>
+
+                <!-- 1 -->
+                <div class="step-box">
+                    <p><strong>1. Obtenga la fecha y hora del sistema.</strong></p>
+                    <p>Comando ejecutado: <code>date</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.1.png" alt="Figura 1: Marca de tiempo" onerror="this.style.display='none';">
+                            <figcaption>Figura 1: Marca de tiempo.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="step-box">
+                    <p><strong>2. Obtenga un listado de los procesos en ejecución.</strong></p>
+                    <p>Comando ejecutado: <code>tasklist</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.2.png" alt="Figura 2: Lista de procesos" onerror="this.style.display='none';">
+                            <figcaption>Figura 2: Lista de procesos.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="step-box">
+                    <p><strong>3. Obtenga los servicios del dispositivo de análisis desde el símbolo del sistema y después desde PowerShell. ¿Qué diferencias aprecia? ¿Cuál es su análisis respecto al resultado?</strong></p>
+                    <p>El comando de <code>net start</code> únicamente muestra una lista plana de texto con los nombres descriptivos de los servicios que se encuentran actualmente iniciados, omitiendo los servicios detenidos. Además, muestra bloques extensos de texto, pero solo de servicios activos por defecto. En cambio, el comando <code>Get-Service</code> devuelve objetos estructurados, listando tanto los servicios en ejecución (<code>Running</code>) como los detenidos (<code>Stopped</code>) junto con su nombre corto e identificador real.</p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.3.png" alt="Figura 3: Lista de Servicios en PowerShell (Get-Service)" onerror="this.style.display='none';">
+                            <figcaption>Figura 3: Lista de Servicios (PowerShell — <code>Get-Service</code>).</figcaption>
+                        </figure>
+                    </div>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.4.png" alt="Figura 4: Lista de servicios en CMD (net start)" onerror="this.style.display='none';">
+                            <figcaption>Figura 4: Lista de servicios (CMD — <code>net start</code>).</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="step-box">
+                    <p><strong>4. Obtenga un listado de los usuarios que se encuentran actualmente logueados en el sistema comprometido.</strong></p>
+                    <p>Comando ejecutado: <code>query user</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.5.png" alt="Figura 5: Usuarios logueados" onerror="this.style.display='none';">
+                            <figcaption>Figura 5: Usuarios logueados.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="step-box">
+                    <p><strong>5. Obtenga un listado de los usuarios que alguna vez se loguearon en el sistema comprometido.</strong></p>
+                    <p>Comando ejecutado: <code>.\NetUsers.exe /local /history</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.6.png" alt="Figura 6: Historial de usuarios locales" onerror="this.style.display='none';">
+                            <figcaption>Figura 6: Historial de inicio de sesión de usuarios en el sistema.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="step-box">
+                    <p><strong>6. Obtenga la información de la red del sistema comprometido.</strong></p>
+                    <p>Comando ejecutado: <code>ipconfig /all</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.7.png" alt="Figura 7: Información de red" onerror="this.style.display='none';">
+                            <figcaption>Figura 7: Información de red.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="step-box">
+                    <p><strong>7. Identifique los nombres asignados por NetBIOS en el sistema comprometido.</strong></p>
+                    <p>Comando ejecutado: <code>nbtstat -n</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.8.png" alt="Figura 8: Nombres asignados por NetBIOS" onerror="this.style.display='none';">
+                            <figcaption>Figura 8: Nombres asignados por NetBIOS.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="step-box">
+                    <p><strong>8. Obtenga las conexiones establecidas en el sistema vulnerado.</strong></p>
+                    <p>Comando ejecutado: <code>netstat -ano</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.9.png" alt="Figura 9: Conexiones establecidas" onerror="this.style.display='none';">
+                            <figcaption>Figura 9: Conexiones establecidas.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="step-box">
+                    <p><strong>9. Obtenga la relación de las aplicaciones abiertas con el puerto de comunicación establecido en el sistema comprometido.</strong></p>
+                    <p>Comando ejecutado: <code>netstat -abno</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.10.png" alt="Figura 10: Aplicaciones abiertas" onerror="this.style.display='none';">
+                            <figcaption>Figura 10: Aplicaciones abiertas asociadas a puertos.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 10 -->
+                <div class="step-box">
+                    <p><strong>10. Identifique los dominios a los que se ha accedido desde el ordenador en investigación.</strong></p>
+                    <p>Comando ejecutado: <code>ipconfig /displaydns</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.11.png" alt="Figura 11: Dominios identificados" onerror="this.style.display='none';">
+                            <figcaption>Figura 11: Dominios identificados en la caché DNS.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 11 -->
+                <div class="step-box">
+                    <p><strong>11. Obtenga la información almacenada de comunicación entre la dirección física y la dirección lógica del equipo con los que se haya comunicado recientemente el dispositivo en investigación.</strong></p>
+                    <p>Comando ejecutado: <code>arp -a</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.12.png" alt="Figura 12: Información almacenada en tabla ARP" onerror="this.style.display='none';">
+                            <figcaption>Figura 12: Información almacenada (Tabla ARP).</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 12 -->
+                <div class="step-box">
+                    <p><strong>12. Obtenga un listado de redes WiFi a las que se ha conectado el equipo comprometido.</strong></p>
+                    <p>Comando ejecutado: <code>netsh wlan show profiles</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.13.png" alt="Figura 13: Lista de redes WIFI" onerror="this.style.display='none';">
+                            <figcaption>Figura 13: Lista de redes WiFi.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 13 -->
+                <div class="step-box">
+                    <p><strong>13. Recabe el histórico del intérprete de comandos que se han ejecutado en el sistema de análisis.</strong></p>
+                    <p>Comando ejecutado: <code>Get-History</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.14.png" alt="Figura 14: Historial" onerror="this.style.display='none';">
+                            <figcaption>Figura 14: Historial de comandos ejecutados.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 14 -->
+                <div class="step-box">
+                    <p><strong>14. Visualice las unidades mapeadas en el sistema de investigación.</strong></p>
+                    <p>Comando ejecutado: <code>net use</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.15.png" alt="Figura 15: Unidades mapeadas" onerror="this.style.display='none';">
+                            <figcaption>Figura 15: Unidades mapeadas.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 15 -->
+                <div class="step-box">
+                    <p><strong>15. Obtenga los recursos compartidos del sistema en análisis.</strong></p>
+                    <p>Comando ejecutado: <code>net share</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.16.png" alt="Figura 16: Recursos compartidos" onerror="this.style.display='none';">
+                            <figcaption>Figura 16: Recursos compartidos.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 16 -->
+                <div class="step-box">
+                    <p><strong>16. Obtenga la información relacionada del equipo comprometido.</strong></p>
+                    <p>Comando ejecutado: <code>systeminfo</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.17.png" alt="Figura 17: Datos del equipo" onerror="this.style.display='none';">
+                            <figcaption>Figura 17: Datos del equipo.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 17 -->
+                <div class="step-box">
+                    <p><strong>17. Recupere las tareas programadas en el sistema operativo de análisis.</strong></p>
+                    <p>Comando ejecutado: <code>schtasks</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.18.png" alt="Figura 18: Tareas recuperadas" onerror="this.style.display='none';">
+                            <figcaption>Figura 18: Tareas recuperadas.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 18 -->
+                <div class="step-box">
+                    <p><strong>18. Exporte los logs de los registros del sistema para su posterior análisis en la ubicación de Escritorio del usuario en investigación.</strong></p>
+                    <p>Comando ejecutado: <code>wevtutil epl Application "C:\Users\vanes\OneDrive\Documentos\Escritorio\Application_log.evtx"</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.19.png" alt="Figura 19: Comando de los logs de los registros" onerror="this.style.display='none';">
+                            <figcaption>Figura 19: Comando de exportación de los logs de los registros.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 19 -->
+                <div class="step-box">
+                    <p><strong>19. Obtenga el fichero Host del sistema comprometido para su posterior análisis.</strong></p>
+                    <p>Comando ejecutado: <code>type C:\Windows\System32\drivers\etc\hosts</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.20.png" alt="Figura 20: Fichero del sistema" onerror="this.style.display='none';">
+                            <figcaption>Figura 20: Fichero hosts del sistema.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- 20 -->
+                <div class="step-box">
+                    <p><strong>20. Obtenga el listado con base a la fecha de creación del árbol de directorios y ficheros del sistema operativo comprometido.</strong></p>
+                    <p>Comando ejecutado: <code>dir /t:c /o:d /s</code></p>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/figura19.21.png" alt="Figura 21: Listado con base a la fecha" onerror="this.style.display='none';">
+                            <figcaption>Figura 21: Listado con base a la fecha de creación.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABLA DE RESULTADOS -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-table"></i> Resultados Consolidados y Valor Forense
+                </h3>
+                <div class="results-table-wrapper">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Paso de Adquisición</th>
+                                <th>Comando Ejecutado</th>
+                                <th>Resultado Obtenido en el Sistema</th>
+                                <th>Importancia Forense de la Pieza de Evidencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td><strong>Fecha y hora del sistema</strong></td>
+                                <td><code>date</code> (<code>Get-Date</code>)</td>
+                                <td>miércoles, 4 de noviembre de 2026 07:27:37 p. m.</td>
+                                <td>Establece la marca temporal de referencia (<em>baseline</em>) del reloj del sistema al iniciar la intervención. Permite correlacionar todos los registros posteriores con la hora real (UTC) y detectar manipulaciones del reloj del sistema.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td><strong>Procesos en ejecución</strong></td>
+                                <td><code>tasklist</code></td>
+                                <td>Listado activo en memoria (<code>System</code> PID 4, <code>Registry</code> PID 108, <code>smss.exe</code> PID 500, <code>csrss.exe</code> PID 684/784, <code>winlogon.exe</code> PID 876, <code>lsass.exe</code> PID 932 y múltiples instancias de <code>svchost.exe</code>).</td>
+                                <td>Permite identificar ejecutables maliciosos activos en RAM, procesos huérfanos, inyección en procesos del sistema (<code>svchost.exe</code>, <code>lsass.exe</code>), su PID, el tipo de sesión (Services vs Console) y su consumo de memoria.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td><strong>Servicios del sistema (CMD vs PowerShell)</strong></td>
+                                <td><code>Get-Service</code> (PS) y <code>net start</code> (CMD)</td>
+                                <td>En PS se observan servicios activos y detenidos (<code>AarSvc_b18d5</code> Stopped, <code>AdobeARMservice</code> Running, <code>AppIDSvc</code> Stopped, <code>Audiosrv</code> Running, <code>BFE</code> Running). En CMD solo se listan los nombres descriptivos de servicios iniciados.</td>
+                                <td>Los atacantes suelen instalar servicios del sistema para garantizar la persistencia con privilegios <code>SYSTEM</code>. Auditar tanto servicios activos como detenidos permite descubrir puertas traseras latentes.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td><strong>Usuarios actualmente logueados</strong></td>
+                                <td><code>query user</code></td>
+                                <td>Usuario activo: <code>&gt;182928</code>, Sesión: <code>console</code>, ID: <code>1</code>, Estado: <code>Activo</code>, Tiempo de inicio: <code>04/11/2026 07:03 p. m.</code></td>
+                                <td>Revela si existen sesiones simultáneas activas o desconectadas en el equipo (por ejemplo, un intruso conectado vía Escritorio Remoto RDP paralelamente al usuario local).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5</strong></td>
+                                <td><strong>Historial de usuarios que se loguearon alguna vez</strong></td>
+                                <td><code>.\NetUsers.exe /local /history</code></td>
+                                <td>En host <code>VANESSA</code>: <code>VANESSA\vanes</code> (2026/11/15 17:31), <code>Vanessa\Usuario</code> (2026/01/08 01:56), y cuentas de servicio <code>NT SERVICE\niroco</code> y <code>NT SERVICE\lkClassAds</code> (2026/11/15 17:31).</td>
+                                <td>Permite auditar cuentas históricas que han autenticado en el sistema, detectando cuentas creadas por atacantes para persistencia, cuentas inactivas reutilizadas o inicios de sesión en horarios anómalos.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>6</strong></td>
+                                <td><strong>Información de red del sistema</strong></td>
+                                <td><code>ipconfig /all</code></td>
+                                <td>Host: <code>Vanessa</code>. Adaptador VirtualBox Host-Only Ethernet Adapter: MAC <code>0A-00-27-00-00-0E</code>, IPv4 <code>192.168.56.1</code>, Máscara <code>255.255.255.0</code>, NetBIOS habilitado. Interfaz Wi-Fi: <code>192.168.1.71</code>.</td>
+                                <td>Documenta la identidad lógica (IP) y física (MAC) de todas las tarjetas de red físicas y virtuales, servidores DNS/DHCP y puertas de enlace, permitiendo detectar configuraciones de red alteradas o adaptadores virtuales ocultos.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>7</strong></td>
+                                <td><strong>Nombres asignados por NetBIOS</strong></td>
+                                <td><code>nbtstat -n</code></td>
+                                <td>En <code>192.168.56.1</code> y <code>192.168.1.71</code>: <code>VANESSA &lt;00&gt;</code> (Único - Estación de trabajo), <code>WORKGROUP &lt;00&gt;</code> (Grupo), y <code>VANESSA &lt;20&gt;</code> (Único - Servicio de servidor de archivos activo).</td>
+                                <td>Identifica cómo se anuncia el equipo en la red local mediante NetBIOS. El sufijo hexadecimal <code>&lt;20&gt;</code> confirma que el servicio de compartición de archivos se encuentra registrado y activo en la red.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>8</strong></td>
+                                <td><strong>Conexiones de red establecidas</strong></td>
+                                <td><code>netstat -ano</code></td>
+                                <td>Puertos en escucha (<code>LISTENING</code>): <code>135</code> (PID 1412), <code>445</code> (PID 4), <code>2343</code> (PID 4476), <code>2869</code> (PID 4), <code>3580</code> (PID 4592), <code>5040</code> (PID 10544), <code>8884</code> (PID 4). Conexiones <code>ESTABLISHED</code> en loopback <code>127.0.0.1:49673-49677</code> (PIDs 4460 y 4704).</td>
+                                <td>Captura en tiempo real todas las sesiones de red activas y puertos abiertos junto con su PID, permitiendo identificar canales de Comando y Control (C2), shells reversas o túneles locales.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>9</strong></td>
+                                <td><strong>Relación de aplicaciones abiertas con puertos</strong></td>
+                                <td><code>netstat -abno</code></td>
+                                <td>Puerto 135: <code>RpcEptMapper [svchost.exe]</code> (PID 1412); Puerto 2343: <code>[lkads.exe]</code> (PID 4476); Puerto 3580: <code>[nisvcloc.exe]</code> (PID 4592); Puerto 5040: <code>CDPSvc [svchost.exe]</code> (PID 10544); Puerto 49666: <code>Schedule [svchost.exe]</code> (PID 2044).</td>
+                                <td>Vincula directamente cada socket de red abierto con el ejecutable exacto en disco y servicio asociado, facilitando distinguir entre tráfico legítimo del sistema y binarios de terceros que abren puertos a la red.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>10</strong></td>
+                                <td><strong>Dominios accedidos recientemente (Caché DNS)</strong></td>
+                                <td><code>ipconfig /displaydns</code></td>
+                                <td>Registros en caché para <code>avatars.githubusercontent.com</code> (Tipo 28 — AAAA IPv6: <code>2606:50c0:8002::154</code>, <code>8003::154</code>, <code>8001::154</code>, TTL 1019).</td>
+                                <td>La caché DNS en RAM conserva los dominios resueltos recientemente por cualquier proceso del sistema, incluso si el atacante utilizó el modo incógnito del navegador, borró el historial web o ejecutó scripts en segundo plano.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>11</strong></td>
+                                <td><strong>Relación dirección física (MAC) y lógica (IP)</strong></td>
+                                <td><code>arp -a</code></td>
+                                <td>En interfaz <code>192.168.1.71</code>: puerta de enlace <code>192.168.1.254</code> con MAC dinámica <code>ec-7c-2c-77-a5-bd</code>, y direcciones multicast/broadcast. En interfaz <code>192.168.56.1</code>: entradas de broadcast/multicast.</td>
+                                <td>La tabla ARP revela con qué otros equipos de la subred local se ha comunicado recientemente el host comprometido, permitiendo identificar movimientos laterales del atacante o ataques de <em>ARP Spoofing</em> (<em>Man-in-the-Middle</em>).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>12</strong></td>
+                                <td><strong>Listado de redes WiFi históricas</strong></td>
+                                <td><code>netsh wlan show profiles</code></td>
+                                <td>19 perfiles registrados: <code>UAEM3_UPSLP</code>, <code>Galaxy S26 de Vane</code>, <code>CNT_UPSLP</code>, <code>Dron_Oscar_Grande</code>, <code>Galaxy A34 5G</code>, <code>Iphone Ale</code>, <code>CAFETERIA_UPSLP</code>, <code>ALUMNOS_UPSLP</code>, <code>CANCHAS_UPSLP</code>, <code>CID_UPSLP</code>, <code>INFINITUM08B1</code>, <code>Totalplay-5586</code>, entre otros.</td>
+                                <td>Permite reconstruir la trazabilidad física y ubicaciones geográficas donde ha estado conectado el equipo (campus universitario UPSLP, puntos de acceso móviles y redes domésticas), así como evaluar si se conectó a puntos de acceso inseguros (<em>Evil Twin</em>).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>13</strong></td>
+                                <td><strong>Histórico del intérprete de comandos</strong></td>
+                                <td><code>Get-History</code></td>
+                                <td>Comandos registrados en la sesión (IDs 1 al 7): <code>cd ..</code>, <code>cd C:\Users\vanes\Downloads\Act19</code>, <code>netstat -abno</code>, <code>ipconfig /displaydns</code>, <code>arp -a</code>, <code>netsh wlan show profiles</code>.</td>
+                                <td>Permite auditar las instrucciones ejecutadas previamente en la consola activa; si un atacante dejó una terminal abierta, este comando revela exactamente qué comandos ejecutó.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>14</strong></td>
+                                <td><strong>Unidades de red mapeadas</strong></td>
+                                <td><code>net use</code></td>
+                                <td><em>"Se registrarán las nuevas conexiones. No hay entradas en la lista."</em></td>
+                                <td>Permite verificar si el atacante montó carpetas compartidas remotas (unidades <code>Z:</code>, <code>\\servidor\recurso</code>) para copiar herramientas maliciosas o exfiltrar información confidencial fuera del equipo.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>15</strong></td>
+                                <td><strong>Recursos compartidos locales</strong></td>
+                                <td><code>net share</code></td>
+                                <td>Recursos predeterminados activos: <code>C$</code> (<code>C:\</code> — Recurso predeterminado), <code>IPC$</code> (IPC remota) y <code>ADMIN$</code> (<code>C:\WINDOWS</code> — Admin remota).</td>
+                                <td>Muestra qué directorios del equipo están expuestos en la red local. Un atacante suele abusar de los recursos administrativos (<code>ADMIN$</code>, <code>C$</code>) para movimiento lateral con PsExec/WMI o crear carpetas ocultas para extraer datos.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>16</strong></td>
+                                <td><strong>Información general del sistema</strong></td>
+                                <td><code>systeminfo</code></td>
+                                <td>Host: <code>VANESSA</code>, SO: Windows 11 Home Single Language (<code>10.0.26300</code>), Propietario: <code>vanessaespinozx@hotmail.com</code>, Instalación: <code>26/02/2025</code>, Último arranque: <code>15/11/2026</code>.</td>
+                                <td>Proporciona el inventario forense completo del activo: nivel de compilación, tiempo exacto desde el último reinicio (<em>uptime</em> — clave para saber si el sistema fue reiniciado tras el ataque) y parches instalados para evaluar vulnerabilidades explotables.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>17</strong></td>
+                                <td><strong>Tareas programadas</strong></td>
+                                <td><code>schtasks</code></td>
+                                <td>Tareas activas (Listo): <code>Adobe Acrobat Update Task</code>, <code>OneDrive Reporting Task</code>, <code>OneDrive Standalone Update Task</code>, <code>OneDrive Startup Task</code> y tareas de <code>Microsoft\Office</code>.</td>
+                                <td>El Programador de Tareas es uno de los vectores de persistencia más utilizados por actores de amenaza (MITRE ATT&amp;CK <code>T1053.005</code>) para ejecutar código malicioso de forma periódica o al iniciar sesión.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>18</strong></td>
+                                <td><strong>Exportación de logs del sistema al Escritorio</strong></td>
+                                <td><code>wevtutil epl Application "C:\Users\vanes\..."</code></td>
+                                <td>Exportación íntegra del archivo binario de eventos <code>Application_log.evtx</code> (y <code>System_log.evtx</code>) en el Escritorio de la cuenta bajo investigación.</td>
+                                <td>Asegura una copia forense de los registros de eventos de Windows (<code>.evtx</code>) fuera del sistema en vivo para su análisis en frío, evitando que los eventos antiguos se sobrescriban o sean borrados por el atacante.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>19</strong></td>
+                                <td><strong>Obtención del fichero hosts</strong></td>
+                                <td><code>type C:\Windows\System32\drivers\etc\hosts</code></td>
+                                <td>Contenido íntegro por defecto de Microsoft (todas las líneas comentadas con <code>#</code>), sin redirecciones de dominio activas.</td>
+                                <td>El archivo <code>hosts</code> tiene prioridad sobre las consultas DNS; el malware suele modificarlo para redirigir al usuario a portales bancarios falsos (<em>Pharming</em>) o bloquear la conexión a dominios de actualización de antivirus y Microsoft Defender.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>20</strong></td>
+                                <td><strong>Árbol de directorios y ficheros por fecha de creación</strong></td>
+                                <td><code>dir /t:c /o:d /s</code></td>
+                                <td>Listado recursivo ordenado cronológicamente por fecha de creación (<code>/t:c</code>), mostrando archivos en <code>C:\Users\vanes\Downloads\Dev-Cpp\Icons</code> (<code>25/03/2015 12:17 p. m.</code>).</td>
+                                <td>Ordenar el árbol de directorios por fecha de creación (<code>/t:c</code>) permite construir una línea de tiempo del sistema de archivos (<em>File System Timeline</em>) e identificar rápidamente qué binarios, scripts o archivos fueron depositados (<em>dropped</em>) durante la ventana de tiempo del incidente.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- IDENTIFICACIÓN DE POSIBLES INDICIOS DE ACTIVIDAD SOSPECHOSA -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-exclamation-triangle"></i> Identificación de Posibles Indicios de Actividad Sospechosa
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1.2rem;">
+                    Del análisis crítico correlacionado sobre los resultados obtenidos en las 20 pruebas, se destacan los siguientes puntos de interés que un investigador forense debe verificar y documentar:
+                </p>
+
+                <div class="step-box">
+                    <p><strong>1. Servicios y cuentas de servicio de terceros con puertos en escucha (<code>lkads.exe</code>, <code>nisvcloc.exe</code>, <code>niroco</code>, <code>lkClassAds</code>):</strong></p>
+                    <ul style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify;">
+                        <li style="margin-bottom: 0.5rem;">En el paso 5 (<code>NetUsers.exe /local /history</code>) se detectaron inicios de sesión de las cuentas locales de servicio <code>NT SERVICE\niroco</code> y <code>NT SERVICE\lkClassAds</code> exactamente a la hora de arranque del sistema (<code>2026/11/15 17:31</code>).</li>
+                        <li style="margin-bottom: 0.5rem;">Al cruzar este hallazgo con el paso 9 (<code>netstat -abno</code>), se observa que los ejecutables <code>[lkads.exe]</code> (PID <code>4476</code>) y <code>[nisvcloc.exe]</code> (PID <code>4592</code>) mantienen abiertos en escucha (<code>LISTENING</code>) los puertos TCP <code>2343</code> y <code>3580</code> en todas las interfaces de red (<code>0.0.0.0</code>).</li>
+                        <li><strong>Evaluación forense:</strong> Aunque corresponden a demonios de red de software de instrumentación (National Instruments / Multisim: LogosXT y NI Service Locator), desde el punto de vista de seguridad mantienen puertos abiertos en <code>0.0.0.0</code> bajo cuentas de servicio con inicio automático y conexiones locales establecidas en loopback (<code>127.0.0.1:49673-49677</code>), por lo que debe verificarse la firma digital de sus binarios para descartar suplantación de ejecutables (<em>DLL/EXE Hijacking</em>).</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <p><strong>2. Exposición de recursos administrativos y puerto SMB (<code>445</code> y <code>ADMIN$/C$</code>):</strong></p>
+                    <p>El análisis de <code>netstat -ano</code> confirmó que el puerto TCP <code>445</code> (SMB) y el puerto TCP <code>135</code> (RPC) están en estado <code>LISTENING</code> en <code>0.0.0.0</code>, mientras que <code>net share</code> confirmó que los recursos administrativos <code>C$</code>, <code>ADMIN$</code> e <code>IPC$</code> están habilitados, junto con el registro NetBIOS <code>VANESSA &lt;20&gt;</code>. En redes públicas o universitarias (como las detectadas en <code>netsh wlan show profiles</code>), esta exposición representa una superficie de ataque para movimientos laterales.</p>
+                </div>
+
+                <div class="step-box">
+                    <p><strong>3. Presencia de interfaz virtual (<code>VirtualBox Host-Only Ethernet Adapter - 192.168.56.1</code>):</strong></p>
+                    <p>El comando <code>ipconfig /all</code> evidenció una segunda interfaz de red activa con direccionamiento <code>192.168.56.1</code>, la cual permite comunicación directa entre el sistema anfitrión y máquinas virtuales locales, debiendo auditarse que ningún proceso no autorizado utilice dicha subred virtual como puente.</p>
+                </div>
+            </div>
+
+            <!-- SIGUIENTES PASOS A SEGUIR -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-purple); font-size: 1.35rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--card-border); padding-bottom: 0.5rem;">
+                    <i class="fas fa-clipboard-list"></i> Siguientes Pasos a Seguir en una Investigación Forense
+                </h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1rem;">
+                    Una vez concluido el triage y la adquisición de datos volátiles mediante comandos en vivo, el protocolo forense dicta ejecutar los siguientes pasos en una investigación real:
+                </p>
+                <ol style="margin-left: 1.5rem; color: var(--text-muted); text-align: justify;">
+                    <li style="margin-bottom: 0.7rem;">
+                        <strong>Adquisición completa de la memoria RAM (Volcado físico <code>.raw</code> / <code>.vmem</code>):</strong> Antes de apagar o desconectar el equipo, utilizar una herramienta de bajo impacto en memoria (como <code>FTK Imager Lite</code>, <code>DumpIt</code> o <code>WinPmem</code>) desde una unidad externa limpia para adquirir una imagen completa de la memoria RAM y analizarla posteriormente en frío con <code>Volatility</code>.
+                    </li>
+                    <li style="margin-bottom: 0.7rem;">
+                        <strong>Aislamiento de red del dispositivo comprometido (Contención):</strong> Desconectar el equipo de la red Wi-Fi (<code>192.168.1.71</code>) o aislar su puerto en el switch para cortar cualquier canal de comunicación externo sin apagar el sistema.
+                    </li>
+                    <li style="margin-bottom: 0.7rem;">
+                        <strong>Cálculo de funciones Picadillo (Hashes <code>SHA-256</code> / <code>MD5</code>) y Cadena de Custodia:</strong> Generar los hashes criptográficos <code>SHA-256</code> de todos los archivos exportados durante el triage (<code>Application_log.evtx</code>, <code>System_log.evtx</code>, salidas de texto y capturas) y documentarlos en el formato oficial de Cadena de Custodia para garantizar su integridad jurídica y admisibilidad pericial.
+                    </li>
+                    <li style="margin-bottom: 0.7rem;">
+                        <strong>Adquisición forense bit a bit del disco duro (Imagen <code>E01</code> / <code>RAW</code>):</strong> Apagar el equipo mediante extracción controlada (según el tipo de incidente) y realizar el duplicado forense bit a bit del medio de almacenamiento utilizando bloqueadores de escritura por hardware o software (<code>FTK Imager</code>, <code>Guymager</code>).
+                    </li>
+                    <li>
+                        <strong>Análisis en frío (<em>Dead Box Forensics</em>) en laboratorio:</strong> Analizar los registros <code>.evtx</code> exportados buscando eventos de inicio de sesión (<code>Event ID 4624, 4625</code>), instalación de servicios (<code>Event ID 7045</code> en <code>System_log.evtx</code>) y creación de tareas programadas (<code>Event ID 4698</code>), verificando las firmas digitales de los procesos <code>lkads.exe</code> y <code>nisvcloc.exe</code>.
+                    </li>
+                </ol>
+            </div>
+
+            <!-- REFERENCIAS -->
+            <div style="margin-bottom: 3rem;">
+                <h4 style="color: var(--accent-purple); margin-bottom: 1rem;"><i class="fas fa-bookmark"></i> Referencias</h4>
+                <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; text-align: justify;">
+                    <li style="margin-bottom: 0.6rem;">
+                        Brezinski, D., &amp; Killalea, T. (2002). <em>Guidelines for Evidence Collection and Archiving (RFC 3227)</em>. Internet Engineering Task Force (IETF). https://datatracker.ietf.org/doc/html/rfc3227 (Estándar internacional que define el Orden de Volatilidad y las buenas prácticas para la recolección de evidencia en sistemas en caliente).
+                    </li>
+                    <li style="margin-bottom: 0.6rem;">
+                        International Organization for Standardization [ISO]. (2012). <em>ISO/IEC 27037:2012 Information technology — Security techniques — Guidelines for identification, collection, acquisition and preservation of digital evidence</em>. ISO. https://www.iso.org/standard/44381.html (Norma técnica internacional para primeros respondientes digitales sobre identificación, adquisición y preservación de evidencia en escenas del crimen digital).
+                    </li>
+                    <li style="margin-bottom: 0.6rem;">
+                        Kent, K., Chevalier, S., Grance, T., &amp; Dang, H. (2006). <em>Guide to Integrating Forensic Techniques into Incident Response (NIST Special Publication 800-86)</em>. National Institute of Standards and Technology (NIST), U.S. Department of Commerce. https://doi.org/10.6028/NIST.SP.800-86 (Guía oficial del NIST que detalla la recolección de datos volátiles de red, procesos, servicios y registros de eventos en sistemas Windows comprometidos).
+                    </li>
+                    <li>
+                        Microsoft Corporation. (2024). <em>Windows Commands and PowerShell Reference Documentation (tasklist, netstat, ipconfig, wevtutil, schtasks, Get-Service)</em>. Microsoft Learn. https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands (Documentación técnica oficial de Microsoft sobre la sintaxis y funcionamiento interno de las herramientas de línea de comandos y cmdlets empleados en la adquisición).
+                    </li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 3rem;">
+                <h4 style="color: var(--light-purple); margin-bottom: 1.5rem;">Reporte Oficial</h4>
+                <a href="reportes/GonzalezEspinozaKarlaVanessa-ACT19.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i> Descargar Reporte (PDF)
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
