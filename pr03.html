@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto PR03 - Portafolio Vane</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pr-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.35);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            margin-bottom: 2.5rem;
+        }
+        .pr-meta-item span {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        .pr-meta-item strong {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+        .pr-section {
+            margin-bottom: 3rem;
+        }
+        .pr-section h3 {
+            color: var(--light-purple);
+            font-size: 1.45rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .pr-section h4 {
+            color: var(--accent-purple);
+            font-size: 1.2rem;
+            margin: 1.8rem 0 1rem 0;
+            border-bottom: 1px dashed rgba(123, 44, 191, 0.4);
+            padding-bottom: 0.4rem;
+        }
+        .qa-card {
+            background: rgba(0, 0, 0, 0.32);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--primary-purple);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .qa-card h5 {
+            color: var(--text-main);
+            font-size: 1.05rem;
+            margin-bottom: 0.85rem;
+        }
+        .qa-list {
+            margin-left: 1.4rem;
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            text-align: justify;
+        }
+        .qa-list li {
+            margin-bottom: 0.65rem;
+        }
+        .qa-list li strong {
+            color: var(--text-main);
+        }
+        code {
+            background: rgba(157, 78, 221, 0.18);
+            color: #e0aaff;
+            padding: 0.15rem 0.45rem;
+            border-radius: 5px;
+            font-family: Consolas, Monaco, 'Courier New', monospace;
+            font-size: 0.86em;
+            word-break: break-word;
+        }
+        .fig-container {
+            text-align: center;
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .fig-container figure {
+            max-width: 88%;
+            margin: 0 auto;
+        }
+        .fig-container.two-cols figure {
+            max-width: 48%;
+        }
+        .fig-container img {
+            width: 100%;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.55);
+        }
+        .fig-container figcaption {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 0.55rem;
+            font-style: italic;
+        }
+        .pr-table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+        .pr-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            background: rgba(0, 0, 0, 0.38);
+        }
+        .pr-table th, .pr-table td {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(123, 44, 191, 0.25);
+            vertical-align: top;
+        }
+        .pr-table th {
+            background: rgba(90, 24, 154, 0.45);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+        .pr-table tr:hover {
+            background: rgba(123, 44, 191, 0.12);
+        }
+        @media (max-width: 768px) {
+            .fig-container.two-cols figure {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header class="header header-secondary">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Karla Vanessa Gonzalez Espinoza <span>("Vane")</span></h1>
+                <h2>CNO IV - Seguridad Informática</h2>
+                <div class="academic-info">
+                    <p><i class="fas fa-university"></i> Universidad Politécnica de San Luis Potosí</p>
+                    <p><i class="fas fa-calendar-alt"></i> Periodo Otoño 2026 | 7mo Semestre</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                    <li><a href="road-to-hall-of-fame.html">Road to Hall of Fame</a></li>
+                    <li><a href="proyectos.html" class="active">Proyectos</a></li>
+                    <li><a href="certificaciones.html">Certificaciones</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 1050px; margin-top: 150px;">
+        <div style="margin-bottom: 2rem;">
+            <a href="proyectos.html" style="color: var(--accent-purple); text-decoration: none; font-weight: 600;">
+                <i class="fas fa-arrow-left"></i> Volver al Camino de Proyectos
+            </a>
+        </div>
+
+        <div class="card reveal" style="padding: 3rem;">
+            <h2 style="color: var(--light-purple); font-size: 2rem; margin-bottom: 0.4rem;">
+                PR03. OPERACIÓN NARCOS: EXPEDIENTE KOWHAI
+            </h2>
+            <p style="color: var(--accent-purple); font-size: 1.15rem; font-weight: 600; margin-bottom: 1.5rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                Análisis Forense Digital (NARCOS-1)
+            </p>
+
+            <!-- INTRODUCCIÓN Y CONTEXTO DEL CASO -->
+            <section class="pr-section">
+                <h3><i class="fas fa-folder-open"></i> Introducción y Contexto del Caso</h3>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1rem;">
+                    El presente dictamen pericial documenta el examen forense digital practicado sobre la imagen forense <strong>Narcos-1</strong> (distribuida en un archivo comprimido multivolumen de 15 partes <code>Narcos1.zip.001</code> a <code>Narcos1.zip.015</code> que contiene 21 segmentos crudos <code>Narcos-1.001</code> a <code>Narcos-1.021</code> y su registro de adquisición <code>Narcos-1.001.txt</code>), correspondiente al equipo de escritorio incautado en un domicilio de <strong>Petone (Lower Hutt, Wellington, Nueva Zelanda)</strong> vinculado a <strong>Steve Kowhai</strong>.
+                </p>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1rem;">
+                    <strong>Antecedentes de la operación:</strong> Una operación internacional de inteligencia alertó a las autoridades neozelandesas sobre el ingreso de sustancias ilícitas desde Australia. Dos pasajeros procedentes de Australia, identificados como <strong>John Fredricksen</strong> y <strong>Jane Esteban</strong>, fueron interceptados por agentes aduanales en el <strong>Aeropuerto Internacional de Wellington (WLG)</strong> con un kilogramo de metanfetamina oculto en el doble fondo de una maleta. Las indagatorias revelaron dos posibles puntos asociados con la entrega: la <strong>biblioteca de Eastbourne</strong> (<em>Eastbourne Library</em>) y un inmueble en <strong>Petone</strong> donde se localizaron sustancias ilícitas, armas de fuego y la computadora de escritorio analizada.
+                </p>
+                <p style="text-align: justify; color: var(--text-muted); margin-bottom: 1rem;">
+                    <strong>Metodología y preservación de integridad (ISO/IEC 27037):</strong> Se conservaron intactos los 15 volúmenes originales en <code>D:\CNO4\</code> y se extrajeron los 21 segmentos de la imagen de disco (<code>32,212,254,720 bytes</code> / <code>30,720 MB</code> / <code>62,914,560 sectores</code> de 512 bytes, esquema de particiones GPT con la partición principal de Windows en <code>Partition 4 [30104MB] NTFS</code>, LBA inicial <code>1,259,520</code>). Mediante <strong>AccessData FTK Imager 4.2.0.13</strong> se verificó la integridad criptográfica completa de la imagen frente a las firmas de adquisición:
+                </p>
+                <ul class="qa-list" style="margin-bottom: 1.5rem;">
+                    <li><strong>MD5 de la imagen (<code>Narcos-1.001..021</code>):</strong> <code>c63a3d19e9c9495b573f45be544e50f9</code> — <strong>VERIFICADO (Coincidencia exacta / Match)</strong>.</li>
+                    <li><strong>SHA-1 de la imagen (<code>Narcos-1.001..021</code>):</strong> <code>4d8e5041f47e0b0fc0eacc85d300661946537418</code> — <strong>VERIFICADO (Coincidencia exacta / Match)</strong>.</li>
+                </ul>
+
+                <div class="fig-container">
+                    <figure>
+                        <img src="img/fig1_verify.png" alt="Figura 1. Carga de Narcos-1.001..021 y verificación de integridad criptográfica" onerror="this.style.display='none';">
+                        <figcaption>Figura 1. Carga de <code>Narcos-1.001..021</code> y verificación de integridad criptográfica MD5 y SHA-1 en AccessData FTK Imager.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- PARTE I. EXTRACCIÓN E IDENTIFICACIÓN DE EVIDENCIA DIGITAL -->
+            <section class="pr-section">
+                <h3><i class="fas fa-database"></i> Parte I. Extracción e Identificación de Evidencia Digital</h3>
+
+                <h4><i class="fas fa-desktop"></i> A. Sistema operativo y navegación</h4>
+
+                <!-- Pregunta 1 -->
+                <div class="qa-card">
+                    <h5>1. ¿Qué edición y versión de Windows se encuentran instaladas en el equipo? Indica el artefacto donde se obtiene la información.</h5>
+                    <ul class="qa-list">
+                        <li><strong>Valor exacto:</strong> <strong>Windows 10 Pro</strong> (<code>EditionID: Professional</code>, <code>CompositionEditionID: Enterprise</code>), <strong>Versión 1809</strong> (<code>ReleaseId: 1809</code>, rama <code>rs5_release</code>, <strong>Build 17763.107</strong> / <code>BuildLabEx: 17763.1.amd64fre.rs5_release.180914-1434</code>, arquitectura de 64 bits). Propietario registrado: <code>Steve</code>; Nombre de equipo: <code>SK-DESKTOP</code>; Fecha de instalación: <code>2019-01-29 08:15:39 NZDT</code> (<code>1548702939</code> Unix Epoch); Zona horaria: <code>New Zealand Standard Time</code> (operando en horario de verano <strong>NZDT / UTC+13</strong>, <code>Pacific/Auckland</code>).</li>
+                        <li><strong>Ruta dentro de la imagen y artefacto:</strong> Colmena del Registro <code>C:\Windows\System32\config\SOFTWARE</code> (en FTK Imager: <code>Partition 4 [30104MB]\NONAME [NTFS]\[root]\Windows\System32\config\SOFTWARE</code>, Registro MFT <code>#81019</code>, MD5: <code>3d4ea7dd8461b33c37c4a4a83da93917</code>), clave <code>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion</code> (complementado con <code>C:\Windows\System32\config\SYSTEM</code> para <code>ComputerName</code> y <code>TimeZoneInformation</code>).</li>
+                        <li><strong>Herramienta / procedimiento:</strong> Localización y exportación de la colmena <code>SOFTWARE</code> en FTK Imager e inspección de valores de la clave <code>Microsoft\Windows NT\CurrentVersion</code>.</li>
+                    </ul>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/fig2_os_software.png" alt="Figura 2. Extracción de edición y versión del sistema operativo" onerror="this.style.display='none';">
+                            <figcaption>Figura 2. Extracción de edición y versión del sistema operativo (<code>Windows 10 Pro v1809, Build 17763.107</code>) desde el hive <code>SOFTWARE</code>.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="qa-card">
+                    <h5>2. ¿Cuál es el nombre de la carpeta del perfil principal y cuál es su ruta absoluta?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Valor exacto (Nombre de la carpeta):</strong> <strong><code>Steve</code></strong> (SID: <code>S-1-5-21-1474204758-2504895174-1356074821-1001</code>, creada el <code>2019-01-29 08:35:07 NZDT</code>).</li>
+                        <li><strong>Ruta absoluta:</strong> <code>C:\Users\Steve</code> (Ruta en la imagen: <code>Partition 4 [30104MB]\NONAME [NTFS]\[root]\Users\Steve</code>, entrada MFT <code>#84269</code>).</li>
+                        <li><strong>Herramienta / procedimiento:</strong> Navegación en el árbol de evidencias (<em>Evidence Tree</em>) de FTK Imager bajo <code>[root]\Users</code>.</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="qa-card">
+                    <h5>3. ¿Cuál es la ruta de la clave <code>UserAssist</code> que registra actividad de programas en el perfil principal?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Artefacto en disco y ruta absoluta:</strong> Colmena de usuario <code>C:\Users\Steve\NTUSER.DAT</code> (entrada MFT <code>#84270</code>, tamaño <code>1,572,864 bytes</code>, MD5: <code>9ad42fbefa1c2f35eeadf8afd0db77c8</code>).</li>
+                        <li><strong>Ruta exacta de la clave UserAssist:</strong> <code>NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist</code> (o bajo <code>HKEY_CURRENT_USER</code>), cuyas subclaves <code>{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count</code> (ejecutables) y <code>{F4E57C4B-2036-45F0-A9AB-443BCFE33D9F}\Count</code> (accesos directos) almacenan en cifrado <strong>ROT13</strong> los programas ejecutados por Steve, número de ejecuciones, tiempo de foco y marca temporal <em>LastExecuted</em>.</li>
+                    </ul>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/fig3_user_ntuser.png" alt="Figura 3. Perfil principal C:\Users\Steve y UserAssist" onerror="this.style.display='none';">
+                            <figcaption>Figura 3. Perfil principal <code>C:\Users\Steve</code>, archivo <code>NTUSER.DAT</code> y decodificación ROT13 de la clave <code>UserAssist</code>.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="qa-card">
+                    <h5>4. ¿Qué dos navegadores presentan artefactos de actividad? Identifica el archivo o base de datos del historial de cada uno.</h5>
+                    <ul class="qa-list">
+                        <li><strong>Navegador 1 — Google Chrome (v72.0.3626.81):</strong> Su historial se almacena en la base de datos SQLite 3 llamada <code>History</code>, ubicada en la ruta absoluta: <code>C:\Users\Steve\AppData\Local\Google\Chrome\User Data\Default\History</code> (MFT <code>#100624</code>; registra actividad entre el <code>2019-01-30 10:06:37 NZDT</code> y el <code>2019-02-02 15:28:48 NZDT</code>).</li>
+                        <li><strong>Navegador 2 — Microsoft Edge / Internet Explorer:</strong> Su historial y caché web se almacenan en la base de datos ESE (<em>Extensible Storage Engine</em>) llamada <code>WebCacheV01.dat</code>, ubicada en la ruta absoluta: <code>C:\Users\Steve\AppData\Local\Microsoft\Windows\WebCache\WebCacheV01.dat</code> (MFT <code>#84625</code>, tamaño <code>42,991,616 bytes</code>, MD5: <code>0b6194c18bf0670957d0341cd9d2bed8</code>; utilizado el <code>2019-01-29</code> y la mañana del <code>2019-01-30</code> para navegar y descargar Google Chrome).</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="qa-card">
+                    <h5>5. ¿Cuál es el hash MD5 del archivo <code>History</code> del perfil predeterminado de Chrome?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Hash MD5 exacto:</strong> <code>69a971dcb552b89c98fb2384671f5023</code> (SHA-1: <code>a093c468b44c99e577e2094b4d275b568b5a7bc0</code>, tamaño: <code>360,448 bytes</code>).</li>
+                        <li><strong>Ruta y procedimiento:</strong> <code>C:\Users\Steve\AppData\Local\Google\Chrome\User Data\Default\History</code>; obtenido en FTK Imager mediante clic derecho &rarr; <em>Export File Hash List</em>.</li>
+                    </ul>
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/fig4_browsers_history.png" alt="Figura 4. Bases de datos de historial de Google Chrome y Edge" onerror="this.style.display='none';">
+                            <figcaption>Figura 4. Bases de datos de historial de Google Chrome (<code>History</code>, MD5 <code>69a971dcb552b89c98fb2384671f5023</code>) y Edge (<code>WebCacheV01.dat</code>).</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <h4><i class="fas fa-images"></i> B. Documentos, imágenes y metadatos</h4>
+
+                <!-- Pregunta 6 -->
+                <div class="qa-card">
+                    <h5>6. ¿Cuál es la ruta absoluta del archivo <code>airport crystals.jpg</code>?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Ruta absoluta:</strong> <code>C:\Users\Steve\Documents\Misc\airport crystals.jpg</code> (En la imagen: <code>Partition 4 [30104MB]\NONAME [NTFS]\[root]\Users\Steve\Documents\Misc\airport crystals.jpg</code>, entrada MFT <code>#90885</code>, tamaño <code>77,643 bytes</code>).</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 7 -->
+                <div class="qa-card">
+                    <h5>7. ¿Cuál es la fecha y hora de creación de <code>airport crystals.jpg</code> (NZDT)?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Fecha y hora de creación (NZDT):</strong> <code>2019-01-31 10:25:18 NZDT</code> (31 de enero de 2019 a las 10:25:18 a. m. en horario de verano de Nueva Zelanda <code>UTC+13</code>; equivalente a <code>2019-01-30 21:25:18 UTC</code> en el atributo <code>$STANDARD_INFORMATION</code> de la MFT). Hash MD5: <code>f938f92d9dbaeda2e92246deeebe830a</code>.</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 8 -->
+                <div class="qa-card">
+                    <h5>8. ¿Cuál es el hash MD5 completo de <code>dropoff.jpg</code>?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Hash MD5 exacto:</strong> <code>7feb763bebe42c3a3464c9ee3bb1d3e8</code> (Ruta absoluta: <code>C:\Users\Steve\Documents\Misc\dropoff.jpg</code>, entrada MFT <code>#99430</code>, tamaño <code>177,888 bytes</code>).</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 9 -->
+                <div class="qa-card">
+                    <h5>9. ¿Cuál es la fecha y hora de última modificación de <code>dropoff.jpg</code> (NZDT)?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Fecha y hora de última modificación (NZDT):</strong> <code>2019-02-02 14:06:06 NZDT</code> (2 de febrero de 2019 a las 14:06:06 / 02:06:06 p. m. NZDT <code>UTC+13</code>; equivalente a <code>2019-02-02 01:06:06 UTC</code>; creado un segundo antes a las <code>2019-02-02 14:06:05 NZDT</code>).</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 10 -->
+                <div class="qa-card">
+                    <h5>10. ¿Cuál es el nombre exacto y la ruta del archivo de imagen relacionado con reservaciones de vuelo en <code>Documents\Misc</code>?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Nombre exacto del archivo:</strong> <code>flightbookings.PNG</code> (descargado desde el CDN de Discord bajo el nombre original <code>Steve_K.PNG</code> y guardado como <code>flightbookings.PNG</code>).</li>
+                        <li><strong>Ruta absoluta:</strong> <code>C:\Users\Steve\Documents\Misc\flightbookings.PNG</code> (MFT <code>#21765</code>, tamaño <code>52,971 bytes</code>, MD5: <code>d1b21a1cddcb3494d637f2424cc5f0f1</code>, Creado: <code>2019-02-02 15:28:44 NZDT</code>, Modificado: <code>2019-02-02 15:28:45 NZDT</code>).</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 11 -->
+                <div class="qa-card">
+                    <h5>11. ¿Cuál es el hash MD5 del archivo <code>Method run.jpg</code>?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Hash MD5 exacto:</strong> <code>69b225bc0ef5a0c003f1e2a6646aaf92</code> (Ruta absoluta: <code>C:\Users\Steve\Documents\Misc\Method run.jpg</code>, entrada MFT <code>#90807</code>, tamaño <code>145,213 bytes</code>, Creado: <code>2019-01-31 10:21:24 NZDT</code>, Modificado: <code>2019-01-31 10:22:24 NZDT</code>).</li>
+                    </ul>
+
+                    <div class="fig-container two-cols">
+                        <figure>
+                            <img src="img/fig5_airport_method.png" alt="Figura 5. airport crystals.jpg y Method run.jpg" onerror="this.style.display='none';">
+                            <figcaption>Figura 5. <code>airport crystals.jpg</code> y <code>Method run.jpg</code>.</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="img/fig6_dropoff_flight.png" alt="Figura 6. dropoff.jpg y flightbookings.PNG" onerror="this.style.display='none';">
+                            <figcaption>Figura 6. <code>dropoff.jpg</code> y <code>flightbookings.PNG</code>.</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="pr-table-wrapper">
+                        <table class="pr-table">
+                            <thead>
+                                <tr>
+                                    <th>Archivo en <code>Documents\Misc</code></th>
+                                    <th>MFT #</th>
+                                    <th>Tamaño</th>
+                                    <th>Creación (NZDT / UTC+13)</th>
+                                    <th>Modificación (NZDT / UTC+13)</th>
+                                    <th>Hash MD5 Comprobado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>Method run.jpg</code></td>
+                                    <td>90807</td>
+                                    <td>145,213 B</td>
+                                    <td>2019-01-31 10:21:24 NZDT</td>
+                                    <td>2019-01-31 10:22:24 NZDT</td>
+                                    <td><code>69b225bc0ef5a0c003f1e2a6646aaf92</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>airport crystals.jpg</code></td>
+                                    <td>90885</td>
+                                    <td>77,643 B</td>
+                                    <td>2019-01-31 10:25:18 NZDT</td>
+                                    <td>2019-01-31 10:25:18 NZDT</td>
+                                    <td><code>f938f92d9dbaeda2e92246deeebe830a</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>dropoff.jpg</code></td>
+                                    <td>99430</td>
+                                    <td>177,888 B</td>
+                                    <td>2019-02-02 14:06:05 NZDT</td>
+                                    <td>2019-02-02 14:06:06 NZDT</td>
+                                    <td><code>7feb763bebe42c3a3464c9ee3bb1d3e8</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>flightbookings.PNG</code></td>
+                                    <td>21765</td>
+                                    <td>52,971 B</td>
+                                    <td>2019-02-02 15:28:44 NZDT</td>
+                                    <td>2019-02-02 15:28:45 NZDT</td>
+                                    <td><code>d1b21a1cddcb3494d637f2424cc5f0f1</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h4><i class="fas fa-cogs"></i> C. Programas y otros artefactos</h4>
+
+                <!-- Pregunta 12 -->
+                <div class="qa-card">
+                    <h5>12. ¿Cuál es el hash MD5 completo de <code>BNE.png</code>?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Hash MD5 exacto:</strong> <code>dffa98bdd7371d1806adb09db27ba283</code></li>
+                        <li><strong>Ruta absoluta y metadatos:</strong> <code>C:\Users\Steve\Downloads\Misc\BNE.png</code> (MFT <code>#21202</code>, tamaño <code>4,376,793 bytes</code>; descargado inicialmente en <code>C:\Users\Steve\Downloads\BNE.png</code> desde ProtonMail el <code>2019-02-01 13:13:19 NZDT</code> y movido a la subcarpeta <code>Downloads\Misc\BNE.png</code> el <code>2019-02-01 13:15:20 NZDT</code>).</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 13 -->
+                <div class="qa-card">
+                    <h5>13. ¿Cuál es el nombre, ruta y MD5 del instalador de una herramienta de esteganografía en <code>Downloads</code>?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Nombre exacto:</strong> <code>Image Steganography 1.5.2 Setup.exe</code></li>
+                        <li><strong>Ruta absoluta:</strong> <code>C:\Users\Steve\Downloads\Image Steganography 1.5.2 Setup.exe</code> (MFT <code>#96893</code>, tamaño <code>559,616 bytes</code>, descargado desde SourceForge el <code>2019-02-01 13:16:32 NZDT</code>).</li>
+                        <li><strong>Hash MD5 exacto:</strong> <code>c9b7c382dea6d7f45ae1bf437860cb69</code></li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 14 -->
+                <div class="qa-card">
+                    <h5>14. ¿Cuál es el nombre y la ruta del instalador de una herramienta de cifrado encontrado en <code>Downloads</code>?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Nombre exacto:</strong> <code>TrueCrypt Setup 7.1a.exe</code></li>
+                        <li><strong>Ruta absoluta:</strong> <code>C:\Users\Steve\Downloads\TrueCrypt Setup 7.1a.exe</code> (MFT <code>#86637</code>, tamaño <code>3,466,248 bytes</code>, MD5: <code>7a23ac83a0856c352025a6f7c9cc1526</code>, descargado desde Softpedia el <code>2019-01-30 12:27:43 NZDT</code>).</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 15 -->
+                <div class="qa-card">
+                    <h5>15. ¿Cuáles son las rutas de la caché de Discord y de <code>ActivitiesCache.db</code> utilizada por Windows Timeline?</h5>
+                    <ul class="qa-list">
+                        <li><strong>Ruta absoluta de la caché de Discord:</strong> <code>C:\Users\Steve\AppData\Roaming\Discord\Cache</code> (MFT <code>#96205</code>, creada el <code>2019-01-29 09:57:06 NZDT</code> y modificada por última vez el <code>2019-02-02 15:38:59 NZDT</code>; contiene el índice <code>index</code>, los bloques <code>data_0</code> a <code>data_3</code> y los objetos en caché <code>f_000001</code> a <code>f_000077</code>).</li>
+                        <li><strong>Ruta absoluta de <code>ActivitiesCache.db</code> (Windows Timeline):</strong> <code>C:\Users\Steve\AppData\Local\ConnectedDevicesPlatform\2418c0082017486a\ActivitiesCache.db</code> (MFT <code>#97068</code>, tamaño <code>2,097,152 bytes</code>, MD5: <code>7ddbc197b78a07450312365eaf207ce5</code>, asociada al LiveId <code>2418c0082017486a</code> de Steve Kowhai).</li>
+                    </ul>
+
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/fig7_downloads_bne.png" alt="Figura 7. Verificación en FTK Imager de BNE.png y de los instaladores" onerror="this.style.display='none';">
+                            <figcaption>Figura 7. Verificación en FTK Imager de <code>BNE.png</code> y de los instaladores <code>Image Steganography 1.5.2 Setup.exe</code> y <code>TrueCrypt Setup 7.1a.exe</code>.</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/fig8_discord_timeline.png" alt="Figura 8. Localización de Discord\Cache y ActivitiesCache.db" onerror="this.style.display='none';">
+                            <figcaption>Figura 8. Localización de <code>Discord\Cache</code> y registros de actividad en <code>ActivitiesCache.db</code> (Windows Timeline).</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PARTE II. INVESTIGACIÓN, INTERPRETACIÓN Y ANÁLISIS DEL CASO -->
+            <section class="pr-section">
+                <h3><i class="fas fa-search-location"></i> Parte II. Investigación, Interpretación y Análisis del Caso</h3>
+
+                <!-- Punto 1 -->
+                <div class="qa-card">
+                    <h5>1. Examen de <code>flightbookings.PNG</code>, <code>BNE.png</code> y <code>dropoff.jpg</code>: coincidencias sobre lugares, desplazamientos y logística</h5>
+                    <ul class="qa-list">
+                        <li>
+                            <strong>Lo observado en la evidencia (Narcos-1):</strong><br>
+                            <strong>1) <code>BNE.png</code></strong> (MD5 <code>dffa98bdd7371d1806adb09db27ba283</code>): Descargado el <code>2019-02-01 13:13:19 NZDT</code> desde el correo cifrado ProtonMail (<code>crayfish1980@protonmail.com</code>). Muestra una fotografía del puente <em>Story Bridge</em> en <strong>Brisbane, Queensland, Australia</strong>, cuyo código aeroportuario IATA es exactamente <strong><code>BNE</code></strong>. Además, actúa como imagen portadora esteganográfica que oculta el archivo cifrado con AES <code>package.jpg</code> (MD5 <code>8ba9265a1563ff871a471c552bab0b67</code>), el cual muestra tres paquetes rectangulares envueltos en cinta café ocultos bajo el forro de una maleta.<br>
+                            <strong>2) <code>flightbookings.PNG</code></strong> (MD5 <code>d1b21a1cddcb3494d637f2424cc5f0f1</code>): Descargado el <code>2019-02-02 15:28:26 NZDT</code> desde un adjunto de Discord (<code>.../539550615072800768/541074665892741121/Steve_K.PNG</code>) y guardado en <code>C:\Users\Steve\Documents\Misc\flightbookings.PNG</code> a las <code>15:28:44 NZDT</code>. Muestra una cotización/resumen de viaje (<em>Trip Summary</em>) por <code>AU$1,327.82</code> para <strong>2 pasajeros adultos</strong> (<em>Traveller 1: Adult, Traveller 2: Adult</em>) con vuelo directo en Virgin Australia el <strong>16 de febrero de 2019 desde Brisbane, QLD (BNE) (8:45 am) hacia Wellington Intl. (WLG) (3:15 pm)</strong>, y retorno el <strong>23 de febrero de 2019 de WLG a BNE</strong> vía Qantas.<br>
+                            <strong>3) <code>dropoff.jpg</code></strong> (MD5 <code>7feb763bebe42c3a3464c9ee3bb1d3e8</code>): Creado el <code>2019-02-02 14:06:05 NZDT</code> (modificado a las <code>14:06:06 NZDT</code>) mediante <em>Snip &amp; Sketch</em> tras buscar en Google Maps <code>eastbourne library</code> (<code>14:04:36–14:05:24 NZDT</code>). Muestra la ubicación exacta de <strong>Eastbourne Library</strong> (<code>38 Rimu St, Eastbourne, Lower Hutt 5013, Wellington</code>).
+                        </li>
+                        <li>
+                            <strong>Interpretación propuesta:</strong> Los tres archivos articulan la logística completa de la operación transnacional: el punto de origen del cargamento en <strong>Brisbane, Australia (<code>BNE</code>)</strong> y el método de ocultamiento dentro del equipaje (<code>BNE.png &rarr; package.jpg</code>); el traslado aéreo internacional hacia <strong>Wellington (<code>WLG</code>)</strong> de <strong>dos correos humanos adultos</strong> (<code>flightbookings.PNG</code>), lo que concuerda con la intercepción de los dos pasajeros australianos (John Fredricksen y Jane Esteban) en el aeropuerto de Wellington con 1 kg de metanfetamina oculto en una maleta; y la selección de la <strong>Biblioteca de Eastbourne</strong> como punto de entrega local (<em>drop-off</em>, <code>dropoff.jpg</code>), coincidiendo con los informes de inteligencia policial.
+                        </li>
+                        <li>
+                            <strong>Lo que no puede confirmarse con la evidencia disponible:</strong> La imagen <code>flightbookings.PNG</code> muestra la pantalla previa de cotización (<em>"Book now so you don't miss out on this price!"</em>) sin incluir los nombres de los pasajeros, número de PNR ni comprobante de pago emitido por la aerolínea; tampoco puede confirmarse únicamente con el disco si la entrega física en la biblioteca de Eastbourne llegó a consumarse.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Punto 2 -->
+                <div class="qa-card">
+                    <h5>2. Contraste de <code>airport crystals.jpg</code> y <code>Method run.jpg</code> con los registros de actividad del equipo</h5>
+                    <ul class="qa-list">
+                        <li>
+                            <strong>Lo observado en la evidencia:</strong> Al correlacionar las marcas de tiempo NTFS con <code>Chrome\History</code>, <code>ActivitiesCache.db</code> (Windows Timeline), <code>UserAssist</code>, <code>Prefetch\SCREENSKETCH.EXE-FCC53E40.pf</code> y los archivos <code>.lnk</code> en <code>Recent</code> del <strong>día 31 de enero de 2019 (NZDT)</strong>, se observa una secuencia continua:<br>
+                            <strong>a)</strong> Entre las <code>10:17:23</code> y las <code>10:24:13 NZDT</code>, el usuario consultó en Google Maps rutas con múltiples paradas entre <strong>Eastbourne, Wainuiomata, Stokes Valley, Naenae y Cannons Creek (Porirua)</strong>. A las <code>10:20:30 NZDT</code> ejecutó la herramienta de recorte y anotación <strong>Snip &amp; Sketch</strong> (<code>Microsoft.ScreenSketch</code>, activa durante 101 segundos hasta las <code>10:22:25 NZDT</code>), generando el archivo <code>Method run.jpg</code> (creado a las <code>10:21:24 NZDT</code> y modificado a las <code>10:22:24 NZDT</code> tras trazar a mano alzada en color rojo la palabra <code>"Home"</code> junto al nodo de <strong>Eastbourne</strong>).<br>
+                            <strong>b)</strong> Inmediatamente después, entre las <code>10:24:21</code> y las <code>10:24:45 NZDT</code>, buscó en Google Maps la ruta desde <strong>Eastbourne, Lower Hutt hasta el Aeropuerto Internacional de Wellington (WLG)</strong> (cuyo trazado bordea la bahía pasando por <strong>Petone</strong>). Entre las <code>10:24:59</code> y las <code>10:25:19 NZDT</code> volvió a activar <strong>Snip &amp; Sketch</strong> (16 segundos de foco), guardando la captura como <code>airport crystals.jpg</code> exactamente a las <code>10:25:18 NZDT</code>. Ese mismo día, entre las <code>15:55:01</code> y las <code>15:59:35 NZDT</code>, realizó búsquedas en Google sobre <code>crystal meth</code>, <code>drug paraphernalia meth</code> y <code>gangs nz drugs</code>, descargando tres fotografías relacionadas en <code>C:\Users\Steve\Pictures\</code> (eliminadas posteriormente a la Papelera de reciclaje el <code>2019-02-01 15:48:41 NZDT</code>).
+                        </li>
+                        <li>
+                            <strong>Interpretación propuesta:</strong> Los nombres asignados por el propio usuario (<code>airport crystals.jpg</code> aludiendo a cristales de metanfetamina en el aeropuerto, y <code>Method run.jpg</code> como juego de palabras con <em>"Meth run"</em> o circuito de reparto), sumados a la anotación manuscrita <code>"Home"</code> y al paso por <strong>Petone</strong>, sostienen que su finalidad era <strong>planificar la ruta de recolección del cargamento en el Aeropuerto de Wellington (WLG) hacia Petone/Eastbourne y diseñar el circuito logístico de distribución local</strong> por los suburbios de Lower Hutt (Wainuiomata, Naenae y Stokes Valley).
+                        </li>
+                        <li>
+                            <strong>Lo que no puede confirmarse:</strong> Una captura de ruta en Google Maps demuestra actos preparatorios y planificación logística en el equipo, pero no prueba por sí sola que el usuario haya recorrido físicamente dichos trayectos (lo cual requiere telemetría GPS, registros celulares o cámaras de peaje/tránsito).
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Punto 3 -->
+                <div class="qa-card">
+                    <h5>3. Evidencia de presencia y uso de Discord, alcances y límites de atribución</h5>
+                    <ul class="qa-list">
+                        <li>
+                            <strong>Lo observado (Presencia, instalación y uso):</strong><br>
+                            <strong>1) Descarga e instalación:</strong> Instalador <code>C:\Users\Steve\Downloads\Misc\DiscordSetup.exe</code> (creado el <code>2019-01-29 09:56:03 NZDT</code>, MD5 <code>0e0d73ea5cea1e930a1a1349d0907ef5</code>), registro de instalación en <code>NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Uninstall\Discord</code> (v0.0.304 en <code>C:\Users\Steve\AppData\Local\Discord</code>, <code>2019-01-29 09:56:50 NZDT</code>) y acceso directo <code>C:\Users\Steve\Desktop\Discord.lnk</code>.<br>
+                            <strong>2) Ejecución activa:</strong> Registro en <code>UserAssist</code> (<code>DiscordSetup.exe</code> 1 ejecución; <code>com.squirrel.Discord.Discord</code> con <code>1,493,186 ms &approx; 24.8 min</code> de foco activo hasta el <code>2019-02-02 15:33:54 NZDT</code>), 4 archivos Prefetch (<code>C:\Windows\Prefetch\DISCORD.EXE-794770A9/AA/AB/B1.pf</code>) y 9 sesiones <em>UserEngaged</em> en <code>ActivitiesCache.db</code> entre el <code>2019-01-29</code> y el <code>2019-02-02</code>.<br>
+                            <strong>3) Artefactos de red, LevelDB y caché HTTP:</strong> En <code>Discord\Local Storage\leveldb\000006.log</code> se registra la conexión recurrente al servidor/guild <code>539550614603169812</code>, canal de texto <code>539550615072800768</code> y canal de voz <code>539550615575986207</code>. En <code>Chrome\History</code> consta la descarga de <code>flightbookings.PNG</code> desde <code>https://cdn.discordapp.com/attachments/539550615072800768/541074665892741121/Steve_K.PNG</code>. Además, al descomprimir el bloque GZIP almacenado en <code>C:\Users\Steve\AppData\Roaming\Discord\Cache\data_2</code> (offset <code>245,760</code>, <code>1,511 bytes</code>, vinculado a la petición <code>GET https://discordapp.com/api/v6/channels/539550615072800768/messages?limit=50</code> en <code>data_1</code> y <code>data_3</code> del <code>2019-02-02 15:16:55 NZDT</code>), <strong>se recuperaron 16 mensajes verificables</strong> entre <strong><code>crayfish1980#5175</code></strong> (quien firma <em>"S Out"</em> y cuyo correo en Chrome es <code>crayfish1980@protonmail.com</code>) y <strong><code>heresjohnny1#5340</code></strong> (quien firma <em>"John Out"</em>), donde acuerdan reducir un pedido inicial de 10 kg a 1 kg entregado en Wellington, intercambian un documento operativo, acuerdan usar la aplicación <em>Image Steganography</em> enviando la imagen y contraseña por correo, y finalmente <code>heresjohnny1</code> envía <code>Steve_K.PNG</code> (los vuelos BNE&rarr;WLG).
+                        </li>
+                        <li>
+                            <strong>Qué NO puede concluirse sin recuperar mensajes verificables (y límites de autoría):</strong> Si únicamente se consideraran los artefactos de instalación, ejecución o nombres de archivos en caché sin reconstruir el JSON de mensajes, no podría determinarse el contenido de las conversaciones, los acuerdos ilícitos ni los pseudónimos de los interlocutores. Asimismo, aun con los mensajes recuperados de la caché, no puede conocerse el contenido del canal de voz (<code>539550615575986207</code>), ni puede atribuirse de manera absoluta la identidad física detrás del teclado del interlocutor remoto <code>heresjohnny1#5340</code> sin peritar los dispositivos incautados a John Fredricksen o requerir registros a Discord Inc.
+                        </li>
+                    </ul>
+
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/fig10_discord_chat.png" alt="Figura 9. Reconstrucción forense de los mensajes del canal en Discord" onerror="this.src='img/fig9_stego_package.png';">
+                            <figcaption>Figura 9. Reconstrucción forense de los mensajes del canal <code>539550615072800768</code> en <code>Discord\Cache\data_2</code> entre <code>crayfish1980#5175</code> y <code>heresjohnny1#5340</code>.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 4 -->
+                <div class="qa-card">
+                    <h5>4. Análisis de herramientas de esteganografía y cifrado: diferenciación entre descarga, instalación, ejecución y uso efectivo</h5>
+                    <p style="color: var(--text-muted); font-size: 0.93rem; text-align: justify; margin-bottom: 1rem;">
+                        En informática forense es indispensable no confundir la simple presencia de un instalador con su uso real. En <strong>Narcos-1</strong> existen artefactos independientes que acreditan los cuatro niveles tanto para <strong>TrueCrypt 7.1a</strong> como para <strong>Image Steganography 1.5.2</strong> (además del limpiador antiforense <strong>CCleaner 5.52</strong>):
+                    </p>
+
+                    <div class="pr-table-wrapper">
+                        <table class="pr-table">
+                            <thead>
+                                <tr>
+                                    <th>Nivel Forense</th>
+                                    <th>Herramienta de Cifrado (TrueCrypt 7.1a)</th>
+                                    <th>Herramienta de Esteganografía (Image Steganography 1.5.2)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1. Descarga (Adquisición del binario)</strong></td>
+                                    <td>
+                                        &bull; <strong>Chrome History (tabla <code>downloads</code>):</strong> Descargado el <code>2019-01-30 12:27:43 NZDT</code> desde <code>softpedia.com/...</code> (<code>3,466,248 bytes</code>).<br>
+                                        &bull; <strong>Sistema de archivos (MFT #86637):</strong> <code>C:\Users\Steve\Downloads\TrueCrypt Setup 7.1a.exe</code> (MD5: <code>7a23ac83a0856c352025a6f7c9cc1526</code>).
+                                    </td>
+                                    <td>
+                                        &bull; <strong>Chrome History (tabla <code>downloads</code>):</strong> Descargado el <code>2019-02-01 13:16:32 NZDT</code> desde <code>sourceforge.net/projects/image-steg/...</code> (<code>559,616 bytes</code>).<br>
+                                        &bull; <strong>Sistema de archivos (MFT #96893):</strong> <code>C:\Users\Steve\Downloads\Image Steganography 1.5.2 Setup.exe</code> (MD5: <code>c9b7c382dea6d7f45ae1bf437860cb69</code>).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2. Instalación (Despliegue en el SO)</strong></td>
+                                    <td>
+                                        &bull; <strong>Registro (<code>SOFTWARE</code>):</strong> Clave <code>WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\TrueCrypt</code> creada el <code>2019-01-30 12:28:24 NZDT</code> (v7.1a).<br>
+                                        &bull; <strong>Directorio y driver:</strong> <code>C:\Program Files\TrueCrypt\</code> (<code>TrueCrypt.exe</code>, <code>TrueCrypt Format.exe</code>), driver <code>C:\Windows\System32\drivers\truecrypt.sys</code> y acceso directo <code>C:\Users\Public\Desktop\TrueCrypt.lnk</code>.
+                                    </td>
+                                    <td>
+                                        &bull; <strong>Directorio de aplicación (MFT #96907..96928):</strong> Instalado el <code>2019-02-01 13:16:49 NZDT</code> en <code>C:\Users\Steve\AppData\Roaming\CPascoe\Image Steganography\ProgData\</code> (<code>Image Steganography.exe</code>, <code>Image Steganography Engine.dll</code>).<br>
+                                        &bull; <strong>Accesos directos:</strong> <code>C:\Users\Steve\Desktop\Image Steganography.lnk</code> y menú Inicio <code>Programs\CPascoe</code>.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3. Ejecución (Apertura del binario)</strong></td>
+                                    <td>
+                                        &bull; <strong>UserAssist (<code>NTUSER.DAT</code>):</strong> <code>TrueCrypt Setup 7.1a.exe</code> (1 vez, <code>12:28:14 NZDT</code>) y <code>TrueCryptFoundation.TrueCrypt</code> (1 vez, foco <code>120,656 ms</code>, <code>2019-01-30 12:31:23 NZDT</code>).<br>
+                                        &bull; <strong>Prefetch:</strong> <code>TRUECRYPT SETUP 7.1A.EXE-CE6985BB.pf</code>, <code>TRUECRYPT.EXE-9A3632C4.pf</code> (<code>12:31:35 NZDT</code>) y <code>TRUECRYPT FORMAT.EXE-9F933A19.pf</code> (<code>12:31:39 NZDT</code>).<br>
+                                        &bull; <strong>Timeline:</strong> <code>ActivitiesCache.db</code> registra actividad de TrueCrypt entre <code>12:31:25</code> y <code>12:33:52 NZDT</code>.
+                                    </td>
+                                    <td>
+                                        &bull; <strong>UserAssist (<code>NTUSER.DAT</code>):</strong> <code>Image Steganography 1.5.2 Setup.exe</code> (1 vez, <code>13:16:46 NZDT</code>) e <code>Image Steganography.exe</code> (foco activo durante <code>109,375 ms</code>).<br>
+                                        &bull; <strong>Prefetch y CLR Logs:</strong> <code>IMAGE STEGANOGRAPHY 1.5.2 SET-2E2F282D.pf</code> (<code>13:16:56 NZDT</code>), <code>IMAGE STEGANOGRAPHY.EXE-EE29E7F8.pf</code> (<code>13:17:06 NZDT</code>) y <code>CLR_v4.0\UsageLogs\Image Steganography.exe.log</code> (<code>13:19:15 NZDT</code>).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4. Uso efectivo (Operación sobre datos)</strong></td>
+                                    <td>
+                                        &bull; <strong>Creación y montaje de volumen:</strong> La ejecución del asistente <code>TrueCrypt Format.exe</code> (<code>12:31:39 NZDT</code>), el archivo <code>AppData\Roaming\TrueCrypt\Configuration.xml</code> (modificado a las <code>13:34:14 NZDT</code> con <code>LastSelectedDrive = F:</code> y <code>SaveVolumeHistory = 0</code>) y el acceso directo <code>Recent\secret.lnk</code> (creado a las <code>12:35:30 NZDT</code> apuntando a <code>C:\Users\Steve\Documents\secret</code> junto con <code>Recent\Memo Things.lnk &rarr; Documents\Misc\Memo Things.odt</code>) demuestran que se creó y montó un contenedor cifrado llamado <code>secret</code> en la unidad <code>F:</code>, eliminado posteriormente antes de ejecutar <code>CCleaner64.exe</code> (<code>12:42:16 NZDT</code>).
+                                    </td>
+                                    <td>
+                                        &bull; <strong>Decodificación de <code>BNE.png</code>:</strong> En la caché de OneNote (<code>00000006.bin</code>, <code>2019-02-01 13:24 PM NZDT</code>), Steve Kowhai creó la página <em>"Stego"</em> anotando: <code>"The location = C:\Users\Steve\Downloads\Misc \BNE"</code>, <code>"Pass equals Elchapo2"</code> y <code>"Success"</code>.<br>
+                                        &bull; <strong>Extracción verificada:</strong> Al decodificar <code>BNE.png</code> con <code>Image Steganography Engine.dll</code> y la clave AES <code>Elchapo2</code> se recupera <code>package.jpg</code> (<code>83,781 bytes</code>, MD5 <code>8ba9265a1563ff871a471c552bab0b67</code>), cuya apertura por el usuario quedó registrada en <code>Recent\package.lnk</code> (<code>15:49:18 NZDT</code>, apuntando a <code>C:\Users\Steve\Downloads\Misc\package.jpg</code>) antes de ser borrado y limpiado con <code>CCleaner64.exe</code> (<code>15:56:13 NZDT</code>).
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="fig-container">
+                        <figure>
+                            <img src="img/fig9_stego_package.png" alt="Figura 10. Decodificación esteganográfica de BNE.png revelando package.jpg" onerror="this.src='img/fig10_discord_chat.png';">
+                            <figcaption>Figura 10. Decodificación esteganográfica de <code>BNE.png</code> con la contraseña <code>Elchapo2</code> (recuperada de OneNote), revelando <code>package.jpg</code>.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Punto 5 -->
+                <div class="qa-card">
+                    <h5>5. Hipótesis sobre la relación del equipo con los hechos investigados, explicación alternativa, cuatro hallazgos y dos evidencias adicionales</h5>
+                    <ul class="qa-list">
+                        <li>
+                            <strong>Hipótesis principal (Participación directa en la coordinación, recepción y distribución):</strong> El equipo <code>SK-DESKTOP</code> (perfil <code>C:\Users\Steve</code>, utilizado por <strong>Steve Kowhai</strong> bajo los alias <code>crayfish1980#5175</code> en Discord y <code>crayfish1980@protonmail.com</code> en ProtonMail) fungió como nodo central de planificación para la importación de <strong>1 kg de metanfetamina desde Brisbane, Australia (BNE) hacia el Aeropuerto Internacional de Wellington (WLG)</strong> y su posterior recepción y distribución en <strong>Eastbourne, Petone y Lower Hutt</strong>. El usuario negoció el envío de 1 kg por Discord con <code>heresjohnny1#5340</code> (<em>"John"</em>), redactó un documento operativo (<code>Memo Things.odt</code>) que resguardó o eliminó tras usar un contenedor TrueCrypt (<code>C:\Users\Steve\Documents\secret</code> montado en <code>F:</code>), recibió por ProtonMail la imagen esteganográfica <code>BNE.png</code> con la contraseña AES <code>Elchapo2</code> para extraer la fotografía del doble fondo de la maleta con los paquetes de droga (<code>package.jpg</code>), seleccionó la Biblioteca de Eastbourne como punto de entrega (<code>dropoff.jpg</code>), trazó las rutas de recolección aeroportuaria (<code>airport crystals.jpg</code>) y distribución local (<code>Method run.jpg</code>), recibió el itinerario de los dos vuelos BNE&rarr;WLG (<code>flightbookings.PNG</code>) y ejecutó <code>CCleaner64.exe</code> para borrar rastros.
+                        </li>
+                        <li>
+                            <strong>Explicación alternativa (Acceso por terceros o rol meramente documental sin posesión física):</strong> Dado que el equipo de escritorio se encontraba en un inmueble en Petone donde concurrían otros elementos y la cuenta local <code>Steve</code> no evidencia bloqueos complejos de autenticación multifactor en los artefactos locales, una defensa técnica podría plantear que una tercera persona con acceso físico al domicilio en Petone utilizó la sesión abierta de <code>SK-DESKTOP</code> para coordinar la entrega, o bien que Steve Kowhai únicamente recibió información digital preparatoria (cotizaciones de vuelos no confirmadas y mapas públicos) sin haber tenido contacto físico con la maleta interceptada en la aduana de Wellington.
+                        </li>
+                        <li>
+                            <strong>Cuatro hallazgos forenses contundentes que sustentan la hipótesis principal:</strong><br>
+                            <strong>1) Comunicaciones en Discord y correo ProtonMail vinculadas a la identidad de Steve Kowhai:</strong> La sesión de OneNote (<code>00000006.bin</code> y <code>Documents_en-NZ</code>) identifica nominalmente a <strong>Steve Kowhai</strong> como autor de la nota <em>"Stego"</em>; el historial de Chrome vincula al mismo perfil con <code>crayfish1980@protonmail.com</code>, y la caché de Discord (<code>data_2</code>, canal <code>539550615072800768</code>) contiene la conversación entre <code>crayfish1980#5175</code> (<em>"S Out"</em>) y <code>heresjohnny1#5340</code> (<em>"John Out"</em>) acordando explícitamente el envío de <strong>1 kg a Wellington</strong> y el envío de <code>Steve_K.PNG</code> (guardado como <code>flightbookings.PNG</code>, MD5 <code>d1b21a1cddcb3494d637f2424cc5f0f1</code>) para 2 pasajeros en la ruta <strong>Brisbane (BNE) &rarr; Wellington (WLG)</strong>.<br>
+                            <strong>2) Evidencia esteganográfica del ocultamiento en la maleta:</strong> El archivo <code>C:\Users\Steve\Downloads\Misc\BNE.png</code> (MD5 <code>dffa98bdd7371d1806adb09db27ba283</code>), al ser descifrado con <em>Image Steganography 1.5.2</em> y la contraseña <code>Elchapo2</code> anotada por Steve Kowhai en OneNote el <code>2019-02-01 13:24 NZDT</code>, contiene oculta la fotografía <code>package.jpg</code> (MD5 <code>8ba9265a1563ff871a471c552bab0b67</code>, abierta desde <code>Downloads\Misc\package.jpg</code> según <code>Recent\package.lnk</code>), que exhibe los paquetes de droga ocultos en el armazón de una maleta idéntica al modus operandi detectado en el aeropuerto de Wellington.<br>
+                            <strong>3) Cartografía operativa coincidente con los puntos de inteligencia policial:</strong> Las capturas creadas con <em>Snip &amp; Sketch</em> en <code>C:\Users\Steve\Documents\Misc\</code> muestran la ruta del Aeropuerto de Wellington pasando por <strong>Petone hasta Eastbourne</strong> (<code>airport crystals.jpg</code>, MD5 <code>f938f92d9dbaeda2e92246deeebe830a</code>, <code>2019-01-31 10:25:18 NZDT</code>), el circuito de reparto con <strong>Eastbourne</strong> rotulado como <code>"Home"</code> (<code>Method run.jpg</code>, MD5 <code>69b225bc0ef5a0c003f1e2a6646aaf92</code>) y la ubicación exacta de la <strong>Biblioteca de Eastbourne</strong> tras buscar en Google <code>best places to trade drugs</code> (<code>dropoff.jpg</code>, MD5 <code>7feb763bebe42c3a3464c9ee3bb1d3e8</code>, <code>2019-02-02 14:06:06 NZDT</code>).<br>
+                            <strong>4) Conducta antiforense deliberada (Cifrado y limpieza):</strong> La creación de un volumen TrueCrypt (<code>Recent\secret.lnk &rarr; C:\Users\Steve\Documents\secret</code>, montado en <code>F:</code> tras redactar <code>Memo Things.odt</code> el <code>2019-01-30 12:31–12:35 NZDT</code>) y la ejecución posterior de <strong>CCleaner</strong> (<code>CCleaner64.exe</code> el <code>2019-01-30 12:42:16 NZDT</code> y el <code>2019-02-01 15:41:18 / 15:56:13 NZDT</code> inmediatamente después de eliminar <code>secret</code>, <code>Memo Things.odt</code>, <code>package.jpg</code> y las imágenes de metanfetamina) demuestran conciencia de ilicitud y ocultamiento intencional de evidencia.
+                        </li>
+                        <li>
+                            <strong>Dos evidencias adicionales necesarias para cerrar la investigación:</strong><br>
+                            <strong>1) Análisis forense del volcado de memoria RAM (<code>Narcos-Mem-1.001..003</code>) y medios de almacenamiento externos (unidades USB / letra <code>F:</code>):</strong> Indispensable para extraer de la memoria volátil claves criptográficas en texto claro, artefactos de procesos activos (<code>DumpIt.exe</code> fue ejecutado el <code>2019-01-29 17:31:41 NZDT</code> y el <code>2019-02-01 16:00:33 NZDT</code>) y localizar en dispositivos externos o espacio no asignado el contenedor TrueCrypt <code>secret</code> y el documento <code>Memo Things.odt</code>.<br>
+                            <strong>2) Peritaje forense a los teléfonos móviles/dispositivos de John Fredricksen y Jane Esteban e informes oficiales de Discord Inc., ProtonMail y Virgin Australia / Aduanas NZ:</strong> Necesario para confirmar que la cuenta <code>heresjohnny1#5340</code> pertenecía a John Fredricksen, verificar la emisión real de los boletos del vuelo BNE&rarr;WLG y cotejar físicamente la maleta fotografiada en <code>package.jpg</code> con la maleta asegurada en el aeropuerto de Wellington.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- REFERENCIAS BIBLIOGRÁFICAS -->
+            <section class="pr-section" style="margin-bottom: 1rem;">
+                <h3><i class="fas fa-bookmark"></i> Referencias Bibliográficas</h3>
+                <ul class="qa-list">
+                    <li><strong>[Referencia Obligatoria — Conjuntos de Datos Forenses Estandarizados]:</strong> Garfinkel, S., Farrell, P., Roussev, V., &amp; Dinolt, G. (2009). <em>Bringing Science to Digital Forensics with Standardized Forensic Corpora</em>. Digital Forensic Research Workshop (DFRWS), Montreal, Canadá. https://simson.net/clips/academic/2009.DFRWS.Corpora.pdf</li>
+                    <li><strong>[Referencia Obligatoria — Escenario de Evidencia de Práctica]:</strong> Digital Corpora. (2019). <em>2019 Narcos Scenario (Narcos-1 Forensic Disk Image &amp; Memory Dump)</em> [Conjunto de datos forenses para entrenamiento e investigación]. Digital Corpora Project. https://digitalcorpora.org/</li>
+                    <li>AccessData Group. (2019). <em>FTK Imager User Guide (Version 4.2.0)</em>. AccessData Forensics.</li>
+                    <li>Carrier, B. (2005). <em>File System Forensic Analysis</em>. Addison-Wesley Professional.</li>
+                    <li>International Organization for Standardization. (2012). <em>ISO/IEC 27037:2012 Information technology — Security techniques — Guidelines for identification, collection, acquisition and preservation of digital evidence</em>. ISO.</li>
+                </ul>
+            </section>
+
+            <!-- Botón de Descarga de Reporte Oficial -->
+            <div style="text-align: center; margin-top: 3.5rem; border-top: 1px solid var(--card-border); padding-top: 2.5rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="reportes/GonzalezEspinozaKarlaVanessa-PR03.pdf" class="download-btn" download style="margin: 0;">
+                    <i class="fas fa-file-pdf"></i> Descargar Dictamen Pericial (PDF)
+                </a>
+                <a href="proyectos.html" class="download-btn" style="margin: 0; background: linear-gradient(45deg, #2b5876, #4e4376);">
+                    <i class="fas fa-route"></i> Volver al Camino de Proyectos
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Karla Vanessa Gonzalez Espinoza ("Vane")</p>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
